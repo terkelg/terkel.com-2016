@@ -14,8 +14,11 @@ export default Vue.extend({
   template: require('./template.html'),
 
   ready () {
+    console.log(this.$el);
+
     let webgl = new Webgl({
-      debug: true
+      debug: true,
+      container: this.$el
     });
 
     let quick = new Quick();
