@@ -30,10 +30,27 @@ export default class Webgl {
       x: null,
       y: null
     };
-    this.objects = [];   // Maybe delete this
-    this.clones = [];   // What is this?
+    this.objects = [];   // Objects, like particles, skydome etc.
+    this.stages = [];    // This is the real deal! Stages (Needs a interface. Update, Init, ) // Take arguments, elapsed, tick etc.
     this.clock = null;
-    // Add my stages here too, together with position
+
+    // Add my stages here too, together with position?
+    // Well, stages don't nede to know about position
+
+    // TODO:
+    // Add support for objects.
+    // Add GUI, Stats to Debug version
+    // Animation - requestAnimationFrame
+    // Camera Interface and navigation. I don't think the tweening should happen here?
+    // Camera movement
+    // Add option to toggle active - when hiding the canvas, save computer power.
+    // Add CSS3DRenderer option somehow. Need to think about this interface
+    // Performance deponding on mobile (antialise, fog, fewer particles etc.) Maybe disable CSS3Renderer on mobile
+    // PostEffects
+
+    // This is the WebGL - Maybe CSS3 Should have it's own class?
+    // It can extend this class - or we can load the class from this class.
+    // There's also the Ui Thing
   }
 
   init () {
@@ -46,7 +63,13 @@ export default class Webgl {
     this.camera.lookAt(this.target);
     this.camera.position.set(0, 0, 800);
 
-    // loop trough objects and add them?
+    // Add stages
+
+    // Add world/scene related stuff
+    let objectLength = this.objects.length;
+    for (let i = 0; i < objectLength; i++) {
+      this.scene.add(this.objects[i]);
+    }
 
     this.renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -100,12 +123,24 @@ export default class Webgl {
     }
   }
 
+  addObject (object) {
+    this.objects.push(object.getMesh());
+  }
+
   getRenderer () {
     if (this.options.postprocessing) {
       return this.postprocessing.getRenderer();
     } else {
       return this.renderer;
     }
+  }
+
+  getObjects () {
+    return this.objects;
+  }
+
+  getScene () {
+    return this.scene;
   }
 
   addListeners () {
