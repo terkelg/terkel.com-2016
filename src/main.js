@@ -1,13 +1,18 @@
+'use strict';
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // Components
 import App from './App';
+import Home from './views/Home';
 
 // This is test components
+/*
 var Home = Vue.extend({
   template: '<p>This is Home</p>'
 });
+*/
 
 var Bar = Vue.extend({
   template: '<p>This is bar!</p>'
