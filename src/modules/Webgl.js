@@ -1,7 +1,6 @@
 'use strict';
 
 import THREE from 'three';
-global.THREE = THREE;
 
 export default class Webgl {
 
@@ -39,8 +38,7 @@ export default class Webgl {
     // Well, stages don't nede to know about position
 
     // TODO:
-    // Add support for objects.
-    // Add GUI, Stats to Debug version
+    // Add GUI, Stats to Debug version (Burde dette ikke være med både CSS og WebGL?)
     // Animation - requestAnimationFrame
     // Camera Interface and navigation. I don't think the tweening should happen here?
     // Camera movement
