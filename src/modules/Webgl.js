@@ -1,6 +1,7 @@
 'use strict';
 
 import THREE from 'three';
+global.THREE = THREE;
 
 export default class Webgl {
 

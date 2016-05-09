@@ -73,6 +73,16 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /node_modules/,
+        loader: 'ify'
+      }
+    ],
+    postLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'ify'
       }
     ]
   },
