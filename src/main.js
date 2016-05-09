@@ -7,13 +7,6 @@ import VueRouter from 'vue-router';
 import App from './App';
 import Home from './views/Home';
 
-// This is test components
-/*
-var Home = Vue.extend({
-  template: '<p>This is Home</p>'
-});
-*/
-
 var Bar = Vue.extend({
   template: '<p>This is bar!</p>'
 });
@@ -46,11 +39,3 @@ router.beforeEach(function (route) {
 */
 
 router.start(App, '#app');
-
-/* eslint-disable no-new */
-/*
-new Vue({
-  el: 'body',
-  components: { App }
-});
-*/
