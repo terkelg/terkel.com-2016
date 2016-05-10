@@ -1,40 +1,34 @@
 <template>
-  <div id="app">
-    <div class="main">
+  <main id="app">
+
+    <border></border>
+
+    <div class="wrapper"> <!-- call this main?? -->
+      <div class="primary"> <!-- should be own component -->
       <!-- world canvas here -->
       <!-- <router-view></router-view> -->
+      </div>
+      <secondary></secondary>
     </div>
-    <secondary></secondary>
-  </div>
+
+  </main>
 </template>
 
 <script>
-import World from './components/World';
 import Secondary from './components/Secondary';
+import Border from './components/Border';
+// import World from './components/World';
 
 export default {
   components: {
-    World,
+    Border,
     Secondary
   }
 };
 </script>
 
-<style>
-/*
- * This is the global styles.
- * I guess it's best practice to move them into their own
- * file.
- */
-
-/*
- * Colors
- */
- $white: #FFFFFF;
- $dark: #272727;
- $blue: #3545E5;
- $babyBlue: #CFDDF9;
- $yellow: #FFE88E;
+<style lang="scss">
+@import './variables';
 
 html {
   height: 100%;
@@ -44,11 +38,17 @@ body {
   padding: 0;
 }
 
-
-.main {
+.wrapper {
+  padding: $border-size;
+  box-sizing: border-box;
+  position: relative;
+  // to get this to work,
+  // I need a new way to place primary and secondary
+}
+.primary {
   margin-left: 70px;
   position: relative;
   height: 100vh;
-  background-color: green;
+  background-color: $white;
 }
 </style>

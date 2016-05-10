@@ -21,6 +21,9 @@ export default {
   methods: {
     expandMenu: function (event) {
       this.$el.classList.toggle('open');
+      // Send event to border to change Color
+      // send event to stop convas for a while
+      // Emit all these actions
     }
   }
 };
@@ -28,24 +31,28 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+  @import '../variables';
+
   .secondary {
-    background-color: red;
-    width: 70px;
+    background-color: $white;
+    width: $nav-width;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-    transition: width 0.7s ease-in-out;
+    transition: all $secondary-sec ease-in-out;
 
     &.open {
       width: 100%;
+      background-color: $dark;
     }
   }
 
   nav {
     float: right;
-    width: 70px;
+    width: $nav-width;
     height: 100%;
-    background-color: blue;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid $babyBlue;
   }
 </style>
