@@ -20,8 +20,15 @@ export default {
     // But how do they work together then? From this main? Props? I think PROPS is the solution. Position, Camera etx. Css is a addon, which can stand on it's own anyway. Need the camera from main.
 
     // TODO:
+    // Sidebar, sidebar foldout - routing
+    // Routes - Begynd at teste med bare WebGL
     // Add CSS3DRenderer
+    // Der skal nok være en klasse over både WebGL og CSS3DRenderer som samler dem i et?
+    // Det er her der bliver tilføjet objecter til hver scene - og hvor man kan slå CSS3D renderer fra og til
+    // Global Settings, såsom debug mode – VUEX?
+
     // Figure out how routing works with views - nested routing?
+    // Hvordan får jeg indhold ind i mine "views" (require Vue components direkte?) Kan jeg placere alle components i min dom, og så derefter sætte dem i 3D space?
 
     let webgl = new Webgl({
       debug: true,

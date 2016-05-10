@@ -43,7 +43,7 @@ export default class Webgl {
     // Camera Interface and navigation. I don't think the tweening should happen here?
     // Camera movement
     // Add option to toggle active - when hiding the canvas, save computer power.
-    // Add CSS3DRenderer option somehow. Need to think about this interface
+    // Resize according to element size, not window. - clientHeight - offsetHeight
     // Performance deponding on mobile (antialise, fog, fewer particles etc.) Maybe disable CSS3Renderer on mobile
     // PostEffects
 
