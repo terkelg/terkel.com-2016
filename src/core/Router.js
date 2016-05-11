@@ -2,7 +2,8 @@
 import Vue from 'vue'; // Try to remove this
 import VueRouter from 'vue-router';
 
-import Home from 'components/Home'; // ../??
+import Home from 'components/Home';
+import Cases from 'components/Cases';
 
 Vue.use(VueRouter);
 
@@ -16,15 +17,26 @@ router.map({
   '/': {
     name: 'home',
     component: Home
+  },
+  '/cases': {
+    name: 'cases',
+    component: Cases
   }
 });
 
-export default router;
+// TODO: Implement 404 here
+router.redirect({
+  '*': '/'
+});
 
-// afterEach, beforeEach
-// Check out Vue.transitions
-/*
-router.beforeEach(function (route) {
-  console.log('Router:', route)
-})
-*/
+router.beforeEach(function (transition) {
+  console.log('beforeRouter:', transition);
+  transition.next();
+  // .abort(), .redirect(), .from(), .to(), .to.path()
+});
+
+router.afterEach(function (transition) {
+  console.log('afterRouter:', transition);
+});
+
+export default router;

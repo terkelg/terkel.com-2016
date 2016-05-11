@@ -1,5 +1,5 @@
 <template>
-  <p>Hola, this is the home route view</p>
+  <p>Hola, this is the home route view: {{$route.path}}</p>
 </template>
 
 <style>
@@ -9,10 +9,8 @@
 export default {
 
   ready () {
-    console.log('Hello from home');
+    console.log('Hello from home', this.$route);
   },
-
-  data () {},
 
   methods: {}
 

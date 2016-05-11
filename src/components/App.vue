@@ -1,8 +1,10 @@
 <template>
   <main id="app">
     <border></border>
-    <primary></primary> <!-- Det her er vel egentlig router views? -->
-    <secondary></secondary>
+    <!--<primary></primary> <!-- Det her er vel egentlig router views? -->
+    APP:
+    <router-view></router-view>
+    <!-- <secondary></secondary> -->
   </main>
 </template>
 

@@ -6,6 +6,13 @@ import Router from './core/Router';
 
 import domready from 'domready';
 
+/*
+  TODO:
+  -
+  - Styling ...
+  - 3D World
+*/
+
 class Main {
 
   constructor () {
