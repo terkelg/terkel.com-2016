@@ -9,9 +9,9 @@
 </template>
 
 <script>
+import store from '../vuex/store';
 import Border from 'components/Border';
 import Secondary from 'components/Secondary';
-import Primary from 'components/Primary';
 
 export default {
   data () {
@@ -23,11 +23,9 @@ export default {
   },
 
   ready () {
-    console.log('Hej');
   },
 
   beforeDestroy () {
-    console.log('Bye ...');
   },
 
   methods: {
@@ -36,9 +34,10 @@ export default {
 
   components: {
     Border,
-    Secondary,
-    Primary
-  }
+    Secondary
+  },
+
+  store: store
 };
 
 </script>

@@ -2,7 +2,7 @@
 
 import App from 'components/App';
 
-import Router from './core/Router';
+import Router from './core/router';
 
 import domready from 'domready';
 

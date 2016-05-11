@@ -5,8 +5,8 @@ let glslify = require('glslify');
 export default class Object3D {
 
   constructor () {
-    this.vertexShader = glslify('./../shaders/vertex/simple.vert');
-    this.fragmentShader = glslify('./../shaders/fragment/simple.frag');
+    this.vertexShader = glslify('./shaders/vertex/simple.vert');
+    this.fragmentShader = glslify('./shaders/fragment/simple.frag');
 
     this.material = new THREE.ShaderMaterial({
       uniforms: {

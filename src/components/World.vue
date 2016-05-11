@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import Webgl from '../modules/Webgl';
-import Quick from '../modules/Object3D';
-import Cube from '../modules/ObjectCube';
+import Webgl from '../modules/webgl';
+import Quick from '../modules/object3D';
+import Cube from '../modules/objectCube';
 
 export default {
   ready () {
