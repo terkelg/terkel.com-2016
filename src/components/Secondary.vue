@@ -33,26 +33,76 @@ export default {
 <style lang="scss" scoped>
   @import '../variables';
 
+  // TODO: Navigation transition
+  // just replace .open with GSAP
+  // Fix border issues. Right now everything goes behind the border.
+  // I think the secret is JS. Leave it for now
+  // Also, haven't tested with scroll content
+
+  // Mobile Design
   .secondary {
-    background-color: $white;
-    width: $nav-width;
+    height: $nav-mobile-height;
     position: fixed;
-    left: 0;
-    top: 0;
     bottom: 0;
-    transition: all $secondary-sec ease-in-out;
+    left: 0;
+    right: 0;
+    //transition: all $secondary-sec ease-in-out;
+    background-color: $white;
+    z-index: 10;
 
     &.open {
-      width: 100%;
+      height: 100%;
       background-color: $dark;
+    }
+
+    nav {
+      height: $nav-mobile-height;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: $babyBlue;
+      .open & {}
     }
   }
 
-  nav {
-    float: right;
-    width: $nav-width;
-    height: 100%;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    border-right: 1px solid $babyBlue;
+  // Medium and up
+  @media #{$break-medium} {
+    .secondary {
+      width: $nav-width;
+      top: 0;
+      height: 100%;
+
+      &.open { width: 100%; }
+
+      nav {
+        float: right;
+        width: $nav-width;
+        height: 100%;
+        background-color: transparent;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-right: 1px solid $babyBlue;
+      }
+    }
   }
+
+  /* Use this scroll on cases?
+  ::-webkit-scrollbar {
+    width: .5em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #33f;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #242424
+  }
+
+  ::-moz-selection {
+    background: #33f;
+  }
+
+  ::selection {
+    background: #33f;
+  }
+  */
 </style>

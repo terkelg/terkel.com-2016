@@ -1,54 +1,34 @@
 <template>
   <main id="app">
-
     <border></border>
-
-    <div class="wrapper"> <!-- call this main?? -->
-      <div class="primary"> <!-- should be own component -->
-      <!-- world canvas here -->
-      <!-- <router-view></router-view> -->
-      </div>
-      <secondary></secondary>
-    </div>
-
+    <primary></primary>
+    <secondary></secondary>
   </main>
 </template>
 
 <script>
-import Secondary from './components/Secondary';
 import Border from './components/Border';
-// import World from './components/World';
+import Secondary from './components/Secondary';
+import Primary from './components/Primary';
 
 export default {
   components: {
     Border,
-    Secondary
+    Secondary,
+    Primary
   }
 };
 </script>
 
 <style lang="scss">
-@import './variables';
+  @import './variables';
 
-html {
-  height: 100%;
-}
-body {
-  margin: 0;
-  padding: 0;
-}
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-.wrapper {
-  padding: $border-size;
-  box-sizing: border-box;
-  position: relative;
-  // to get this to work,
-  // I need a new way to place primary and secondary
-}
-.primary {
-  margin-left: 70px;
-  position: relative;
-  height: 100vh;
-  background-color: $white;
-}
-</style>
+  #app {}
+  </style>

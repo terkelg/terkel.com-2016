@@ -3,7 +3,7 @@
  */
  $white: #FFFFFF;
  $dark: #272727;
- $blue: #3545E5;
+ $blue: #3545E5; // #33f
  $babyBlue: #CFDDF9;
  $yellow: #FFE88E;
 
@@ -11,10 +11,23 @@
 /*
   Sizes
 */
-$nav-width: 70px;
 $border-size: 4px;
+$nav-width: 70px;
+$nav-mobile-height: 70px;
 
 /*
   Transitions time to secondary
 */
 $secondary-sec: 0.7s;
+
+/*
+  Media Queries
+ */
+$small: 400px;
+$medium: 700px + $nav-width;
+$large: 900px + $nav-width;
+
+$break-small-only: "only screen and (max-width: #{$small})";
+$break-medium: "only screen and (min-width: #{$medium})";
+$break-medium-only: "only screen and (min-width: #{$medium}) and (max-width: #{$large})";
+$break-large: "only screen and (min-width: #{$large})";

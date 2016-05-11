@@ -12,7 +12,7 @@
 
 <style lang="scss" scoped>
   @import '../variables';
-  
+
   #borders {
     .border {
       position: fixed;
