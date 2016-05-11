@@ -1,41 +1,30 @@
 'use strict';
 
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import App from 'components/App';
 
-// Components
-import App from './App';
-import Home from './views/Home';
+import Router from './core/Router';
 
-var Bar = Vue.extend({
-  template: '<p>This is bar!</p>'
-});
+import domready from 'domready';
 
-Vue.use(VueRouter);
+class Main {
 
-let router = new VueRouter({
-  hashbang: false,
-  history: true,
-  pushstate: true
-});
+  constructor () {
+    this.addEventListeners();
 
-router.map({
-  '/': {
-    name: 'home',
-    component: Home
-  },
-  '/bar': {
-    name: 'bar',
-    component: Bar
+    this.router = Router;
   }
+
+  addEventListeners () {}
+
+  start () {
+    this.router.start(App, '#app');
+  }
+}
+
+domready(() => {
+  console.log('Lets kick it off');
+
+  // Kick it off!
+  let main = new Main();
+  main.start();
 });
-
-// afterEach, beforeEach
-// Check out Vue.transitions
-/*
-router.beforeEach(function (route) {
-  console.log('Router:', route)
-})
-*/
-
-router.start(App, '#app');

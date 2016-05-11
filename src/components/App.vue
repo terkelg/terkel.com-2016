@@ -1,17 +1,20 @@
 <template>
   <main id="app">
     <border></border>
-    <primary></primary>
+    <primary></primary> <!-- Det her er vel egentlig router views? -->
     <secondary></secondary>
   </main>
 </template>
 
 <script>
-import Border from './components/Border';
-import Secondary from './components/Secondary';
-import Primary from './components/Primary';
+import Border from 'components/Border';
+import Secondary from 'components/Secondary';
+import Primary from 'components/Primary';
 
 export default {
+  ready () {
+    console.log('Hej');
+  },
   components: {
     Border,
     Secondary,
@@ -21,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './variables';
+  @import '../variables';
 
   html,
   body {
