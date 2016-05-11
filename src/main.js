@@ -11,21 +11,23 @@ import domready from 'domready';
   -
   - Styling ...
   - 3D World
+
+  # Nice to have
+  - Lyde / Toner
+  - Easter Eggs og Detaljer
+  - Acceleorameter on mobile
 */
 
 class Main {
 
   constructor () {
-    this.addEventListeners();
-
     this.router = Router;
   }
-
-  addEventListeners () {}
 
   start () {
     this.router.start(App, '#app');
   }
+
 }
 
 domready(() => {

@@ -8,40 +8,6 @@
   </main>
 </template>
 
-<script>
-import store from '../vuex/store';
-import Border from 'components/Border';
-import Secondary from 'components/Secondary';
-
-export default {
-  data () {
-    return {};
-  },
-
-  created () {
-
-  },
-
-  ready () {
-  },
-
-  beforeDestroy () {
-  },
-
-  methods: {
-
-  },
-
-  components: {
-    Border,
-    Secondary
-  },
-
-  store: store
-};
-
-</script>
-
 <style lang="scss">
   @import '../variables';
 
@@ -51,5 +17,51 @@ export default {
     margin: 0;
     padding: 0;
   }
+</style>
 
-  </style>
+<script>
+import store from '../vuex/store';
+import * as actions from '../vuex/actions';
+
+import Border from './Border';
+import Secondary from './Secondary';
+
+export default {
+  components: {
+    Border,
+    Secondary
+  },
+
+  store: store,
+  vuex: {
+    actions: {
+      windowVisible: actions.windowVisible
+    }
+  },
+
+  ready () {
+    this.addEventListeners();
+  },
+
+  beforeDestroy () {
+    this.removeEventListeners();
+  },
+
+  methods: {
+    /*
+     * Binding & Events
+     */
+    addEventListeners () {
+      document.addEventListener('visibilitychange', this.onVisibilityChange);
+    },
+
+    removeEventListeners () {
+      window.removeEventListener('visibilitychange', this.onVisibilityChange);
+    },
+
+    onVisibilityChange () {
+      this.windowVisible();
+    }
+  }
+};
+</script>

@@ -4,12 +4,21 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
-  screenSize: {width: 0, height: 0}
+  windowSize: {width: window.innerWidth, height: window.innerHeight},
+  windowVisible: document.visibilityState,
+  playSound: true,
+  debug: true
 };
 
 const mutations = {
-  WINDOW_RESIZE (state, event) {
-    state.screenSize = {width: event.innerWidth, height: event.innerHeight};
+  WINDOW_RESIZE (state) {
+    state.windowSize = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+  },
+  WINDOW_VISIBLE (state, focus) {
+    state.windowVisible = document.visibilityState;
   }
 };
 
