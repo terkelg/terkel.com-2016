@@ -1,5 +1,5 @@
 <template>
-  <main id="app">
+  <main v:el="wrapper">
     <border></border>
     <!--<primary></primary> <!-- Det her er vel egentlig router views? -->
     APP:
@@ -14,15 +14,33 @@ import Secondary from 'components/Secondary';
 import Primary from 'components/Primary';
 
 export default {
+  data () {
+    return {};
+  },
+
+  created () {
+
+  },
+
   ready () {
     console.log('Hej');
   },
+
+  beforeDestroy () {
+    console.log('Bye ...');
+  },
+
+  methods: {
+
+  },
+
   components: {
     Border,
     Secondary,
     Primary
   }
 };
+
 </script>
 
 <style lang="scss">
@@ -35,5 +53,4 @@ export default {
     padding: 0;
   }
 
-  #app {}
   </style>
