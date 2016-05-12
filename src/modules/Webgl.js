@@ -14,7 +14,7 @@ export default class Webgl {
       'container': options.container || document.body,
       'postprocessing': options.postprocessing || false,
       'backgroundOpacity': options.backgroundOpacity !== undefined ? options.backgroundOpacity : 1,
-      'backgroundColor': options.backgroundColor || new THREE.Color(0xffffff),
+      'backgroundColor': options.backgroundColor || new THREE.Color(0x888fff),
       'css3DRenderer': options.css3DRenderer || true
     };
 
@@ -53,7 +53,7 @@ export default class Webgl {
   }
 
   init () {
-    this.addListeners();
+    // this.addListeners();
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, this.options.width / this.options.height, 1, 1000);
@@ -80,6 +80,7 @@ export default class Webgl {
     this.renderer.setClearColor(this.options.backgroundColor, this.options.backgroundOpacity);
     this.renderer.shadowMap.enable = true;
 
+    // Set to width / height of child component?
     this.container.appendChild(this.renderer.domElement);
 
     this.camera.position.set(0, 0, 800);
@@ -142,13 +143,9 @@ export default class Webgl {
     return this.scene;
   }
 
-  addListeners () {
-    window.addEventListener('resize', this.onWindowResize.bind(this), false);
-  }
-
-  onWindowResize () {
-    this.options.width = window.innerWidth;
-    this.options.height = window.innerHeight;
+  onWindowResize (width, height) {
+    this.options.width = width;
+    this.options.height = height;
     this.camera.aspect = this.options.width / this.options.height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(this.options.width, this.options.height);

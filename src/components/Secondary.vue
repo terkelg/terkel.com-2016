@@ -1,108 +1,115 @@
 <template>
-  <aside class="secondary">
-    <nav class="menu" v-on:click="expandMenu">
-      Link
-    </nav>
-    <section class="content">
-      Content should fade in
-    </section>
+  <aside class="secondary" v-el:secondary>
+    <div class="secondary__inner" v-el:inner>
+      <nav class="navigation" v-el:nav v-on:click.stop='clickNavigation'>
+
+        <div class="cases-nav">
+        </div>
+
+        <ul>
+          <li>Home</li>
+          <li>Cases</li>
+          <li>About</li>
+          <li>Contact</li>
+        <li>
+
+        <img src="">
+
+        <a v-on:click.stop='clickNavigation'>Sidebar</a>
+
+      </nav>
+    </div>
   </aside>
 </template>
 
 <script>
-export default {
+import { getSecondaryIsOpen } from '../vuex/getters';
+import { setSecondaryState } from '../vuex/actions';
 
-  data () {
-    return {
-      msg: 'Hello World!'
-    };
+export default {
+  ready () {
+    this.secondary = this.$els.secondary;
+    this.inner = this.$els.inner;
+    this.nav = this.$els.nav;
+
+    // Set up tweens
+    this.sizeTween = TweenLite.to(this.secondary, 0.85, {
+      className: '+=open',
+      ease: Power2.easeInOut,
+      onComplete: this.didOpen,
+      onReverseComplete: this.didClose,
+      paused: true
+    });
+
+    this.colorTween = TweenLite.to(this.inner, 0.8, {
+      className: '+=open',
+      ease: Power2.easeInOut,
+      paused: true
+    });
   },
 
   methods: {
-    expandMenu: function (event) {
-      this.$el.classList.toggle('open');
-      // Send event to border to change Color
-      // send event to stop convas for a while
-      // Emit all these actions
+    clickNavigation () {
+      console.log('You clicked the nav: ', this.sizeTween);
+
+      if (!this.secondaryIsOpen) {
+        this.sizeTween.restart();
+        this.colorTween.restart(); // reverse()
+      } else {
+        this.sizeTween.reverse();
+        this.colorTween.reverse();
+      }
+    },
+
+    didOpen () {
+      console.log('Yyyaaaaay');
+      this.setSecondaryState(true);
+    },
+
+    didClose () {
+      console.log('Id closed!');
+      this.setSecondaryState(false);
+    }
+  },
+
+  vuex: {
+    getters: {
+      secondaryIsOpen: getSecondaryIsOpen
+    },
+    actions: {
+      setSecondaryState: setSecondaryState
     }
   }
+
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   @import '../variables';
 
-  // TODO: Navigation transition
-  // just replace .open with GSAP
-  // Fix border issues. Right now everything goes behind the border.
-  // I think the secret is JS. Leave it for now
-  // Also, haven't tested with scroll content
-
-  // Mobile Design
+  // Naviger med GreenSock så jeg får callback
   .secondary {
-    height: $nav-mobile-height;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    //transition: all $secondary-sec ease-in-out;
-    background-color: $white;
-    z-index: 10;
+    padding-right: $border-size;
+    width: $nav-width + $border-size * 2;
+    &.open { width: 100%; }
 
-    &.open {
-      height: 100%;
-      background-color: $dark;
-    }
-
-    nav {
-      height: $nav-mobile-height;
+    .secondary__inner {
+      background-color: $white;
       width: 100%;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      background-color: $babyBlue;
-      .open & {}
-    }
-  }
+      height: 100vh;
+      padding-top: $border-size;
+      padding-bottom: $border-size;
+      &.open { background-color: $dark; }
 
-  // Medium and up
-  @media #{$break-medium} {
-    .secondary {
-      width: $nav-width;
-      top: 0;
-      height: 100%;
-
-      &.open { width: 100%; }
-
-      nav {
-        float: right;
+      .navigation {
         width: $nav-width;
         height: 100%;
-        background-color: transparent;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-        border-right: 1px solid $babyBlue;
+        float: right;
+        padding: 8px;
+        border-right: 1px solid pink;
+        border-left: 1px solid green;
       }
     }
   }
-
-  /* Use this scroll on cases?
-  ::-webkit-scrollbar {
-    width: .5em;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #33f;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #242424
-  }
-
-  ::-moz-selection {
-    background: #33f;
-  }
-
-  ::selection {
-    background: #33f;
-  }
-  */
 </style>

@@ -5,3 +5,7 @@ export function getScreensize (state) {
 export function getWindowVisibility (state) {
   return state.windowVisible;
 };
+
+export function getSecondaryIsOpen (state) {
+  return state.secondaryOpen;
+};

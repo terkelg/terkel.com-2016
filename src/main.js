@@ -6,9 +6,12 @@ import Router from './core/router';
 
 import domready from 'domready';
 
+// eslint-disable-next-line
+import gsap from 'gsap';
+
 /*
   TODO:
-  -
+  - Router / Subviews
   - Styling ...
   - 3D World
 

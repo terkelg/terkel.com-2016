@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    Hello this is cases. I have a subview:<br>
+    Awesome case here
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
       // with hot-reload because the reloaded component
       // preserves its current state and we are modifying
       // its initial state.
-      msg: 'Cases'
+      msg: 'A awesome Case'
     };
   }
 };

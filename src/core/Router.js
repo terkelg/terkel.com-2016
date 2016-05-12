@@ -1,9 +1,12 @@
 
-import Vue from 'vue'; // Try to remove this
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from 'components/Home';
 import Cases from 'components/Cases';
+import About from 'components/About';
+import Contact from 'components/Contact';
+import Case from 'components/Case';
 
 Vue.use(VueRouter);
 
@@ -13,6 +16,13 @@ let router = new VueRouter({
   pushstate: true
 });
 
+/*
+ * This could go to the same component?
+ * I don't see why I need that many empy components.
+ * Also, I can use them as sub components in the same component and them
+ * both use Vue to mange the content and load them into CSS3Renderer?
+ * Tjek i component hvor folk kommer fra, hvilken URL og gør ting baseret på det.
+ */
 router.map({
   '/': {
     name: 'home',
@@ -21,6 +31,18 @@ router.map({
   '/cases': {
     name: 'cases',
     component: Cases
+  },
+  '/cases/:case': {
+    name: 'case',
+    component: Case
+  },
+  'about': {
+    name: 'about',
+    component: About
+  },
+  'contact': {
+    name: 'contact',
+    component: Contact
   }
 });
 

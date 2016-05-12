@@ -1,22 +1,53 @@
 <template>
   <main v:el="wrapper">
     <border></border>
-    <!--<primary></primary> <!-- Det her er vel egentlig router views? -->
-    APP:
-    <router-view></router-view>
-    <!-- <secondary></secondary> -->
+    <!-- <world></world> -->
+    <!-- <router-view></router-view> -->
+    <secondary></secondary>
+
+    <!-- <div class="background">
+      <div class="background__inner">
+        Fixed bg
+      </div>
+    </div> -->
+
   </main>
 </template>
 
 <style lang="scss">
   @import '../variables';
 
+  *,
+  *:before,
+  *:after { box-sizing: border-box;}
+
   html,
   body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: blue;
+    overflow: hidden;
   }
+
+  .background {
+    position: fixed;
+    z-index: -100;
+    background-color: green;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: $border-size;
+    box-sizing: border-box;
+    .background__inner {
+      background-color: pink;
+      width: 100%;
+      height: 100%;
+      padding-left: $nav-width;
+      box-sizing: border-box;
+    }
+  }
+
 </style>
 
 <script>
@@ -24,12 +55,14 @@ import store from '../vuex/store';
 import * as actions from '../vuex/actions';
 
 import Border from './Border';
+import World from './World';
 import Secondary from './Secondary';
 
 export default {
   components: {
     Border,
-    Secondary
+    Secondary,
+    World
   },
 
   store: store,
