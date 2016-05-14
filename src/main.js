@@ -11,6 +11,15 @@ import gsap from 'gsap';
 
 /*
   TODO:
+  - Style sidebar færdig.
+    - Mobil udgave
+    - Scale height
+  - IKKE BRUG GSAP sammen med classes. Det er LORT når der resizes
+  - Fjern Vuex, og brug emit/event system i stedet
+
+  - Refacotr global SCSS, components skal splittes op i view og kode.
+    - Store components kun!
+
   - Router / Subviews
   - Styling ...
   - 3D World

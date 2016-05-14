@@ -28,6 +28,8 @@
     padding: 0;
     background-color: blue;
     overflow: hidden;
+    font-family: 'canada-type-gibson','Helvetica Neue', Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   .background {
@@ -56,7 +58,7 @@ import * as actions from '../vuex/actions';
 
 import Border from './Border';
 import World from './World';
-import Secondary from './Secondary';
+import Secondary from './secondary';
 
 export default {
   components: {
