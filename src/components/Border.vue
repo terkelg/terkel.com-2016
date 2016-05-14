@@ -19,7 +19,8 @@
       z-index: 20;
       background-color: $babyBlue;
       will-change: transform;
-      transition: color $secondary-sec ease-in-out;
+      transition: all $secondary-sec $secondary-ease;
+      transform: translateZ(0);
       &.open { background-color: $white; }
       &.hor {
         width: 100%;
@@ -35,6 +36,10 @@
       &.right { right: 0; }
     }
     &.white .border { background-color: $white; }
+  }
+
+  .dark #borders .border {
+    background-color: $white;
   }
 
 </style>

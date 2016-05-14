@@ -3,10 +3,9 @@
  */
  $white: #FFFFFF;
  $dark: #272727;
- $blue: #3545E5; // #33f
+ $blue: #3545E5;
  $babyBlue: #CFDDF9;
  $yellow: #FFE88E;
-
 
 /*
   Sizes
@@ -19,6 +18,7 @@ $nav-mobile-height: 70px;
   Transitions time to secondary
 */
 $secondary-sec: 0.7s;
+$secondary-ease: ease-in-out;
 
 /*
   Media Queries

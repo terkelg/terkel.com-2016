@@ -1,18 +1,21 @@
 @import '../../variables';
 
+// Mobile navigaion
+@meda #{$break-small-only} {
+
+}
+
 .secondary {
-  $time: 0.8s;
   position: fixed;
   padding-right: $border-size;
   width: $nav-width + $border-size * 2;
+  will-change: width;
   height: 100%;
-  transition: all $time ease;
-  color: $blue;
+  transition: all $secondary-sec $secondary-ease;
 
-  &.open {
-    width: 100%;
-    color: $white;
-  }
+  // Performance Hack (will-change)
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   .secondary__inner {
     background-color: $white;
@@ -21,11 +24,18 @@
     height: 100%;
     padding-top: $border-size;
     padding-bottom: $border-size;
-    transition: all $time ease;
-    transform: translateX(-1px); // Hide border
+    transition: all $secondary-sec $secondary-ease;
+    transform: translateX(-1px) translateZ(0); // Hide border
+    backface-visibility: hidden;
   }
+}
 
-  &.open .secondary__inner {
+// Style for open mode
+.secondary.secondary--open {
+  width: 100%;
+  color: $white;
+
+  .secondary__inner {
     transform: translateX(1px);
     background-color: $dark;
   }
@@ -42,28 +52,27 @@
   width: $nav-width;
   height: 100%;
   float: right;
-
   user-select: none;
-
   border-right: 1px solid $babyBlue;
-  border-left: 1px solid $babyBlue;
+  border-left: 1px solid rgba($white, 0.1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   .menu__vertical {
-    // background-color: blue;
     margin: 0 auto;
     height: 100%;
     width: $nav-height;
+    transform: translateZ(0);
   }
   .menu__vertical__inner {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) translateY(0);
     ul {
       position: relative;
       left: -50%;
       transform: rotate(90deg) translateY(-50%);
       min-width: 600px; // Can work with auto, but not with relative on sidebar itself
-      // background-color: red;
       height: $nav-height;
       line-height: $nav-height;
       text-align: center;
@@ -77,7 +86,6 @@
       a {
         font-size: 12px;
         font-weight: 600;
-        text-decoration: none;
         text-transform: uppercase;
       }
     }
@@ -89,42 +97,46 @@
     width: 100%;
     text-align: center;
     z-index: 2;
-    // background: pink;
+    transform: translateZ(0);
   }
   .menu__top {
     top: 0;
     margin-top: 20px;
-    .close, .next, .prev {
-      display: block;
-      width: 100%;
-      margin: 0 auto;
-      fill: $white;
-      padding-bottom: 20px;
-    }
-    .close { width: 15px; }
-    .next, .prev { width: 17px; }
   }
   .menu__bottom {
     bottom: 0;
     z-index: 2;
     font-size: 7px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: $blue;
+    transition: color $secondary-sec $secondary-ease;
 
     .mini-logo {
       width: 25px;
       margin: 0 auto;
       padding-bottom: 5px;
-      .logo { fill: $blue; }
+      .logo {
+        fill: $blue;
+        transition: all $secondary-sec $secondary-ease;
+      }
     }
   }
   .menu__middle-bg {
     z-index: 0;
     top: 50%;
+    color: rgba($babyBlue, 0.35);
     transform: translateY(-50%);
-    font-weight: bold;
+    font-weight: 600;
     font-size: 40px;
     user-select: none;
     pointer-events: none;
-    // color: blue;
+    transition: all $secondary-sec $secondary-ease;
   }
+}
+
+.secondary.secondary--open .menu {
+  // .menu__top { opacity: 1; display: block; }
+  .menu__bottom { color: $white; }
+  .mini-logo .logo { fill: $white; }
+  .menu__middle-bg { color: rgba($white, 0.1); }
 }

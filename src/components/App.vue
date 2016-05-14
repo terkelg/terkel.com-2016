@@ -32,6 +32,37 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  a {
+    position: relative;
+    color: $blue;
+    text-decoration: none;
+    transition: color $secondary-sec $secondary-ease;
+    .dark & { color: $white; }
+  }
+  a::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    height: 0.5em;
+    bottom: 0.1em;
+    left: -0.15em;
+    right: -0.15em;
+    z-index: -1;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    transform: scaleY(0.0);
+    transform-origin: bottom;
+    background-color: $yellow;
+    transition: transform 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
+                background $secondary-sec $secondary-ease;
+    .dark & { background-color: $blue; }
+  }
+  a:hover::after,
+  a.active::after {
+    //height: 0.5em;
+    transform: scaleY(1);
+  }
+
   .background {
     position: fixed;
     z-index: -100;

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import './styles.scss';
 
 import Logo from '../logo';
+import Topnav from './topnav';
 
 export default Vue.extend({
 
@@ -10,7 +11,8 @@ export default Vue.extend({
   data: () => {
     return {
       year: null,
-      section: '01'
+      section: '01',
+      animateTopNav: false
     };
   },
 
@@ -18,11 +20,12 @@ export default Vue.extend({
 
   ready () {
     this.secondary = this.$els.secondary;
-    this.inner = this.$els.inner;
-    this.nav = this.$els.nav;
+    this.menuTop = this.$els.menutop;
     this.open = false;
-
     this.year = this.getYear();
+
+    // TODO: Tween every top button in a nice way
+    // Display block
 
     this.addEventListeners();
   },
@@ -33,9 +36,10 @@ export default Vue.extend({
 
   methods: {
     clickNavigation () {
-      // TODO: Find a perfect solution here
-      console.log('Click!');
-      this.secondary.classList.toggle('open');
+      // TODO: Optimize Performance on Safari.
+      // Try to use TweenMax to animate the width only!
+      this.secondary.classList.toggle('secondary--open');
+      document.body.classList.toggle('dark');
     },
 
     addEventListeners () {
@@ -43,27 +47,27 @@ export default Vue.extend({
     },
 
     removeEventListeners () {
-
+      this.secondary.removeEventListener('transitionend', this.transitionCallback, false);
     },
 
     transitionCallback (e) {
       if (e.propertyName === 'width') {
         if (this.open) {
-          this.didOpen();
-        } else {
           this.didClose();
+        } else {
+          this.didOpen();
         }
         this.open = !this.open;
       }
     },
 
     didOpen () {
-      console.log('Transition has finished');
+      console.log('DidOpen');
       // TODO: Emmit event
     },
 
     didClose () {
-      console.log('Id closed!');
+      console.log('DidClose!');
       // TODO: Emmit event
     },
 
@@ -76,6 +80,7 @@ export default Vue.extend({
   transitions: {},
 
   components: {
-    Logo
+    Logo,
+    Topnav
   }
 });
