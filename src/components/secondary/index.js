@@ -24,9 +24,6 @@ export default Vue.extend({
     this.open = false;
     this.year = this.getYear();
 
-    // TODO: Tween every top button in a nice way
-    // Display block
-
     this.addEventListeners();
   },
 
@@ -36,8 +33,6 @@ export default Vue.extend({
 
   methods: {
     clickNavigation () {
-      // TODO: Optimize Performance on Safari.
-      // Try to use TweenMax to animate the width only!
       this.secondary.classList.toggle('secondary--open');
       document.body.classList.toggle('dark');
     },

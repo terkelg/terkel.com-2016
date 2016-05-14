@@ -11,7 +11,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../variables';
+  @import '../stylesheets/variables';
 
   #borders {
     .border {

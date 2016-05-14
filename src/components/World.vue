@@ -6,7 +6,7 @@
 </template>
 
 <style lang="scss" scoped>
-  @import '../variables';
+  @import '../stylesheets/variables';
 
   .bgcanvas {
     position: fixed;

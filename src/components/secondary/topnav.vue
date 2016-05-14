@@ -31,11 +31,10 @@
     <polygon points="30.7,14 30.7,10 7.7,10 14.8,2.8 12,0 0,12 12,24 14.8,21.1 7.7,14 "/>
     </svg>
   </a>
-  <a @click=didClick>hej</a>
 </template>
 
 <style lang="scss" scoped>
-  @import '../../variables';
+  @import '../../stylesheets/variables';
 
   a::after { display: none; }
   .btn--close,
