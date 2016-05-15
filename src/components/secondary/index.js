@@ -15,7 +15,6 @@ export default Vue.extend({
     return {
       year: null,
       section: '01',
-      animateTopNav: false,
       open: false
     };
   },
@@ -23,7 +22,6 @@ export default Vue.extend({
   created () {},
 
   ready () {
-    this.open = false; // get from url I guess
     this.year = this.getYear();
 
     this.addEventListeners();

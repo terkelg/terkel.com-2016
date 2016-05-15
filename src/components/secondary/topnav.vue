@@ -80,6 +80,7 @@ export default {
 
     close () {
       console.log('Close btn from topnav');
+      // TODO: Navigate views.
       // this.$root.closeSecondary();
       // this.$parent.
     },
@@ -103,7 +104,6 @@ Vue.transition('buttons', {
     });
   },
   enter: function (el, done) {
-    console.log([...el.children]);
     TweenMax.staggerTo([...el.children], 0.5, {
       opacity: 1,
       scale: 1,
