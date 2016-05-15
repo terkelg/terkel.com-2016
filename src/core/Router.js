@@ -8,6 +8,10 @@ import About from 'components/About';
 import Contact from 'components/Contact';
 import Case from 'components/Case';
 
+// Global Directives
+import Logo from 'components/common/logo';
+Vue.component('logo', Logo);
+
 Vue.use(VueRouter);
 
 let router = new VueRouter({
@@ -51,14 +55,15 @@ router.redirect({
   '*': '/'
 });
 
+/*
 router.beforeEach(function (transition) {
-  console.log('beforeRouter:', transition);
   transition.next();
   // .abort(), .redirect(), .from(), .to(), .to.path()
 });
 
 router.afterEach(function (transition) {
-  console.log('afterRouter:', transition);
+  // emit router change
 });
+*/
 
 export default router;

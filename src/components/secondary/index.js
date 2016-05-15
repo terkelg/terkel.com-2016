@@ -1,11 +1,14 @@
 import Vue from 'vue';
-import './styles.scss';
+import Emitter from 'core/emitter';
 
-import Logo from '../logo';
+import {
+  SECONDARY_TOGGLE
+} from 'core/messages';
+
+import './styles.scss';
 import Topnav from './topnav';
 
 export default Vue.extend({
-
   template: require('./template.html'),
 
   data: () => {
@@ -19,9 +22,7 @@ export default Vue.extend({
   created () {},
 
   ready () {
-    this.secondary = this.$els.secondary;
-    this.menuTop = this.$els.menutop;
-    this.open = false;
+    this.open = false; // get from url I guess
     this.year = this.getYear();
 
     this.addEventListeners();
@@ -33,37 +34,37 @@ export default Vue.extend({
 
   methods: {
     clickNavigation () {
-      this.secondary.classList.toggle('secondary--open');
+      this.$els.secondary.classList.toggle('secondary--open');
       document.body.classList.toggle('dark');
     },
 
     addEventListeners () {
-      this.secondary.addEventListener('transitionend', this.transitionCallback, false);
+      this.$els.secondary.addEventListener('transitionend', this.transitionCallback, false);
     },
 
     removeEventListeners () {
-      this.secondary.removeEventListener('transitionend', this.transitionCallback, false);
+      this.$els.secondary.removeEventListener('transitionend', this.transitionCallback, false);
     },
 
     transitionCallback (e) {
+      // Avoid the function fire for every property
       if (e.propertyName === 'width') {
         if (this.open) {
           this.didClose();
+          this.open = false;
         } else {
           this.didOpen();
+          this.open = true;
         }
-        this.open = !this.open;
       }
     },
 
     didOpen () {
-      console.log('DidOpen');
-      // TODO: Emmit event
+      Emitter.emit(SECONDARY_TOGGLE, { open: true });
     },
 
     didClose () {
-      console.log('DidClose!');
-      // TODO: Emmit event
+      Emitter.emit(SECONDARY_TOGGLE, { open: false });
     },
 
     getYear () {
@@ -75,7 +76,6 @@ export default Vue.extend({
   transitions: {},
 
   components: {
-    Logo,
     Topnav
   }
 });

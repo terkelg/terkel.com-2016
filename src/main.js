@@ -2,9 +2,9 @@
 
 import App from 'components/app';
 
-import Router from './core/router';
+import Router from 'core/router';
 
-import './stylesheets/main.scss';
+import 'stylesheets/main.scss';
 
 import domready from 'domready';
 
@@ -17,11 +17,9 @@ import gsap from 'gsap';
     - Mobil udgave
     - Scale height
 
-  - Refacotr global SCSS, components skal splittes op i view og kode.
-    - Store components kun!
+  - SCSS Mixins, der er nogle gode i hans boilerplate
 
   - Router / Subviews
-  - Styling ...
   - 3D World
 
   # Nice to have
@@ -43,9 +41,6 @@ class Main {
 }
 
 domready(() => {
-  console.log('Lets kick it off');
-
-  // Kick it off!
   let main = new Main();
   main.start();
 });
