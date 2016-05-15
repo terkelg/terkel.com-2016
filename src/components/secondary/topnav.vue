@@ -1,6 +1,6 @@
 <template>
   <div class="buttons" v-if="showButtons" transition="buttons">
-    <a class="btn btn--close" href="#">
+    <a class="btn btn--close" @click=close>
       <svg version="1.1"
          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
          x="0px" y="0px" viewBox="0 0 26.3 26.3" style="enable-background:new 0 0 26.3 26.3;"
@@ -11,7 +11,7 @@
       </svg>
     </a>
 
-    <a class="btn btn--next">
+    <a class="btn btn--next" @click=next>
       <svg version="1.1"
          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
          x="0px" y="0px" viewBox="0 0 30.7 24" style="enable-background:new 0 0 30.7 24;"
@@ -22,7 +22,7 @@
       </svg>
     </a>
 
-    <a class="btn btn--prev">
+    <a class="btn btn--prev" @click=prev>
       <svg version="1.1"
          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
          x="0px" y="0px" viewBox="0 0 30.7 24" style="enable-background:new 0 0 30.7 24;"
@@ -43,7 +43,12 @@
       display: block;
       margin: 0 auto;
       padding-bottom: 15px;
+      cursor: pointer;
       fill: $white;
+      transition: fill 0.2s ease;
+      &:hover {
+        fill: $blue;
+      }
     }
     .btn--close { width: 15px; }
     .btn--next,
@@ -70,12 +75,21 @@ export default {
 
   methods: {
     onToggle ({open}) {
-      console.log(open);
-      if (open) {
-        this.showButtons = true;
-      } else {
-        this.showButtons = false;
-      }
+      this.showButtons = open;
+    },
+
+    close () {
+      console.log('Close btn from topnav');
+      // this.$root.closeSecondary();
+      // this.$parent.
+    },
+
+    next () {
+      console.log('next');
+    },
+
+    prev () {
+      console.log('prev');
     }
   }
 };

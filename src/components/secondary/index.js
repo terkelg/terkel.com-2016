@@ -15,7 +15,8 @@ export default Vue.extend({
     return {
       year: null,
       section: '01',
-      animateTopNav: false
+      animateTopNav: false,
+      open: false
     };
   },
 
