@@ -1,142 +1,270 @@
 @import '../../stylesheets/variables';
 
-// Mobile navigaion
-@meda #{$break-small-only} {
+/*
+ * Mobile
+ */
+ @media #{$break-small-to-medium} {
+   .secondary {
+     position: fixed;
+     bottom: 0;
+     width: 100%;
+     height: $nav-mobile-height + $border-size;
+     padding: $border-size;
+     will-change: height;
+     transition: height $secondary-sec $secondary-ease;
 
-}
+     // Performance Hack (will-change)
+     transform: translateZ(0);
+     backface-visibility: hidden;
 
-.secondary {
-  position: fixed;
-  padding-right: $border-size;
-  width: $nav-width + $border-size * 2;
-  will-change: width;
-  height: 100%;
-  transition: all $secondary-sec $secondary-ease;
+     .secondary__inner {
+       // background-color: green;
+       width: 100%;
+       height: 100%;
+       // background-color: red;
+       transition: background $secondary-sec $secondary-ease;
+       transform: translateZ(0);
+       backface-visibility: hidden;
+       // padding-top: $border-size;
+       // padding-right: $border-size;
+     }
+   }
 
-  // Performance Hack (will-change)
-  transform: translateZ(0);
-  backface-visibility: hidden;
-
-  .secondary__inner {
-    background-color: $white;
-    width: 100%;
-    width: 100%;
+  // Open mode
+  .secondary.secondary--open {
     height: 100%;
-    padding-top: $border-size;
-    padding-bottom: $border-size;
-    transition: all $secondary-sec $secondary-ease;
-    transform: translateX(-1px) translateZ(0); // Hide border
-    backface-visibility: hidden;
+    // color: $white;
+
+    .secondary__inner {
+      background-color: $dark;
+    }
   }
-}
 
-// Style for open mode
-.secondary.secondary--open {
-  width: 100%;
-  color: $white;
+  // Menu
+  .secondary .menu {
+    height: $nav-mobile-height;
+    // background-color: pink;
+    border-top: 1px solid $babyBlue;
+    border-bottom: 1px solid $babyBlue;
 
-  .secondary__inner {
-    transform: translateX(1px);
-    background-color: $dark;
-  }
-}
+    .menu__vertical {
+      transform: translateZ(0);
+    }
+    .menu__vertical__inner {
+      height: 100%;
+      ul {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        li {
+          display: inline-block;
+        }
+        a {
+          line-height: $nav-mobile-height;
+          margin: 0 10px;
+        }
+      }
+    }
+    .menu__top,
+    .menu__bottom,
+    .menu__middle-bg {
+      position: absolute;
+      z-index: 2;
+      transform: translateZ(0);
+    }
+    .menu__top {
+      display: none;
+      top: 0;
+    }
+    .menu__bottom {
+      display: none;
+      bottom: 0;
+      z-index: 2;
+      font-size: 7px;
+      margin-bottom: 10px;
+      color: $blue;
+      transition: color $secondary-sec $secondary-ease;
 
-.secondary .menu {
-  /* This is used to center the vertical navigation
-   * inside the sidebar. This is called height, because it's
-   * visual use. It really set the height
-   */
-  $nav-height: 30px;
-
-  position: relative;
-  width: $nav-width;
-  height: 100%;
-  float: right;
-  user-select: none;
-  border-right: 1px solid $babyBlue;
-  border-left: 1px solid rgba($white, 0.1);
-  transform: translateZ(0);
-  backface-visibility: hidden;
-
-  .menu__vertical {
-    margin: 0 auto;
-    height: 100%;
-    width: $nav-height;
-    transform: translateZ(0);
-  }
-  .menu__vertical__inner {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) translateY(0);
-    ul {
-      position: relative;
-      left: -50%;
-      transform: rotate(90deg) translateY(-50%);
-      min-width: 600px; // Can work with auto, but not with relative on sidebar itself
-      height: $nav-height;
-      line-height: $nav-height;
+      .mini-logo {
+        width: 25px;
+        margin: 0 auto;
+        padding-bottom: 5px;
+        .logo {
+          fill: $blue;
+          transition: fill $secondary-sec $secondary-ease;
+        }
+      }
+    }
+    .menu__middle-bg {
+      z-index: 0;
       text-align: center;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-      li {
-        display: inline-block;
-        margin: 0 10px;
-      }
-      a {
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-      }
-    }
-  }
-  .menu__top,
-  .menu__bottom,
-  .menu__middle-bg {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-    transform: translateZ(0);
-  }
-  .menu__top {
-    top: 0;
-    margin-top: 20px;
-  }
-  .menu__bottom {
-    bottom: 0;
-    z-index: 2;
-    font-size: 7px;
-    margin-bottom: 10px;
-    color: $blue;
-    transition: color $secondary-sec $secondary-ease;
+      width: 100%;
+      bottom: 0;
+      line-height: $nav-mobile-height;
 
-    .mini-logo {
-      width: 25px;
-      margin: 0 auto;
-      padding-bottom: 5px;
-      .logo {
-        fill: $blue;
-        transition: all $secondary-sec $secondary-ease;
-      }
+      color: rgba($babyBlue, 0.35);
+      font-weight: 600;
+      font-size: 40px;
+      user-select: none;
+      pointer-events: none;
+      transition: color $secondary-sec $secondary-ease;
     }
   }
-  .menu__middle-bg {
-    z-index: 0;
-    top: 50%;
-    color: rgba($babyBlue, 0.35);
-    transform: translateY(-50%);
-    font-weight: 600;
-    font-size: 40px;
-    user-select: none;
-    pointer-events: none;
-    transition: all $secondary-sec $secondary-ease;
+
+  // Menu Open
+  .secondary.secondary--open .menu {
+    transform: translateY(-1px); // Hide border on open
+    .menu__bottom { color: $white; }
+    .mini-logo .logo { fill: $white; }
+    .menu__middle-bg { color: rgba($white, 0.1); }
   }
 }
 
-.secondary.secondary--open .menu {
-  // .menu__top { opacity: 1; display: block; }
-  .menu__bottom { color: $white; }
-  .mini-logo .logo { fill: $white; }
-  .menu__middle-bg { color: rgba($white, 0.1); }
+
+
+
+
+
+
+
+
+/*
+ * Desktop
+ */
+@media #{$break-medium} {
+  .secondary {
+    position: fixed;
+    padding-right: $border-size;
+    width: $nav-width + $border-size * 2;
+    will-change: width;
+    height: 100%;
+    transition: width $secondary-sec $secondary-ease;
+
+    // Performance Hack (will-change)
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    .secondary__inner {
+      background-color: $white;
+      width: 100%;
+      height: 100%;
+      padding-top: $border-size;
+      padding-bottom: $border-size;
+      transition: background $secondary-sec $secondary-ease;
+      transform: translateX(-1px) translateZ(0); // Hide border
+      backface-visibility: hidden;
+    }
+  }
+
+  // Open mode
+  .secondary.secondary--open {
+    width: 100%;
+    color: $white;
+
+    .secondary__inner {
+      transform: translateX(1px);
+      background-color: $dark;
+    }
+  }
+
+  // Menu
+  .secondary .menu {
+    /* This is used to center the vertical navigation
+     * inside the sidebar. This is called height, because it's
+     * visual use. It really set the height
+     */
+    $nav-height: 30px;
+
+    position: relative;
+    width: $nav-width;
+    height: 100%;
+    float: right;
+    user-select: none;
+    border-right: 1px solid $babyBlue;
+    border-left: 1px solid rgba($white, 0.1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    .menu__vertical {
+      margin: 0 auto;
+      height: 100%;
+      width: $nav-height;
+      transform: translateZ(0);
+    }
+    .menu__vertical__inner {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) translateY(0);
+      ul {
+        position: relative;
+        left: -50%;
+        transform: rotate(90deg) translateY(-50%);
+        min-width: 600px; // Can work with auto, but not with relative on sidebar itself
+        height: $nav-height;
+        line-height: $nav-height;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        li {
+          display: inline-block;
+          margin: 0 10px;
+        }
+        a {
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .menu__top,
+    .menu__bottom,
+    .menu__middle-bg {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+      transform: translateZ(0);
+    }
+    .menu__top {
+      top: 0;
+      margin-top: 20px;
+    }
+    .menu__bottom {
+      bottom: 0;
+      z-index: 2;
+      font-size: 7px;
+      margin-bottom: 10px;
+      color: $blue;
+      transition: color $secondary-sec $secondary-ease;
+
+      .mini-logo {
+        width: 25px;
+        margin: 0 auto;
+        padding-bottom: 5px;
+        .logo {
+          fill: $blue;
+          transition: fill $secondary-sec $secondary-ease;
+        }
+      }
+    }
+    .menu__middle-bg {
+      z-index: 0;
+      top: 50%;
+      color: rgba($babyBlue, 0.35);
+      transform: translateY(-50%);
+      font-weight: 600;
+      font-size: 40px;
+      user-select: none;
+      pointer-events: none;
+      transition: color $secondary-sec $secondary-ease;
+    }
+  }
+
+  // Menu Open
+  .secondary.secondary--open .menu {
+    .menu__bottom { color: $white; }
+    .mini-logo .logo { fill: $white; }
+    .menu__middle-bg { color: rgba($white, 0.1); }
+  }
 }

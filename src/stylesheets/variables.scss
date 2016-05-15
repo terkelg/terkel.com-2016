@@ -28,6 +28,7 @@ $medium: 700px + $nav-width;
 $large: 900px + $nav-width;
 
 $break-small-only: "only screen and (max-width: #{$small})";
+$break-small-to-medium: "only screen and (max-width: #{$medium})";
 $break-medium: "only screen and (min-width: #{$medium})";
 $break-medium-only: "only screen and (min-width: #{$medium}) and (max-width: #{$large})";
 $break-large: "only screen and (min-width: #{$large})";
