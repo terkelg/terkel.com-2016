@@ -13,12 +13,15 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
+    root: path.resolve( __dirname, '..', 'src' ),
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'core': path.resolve(__dirname, '../src/core'),
+      'modules': path.resolve(__dirname, '../src/modules')
     }
   },
   resolveLoader: {
