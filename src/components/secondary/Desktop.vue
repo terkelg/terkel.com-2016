@@ -68,7 +68,6 @@ export default {
   border-left: 1px solid rgba($white, 0.1);
   transform: translateZ(0);
   backface-visibility: hidden;
-
   .menu__vertical {
     margin: 0 auto;
     height: 100%;
@@ -115,9 +114,7 @@ export default {
     margin-bottom: 20px;
     color: $blue;
     transition: color $secondary-sec $secondary-ease;
-    .year {
-      padding-right: 4px; // Optical Centering
-    }
+    .year { padding-right: 4px; } // Optical center
     .mini-logo {
       width: 25px;
       margin: 0 auto;
@@ -140,9 +137,8 @@ export default {
     transition: color $secondary-sec $secondary-ease;
   }
 }
-
-// Menu Open
-.open .menu--desktop {
+// dark mode
+.dark .menu--desktop {
   .menu__bottom { color: $white; }
   .mini-logo .logo { fill: $white; }
   .menu__middle-bg { color: rgba($white, 0.1); }
