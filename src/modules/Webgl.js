@@ -1,5 +1,3 @@
-import THREE from 'three';
-
 export default class Webgl {
 
   constructor (options = {}) {

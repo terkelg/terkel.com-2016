@@ -3,7 +3,6 @@
  * Based on http://www.emagix.net/academic/mscs-project/item/camera-sync-with-css3-and-webgl-threejs
  * @author mrdoob / http://mrdoob.com/
  */
-module.exports = function(THREE) {
 THREE.CSS3DObject = function ( element ) {
 
 	THREE.Object3D.call( this );
@@ -250,5 +249,4 @@ THREE.CSS3DRenderer = function () {
 
 	};
 
-};
 };

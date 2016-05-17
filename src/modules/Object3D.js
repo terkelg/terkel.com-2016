@@ -1,5 +1,3 @@
-import THREE from 'three';
-
 let glslify = require('glslify');
 
 export default class Object3D {
