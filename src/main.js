@@ -1,18 +1,6 @@
-'use strict';
-
-import App from 'components/app';
-
-import Router from 'core/router';
-
-import 'stylesheets/main.scss';
-
-import domready from 'domready';
-
-// eslint-disable-next-line
-import gsap from 'gsap';
-
 /*
   TODO:
+  - VUEX
   - Style sidebar færdig.
     - Mobil udgave
     - Scale height
@@ -28,19 +16,33 @@ import gsap from 'gsap';
   - Acceleorameter on mobile
 */
 
-class Main {
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-  constructor () {
-    this.router = Router;
-  }
+import App from 'components/app';
+import Home from 'components/Home';
 
-  start () {
-    this.router.start(App, '#app');
-  }
+// eslint-disable-next-line
+import gsap from 'gsap';
 
-}
+Vue.use(VueRouter);
 
-domready(() => {
-  let main = new Main();
-  main.start();
+let router = new VueRouter({
+  hashbang: false,
+  history: true,
+  pushstate: true
 });
+
+router.map({
+  '/': {
+    name: 'home',
+    component: Home
+  }
+});
+
+// TODO: Implement 404 here
+router.redirect({
+  '*': '/'
+});
+
+router.start(App, '#app');
