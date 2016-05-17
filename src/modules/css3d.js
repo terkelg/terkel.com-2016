@@ -1,5 +1,13 @@
 import THREE from 'three';
-import CSS3DRenderer from './libs/renderers/CSS3DRenderer';
+require('imports?THREE=>{}!exports?THREE.CSS3DRenderer!./libs/renderers/CSS3DRenderer');
+// import CSS3DRenderer from './libs/renderers/CSS3DRenderer2';
+
+// require('./libs/renderers/CSS3DRenderer')(THREE);
+
+// THREE.CSS3DRenderer = require();
+// require('imports?THREE=three!exports?THREE.OrbitControls!../../node_modules\/three\/examples\/js\/controls\/OrbitControls');
+// import CSS3DRenderer from './libs/renderers/CSS3DRenderer';
+// require('./libs/renderers/CSS3DRenderer');
 
 export default class CSS3D {
 
@@ -11,9 +19,8 @@ export default class CSS3D {
       'active': options.active || true
     };
 
-    console.log('Hello Wolrd');
-
     // options
+    this.options = defaultOptions;
     this.camera = camera; // this should be the same instance as the webgl
     this.scene = null;
     this.renderer = null;
@@ -29,6 +36,11 @@ export default class CSS3D {
     for (let object of this.objects) {
       this.scene.add(object.getMesh());
     }
+
+    // console.log(THREE.CSS3DRenderer);
+
+    console.log(this.options);
+    console.log(this.options.width);
 
     this.renderer = new THREE.CSS3DRenderer();
     this.renderer.setSize(this.options.width, this.options.height);
