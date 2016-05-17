@@ -196,5 +196,11 @@ export default {
     font-weight: 600;
     text-transform: uppercase;
   }
+  .btn {
+    cursor: pointer;
+    transition: fill 0.2s ease;
+    &:hover { fill: $blue; }
+    &:hover::after { display: none; }
+  }
 }
 </style>
