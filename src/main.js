@@ -1,12 +1,6 @@
 /*
   TODO:
-  - VUEX
-  - Style sidebar færdig.
-    - Mobil udgave
-    - Scale height
-
-  - SCSS Mixins, der er nogle gode i hans boilerplate
-
+  - Canvas placement.
   - Router / Subviews
   - 3D World
 

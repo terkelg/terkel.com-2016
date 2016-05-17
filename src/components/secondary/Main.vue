@@ -135,7 +135,7 @@ export default {
  */
 .secondary--desktop {
   padding-right: $border-size;
-  width: $nav-width + $border-size * 2;
+  width: $nav-width + $border-size * 2 + 1; // plus page border and 1px border
   height: 100%;
   will-change: width;
   transition: width $secondary-sec $secondary-ease;
@@ -164,6 +164,7 @@ export default {
   will-change: height;
   transition: height $secondary-sec $secondary-ease;
   .secondary__inner {
+    background-color: $white;
     padding-left: $border-size;
     padding-right: $border-size;
     margin-top: $border-size;

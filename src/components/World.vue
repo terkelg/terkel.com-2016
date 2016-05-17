@@ -1,81 +1,133 @@
 <template>
-  <div class="bgcanvas">
-    <!-- <canvas v-el:canvasWebgl id="canvasWebgl"></canvas> -->
-    <!--<canvas v-el:camvasCss id="canvasCss"></canvas>-->
+  <div class="background">
   </div>
 </template>
 
 <style lang="scss" scoped>
   @import '../stylesheets/variables';
 
-  .bgcanvas {
+  /*
+   * Mobile
+   */
+  .background {
     position: fixed;
-    min-width: 100%;
-    min-height: 100%;
+    top: $border-size;
+    right: $border-size;
+    bottom: $nav-mobile-height + $border-size;
+    left: $border-size;
     z-index: -100;
-    margin-bottom: $nav-mobile-height;
-    color: blue;
-  }
 
-  @media #{$break-medium} {
-    .bgcanvas {
-      margin-bottom: 0;
-      margin-left: $nav-width;
+    canvas {
+      margin: 0;
+      padding: 0;
     }
   }
 
-  canvas {
-    position: absolute;
-    background-color: red;
-    //width: 100%;
-    //height: 100%;
-  }
-
-  .test2 {
-    background-color: blue;
-  }
-
-  canvas {
-    margin: 0;
-    padding: 0;
+  /*
+   * Desktop
+   */
+  @media #{$break-medium} {
+    .background {
+      left: $nav-width + $border-size;
+      top: $border-size;
+      right: $border-size;
+      bottom: $border-size;
+    }
   }
 </style>
 
 <script>
-import Webgl from '../modules/webgl';
-import Quick from '../modules/object3D';
-import Cube from '../modules/objectCube';
+import {
+  getSize,
+  getVisibility
+} from 'vuex/getters';
+
+import Stats from 'modules/libs/stats.min';
+
+import Webgl from 'modules/webgl';
+import Css3d from 'modules/css3d';
+
+import Quick from 'modules/object3D';
+import Cube from 'modules/objectCube';
 
 export default {
+  vuex: {
+    getters: {
+      visible: getVisibility,
+      size: getSize
+    }
+  },
+
+  // Set camera here etc to access it everywhere
+  data: () => {
+    return {};
+  },
+
   ready () {
-    console.log('Hello Wolrd');
+    this.addEventListeners();
 
-    console.log(this.$el);
+    this.stats = new Stats();
+    this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+    document.body.appendChild(this.stats.dom);
 
-    // I think I should make each canvas it own component too?
-    // But how do they work together then? From this main? Props? I think PROPS is the solution. Position, Camera etx. Css is a addon, which can stand on it's own anyway. Need the camera from main.
+    // Make them share the same option object!
+    // - maybe create const for scene positions
 
-    // TODO:
-    // Add CSS3DRenderer
-    // Der skal nok være en klasse over både WebGL og CSS3DRenderer som samler dem i et?
-    // Det er her der bliver tilføjet objecter til hver scene - og hvor man kan slå CSS3D renderer fra og til
-
-    let webgl = new Webgl({
+    /*
+     * WEBGL
+     */
+    this.webgl = new Webgl({
       debug: true,
       container: this.$el,
       width: this.$el.offsetWidth,
-      height: this.$el.offetHeight
+      height: this.$el.offsetHeight
     });
 
+    // Objects
     let quick = new Quick();
     let cube = new Cube();
+    this.webgl.addObject(quick);
+    this.webgl.addObject(cube);
 
-    // on resize - scale
+    this.webgl.init();
 
-    webgl.addObject(quick);
-    webgl.addObject(cube);
+    /*
+     * CSS3D
+     */
+    this.css3d = new Css3d(this.webgl.getCamera(), {
+      container: this.$el,
+      width: this.$el.offsetWidth,
+      height: this.$el.offsetHeight
+    });
 
-    webgl.init();
+    this.css3d.init();
+
+    // Kick off render loop
+    TweenLite.ticker.addEventListener('tick', () => {
+      this.stats.begin();
+
+      this.webgl.animate();
+      this.css3d.animate();
+
+      this.stats.end();
+    });
+  },
+
+  methods: {
+    addEventListeners () {
+      window.addEventListener('resize', this.onResize, false);
+      document.addEventListener('mousemove', this.onMouseMove, false);
+    },
+
+    onResize (size) {
+      console.log(size, this.$el.offsetWidth);
+      this.webgl.onWindowResize(this.$el.offsetWidth, this.$el.offsetHeight);
+      // css3 size
+    },
+
+    onMouseMove (e) {
+      this.webgl.onMouseMove(e.clientX, e.clientY);
+    }
   }
 
 };

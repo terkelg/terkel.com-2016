@@ -41,5 +41,4 @@
   .dark #borders .border {
     background-color: $white;
   }
-
 </style>

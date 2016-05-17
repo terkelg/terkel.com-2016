@@ -15,6 +15,7 @@ import World from '../World';
 import Secondary from '../secondary/Main';
 
 import 'stylesheets/main.scss';
+import './styles.scss';
 
 export default Vue.extend({
   template: require('./template.html'),

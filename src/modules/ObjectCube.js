@@ -24,7 +24,7 @@ export default class ObjectCube {
   }
 
   update () {
-
+    // this.mesh.position.x += 0.8;
   }
 
 }
