@@ -1,30 +1,42 @@
 import Vue from 'vue';
-
-import Emitter from 'core/emitter';
-import States from 'core/states';
-import debounce from 'lodash.debounce';
+import store from 'vuex/store';
 
 import {
-  WINDOW_RESIZE,
-  VISIBILITY_CHANGE
-} from 'core/messages';
+  windowResize,
+  windowVisible,
+  deviceDetect
+} from 'vuex/actions';
+import { getDevice, getTheme } from 'vuex/getters';
 
-// Components
+import debounce from 'lodash.debounce';
+
 import Border from '../Border';
 import World from '../World';
-import Secondary from '../secondary';
+import Secondary from '../secondary/Main';
+
+import 'stylesheets/main.scss';
 
 export default Vue.extend({
   template: require('./template.html'),
+
+  vuex: {
+    actions: {
+      resize: windowResize,
+      visible: windowVisible,
+      device: deviceDetect
+    },
+    getters: {
+      getDevice: getDevice,
+      theme: getTheme
+    }
+  },
 
   created () {
     this.bind();
   },
 
   ready () {
-    this.addEventListeners();
-    this.addDeviceClass();
-    this.addBrowserClass();
+    this.init();
   },
 
   beforeDestroy () {
@@ -32,16 +44,22 @@ export default Vue.extend({
   },
 
   methods: {
-    /*
-     * Binding & Events
-     */
     bind () {
-      this.onResize = debounce(this.broadcastWindowSize, 200);
+      this.onResize = debounce(this.dispatchWindowSize, 200);
+    },
+
+    init () {
+      this.resize();
+      this.visible();
+      this.device();
+      this.addEventListeners();
+      this.addDeviceClass();
+      this.addBrowserClass();
     },
 
     addEventListeners () {
       window.addEventListener('resize', this.onResize, false);
-      document.addEventListener('visibilitychange', this.broadcastVisibilityChange);
+      document.addEventListener('visibilitychange', this.dispatchVisibilityChange);
     },
 
     removeEventListeners () {
@@ -50,30 +68,19 @@ export default Vue.extend({
     },
 
     addBrowserClass () {
-      this.$el.classList.add(States.browserName + '-browser');
+      this.$el.classList.add(this.getDevice.browser + '-browser');
     },
 
     addDeviceClass () {
-      this.$el.classList.add(States.deviceType + '-device');
+      this.$el.classList.add(this.getDevice.type + '-device');
     },
 
-    /*
-     * Resize
-     */
-    broadcastWindowSize () {
-      Emitter.emit(WINDOW_RESIZE, {
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
+    dispatchWindowSize () {
+      this.resize();
     },
 
-    /*
-     * Visibility Change
-     */
-    broadcastVisibilityChange () {
-      Emitter.emit(VISIBILITY_CHANGE, {
-        status: document.visibilityState
-      });
+    dispatchVisibilityChange () {
+      this.visible();
     }
   },
 
@@ -81,5 +88,7 @@ export default Vue.extend({
     Border,
     Secondary,
     World
-  }
+  },
+
+  store // make this and all child components aware of the new store
 });
