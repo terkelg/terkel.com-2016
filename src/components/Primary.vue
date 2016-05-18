@@ -2,10 +2,17 @@
   <div class="primary">
     <div class="primary__inner">
 
-    <p>This is primary</p>
-      content here
-    </div>
+      <section class="stage" v-el:home>
+        <p>I'm Terkel</p>
+        <p><a href="#">content here</a></p>
+      </section>
 
+      <section class="stage" v-el:cases>
+        <p>This is Cases</p>
+        <p>Nice right?</p>
+      </section>
+
+    </div>
   </div>
 </template>
 

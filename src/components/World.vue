@@ -1,6 +1,5 @@
 <template>
   <div class="background">
-      <div id="test" v-el:test><a href="www.dr.dk">This is a test!!</a></div>
   </div>
 </template>
 
@@ -12,30 +11,24 @@
    */
   .background {
     position: absolute;
+    /*
     width: 100%;
     height: 100%;
+    z-index: -1;
     top: 0;
     left: 0;
-    /*
-    position: fixed;
-    top: $border-size;
-    right: $border-size;
-    bottom: $nav-mobile-height + $border-size;
-    left: $border-size;
     */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   /*
    * Desktop
-
-  @media #{$break-medium} {
-    .background {
-      left: $nav-width + $border-size;
-      top: $border-size;
-      right: $border-size;
-      bottom: $border-size;
-    }
-  }
+  @media #{$break-medium} {}
   */
 </style>
 
@@ -104,8 +97,12 @@ export default {
     });
 
     // const el = document.getElementById('test');
-    var object = new THREE.CSS3DObject(this.$els.test);
+    var object = new THREE.CSS3DObject(this.$root.$children[2].$els.home);
     this.css3d.addObject(object);
+
+    var object2 = new THREE.CSS3DObject(this.$root.$children[2].$els.cases);
+    object2.position.set(0, 300, 0);
+    this.css3d.addObject(object2);
 
     /*
      * Tror det skal laves dynamisk
