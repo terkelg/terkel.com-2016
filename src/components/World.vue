@@ -103,11 +103,6 @@ export default {
       height: this.$el.offsetHeight
     });
 
-    // console.log(this.$root.$children[2].$el);
-    // var newDiv = document.createElement('div');
-    // var newContent = document.createTextNode('Hi there and greetings!');
-    // newDiv.appendChild(newContent);
-    console.log(this.$els.test);
     // const el = document.getElementById('test');
     var object = new THREE.CSS3DObject(this.$els.test);
     this.css3d.addObject(object);
@@ -135,6 +130,7 @@ export default {
 
   methods: {
     addEventListeners () {
+      // TODO: Maybe a little debounce is a good idea anyway
       window.addEventListener('resize', this.onResize, false);
       document.addEventListener('mousemove', this.onMouseMove, false);
     },

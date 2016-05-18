@@ -1,5 +1,17 @@
 @import '../../stylesheets/variables';
 
+main#app {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background-color: red;
+}
+
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
 .pages {
   // position: absolute;
   // width: 100%;

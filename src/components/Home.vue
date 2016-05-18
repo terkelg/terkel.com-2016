@@ -1,14 +1,20 @@
 <template>
-  <p>Hola, this is the home route view: {{$route.path}}</p>
+  <div>
+    Home
+  </div>
 </template>
-
-<style>
-</style>
 
 <script>
 export default {
   ready () {
+    console.log('Navigate to home position!');
   },
-  methods: {}
+  methods: {},
+  route: {
+    activate: function () {},
+    canDeactivate: function (transition) {
+      transition.next();
+    }
+  }
 };
 </script>

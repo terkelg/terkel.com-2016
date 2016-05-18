@@ -12,6 +12,7 @@ import debounce from 'lodash.debounce';
 import Border from '../Border';
 import World from '../World';
 import Secondary from '../secondary/Main';
+import Primary from '../Primary';
 
 import 'stylesheets/main.scss';
 import './styles.scss';
@@ -87,7 +88,8 @@ export default Vue.extend({
   components: {
     Border,
     Secondary,
-    World
+    World,
+    Primary
   },
 
   store // make this and all child components aware of the new store
