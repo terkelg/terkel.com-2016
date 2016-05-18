@@ -8,7 +8,6 @@
 <script>
 export default {
   ready () {
-    console.log('Hello from home', this.$route);
   },
   methods: {}
 };

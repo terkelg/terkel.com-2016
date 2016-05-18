@@ -25,7 +25,8 @@ export default class CSS3D {
 
     // Add objects
     for (let object of this.objects) {
-      this.scene.add(object.getMesh());
+      console.log(object);
+      this.scene.add(object);
     }
 
     this.renderer = new THREE.CSS3DRenderer();
@@ -43,9 +44,14 @@ export default class CSS3D {
     this.render();
   }
 
-  addObject (object) {}
+  addObject (object) {
+    this.objects.push(object);
+  }
 
-  addObjectToScene (object) {}
+  addObjectToScene (object) {
+    this.objects.push(object);
+    this.scene.add(object); // TODO: object.getMesh() wrap in my own object
+  }
 
   render () {
     this.renderer.render(this.scene, this.camera);
@@ -66,5 +72,7 @@ export default class CSS3D {
   onWindowResize (width, height) {
     this.options.width = width;
     this.options.height = height;
+
+    this.renderer.setSize(this.options.width, this.options.height);
   }
 };

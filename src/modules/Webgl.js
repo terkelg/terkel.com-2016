@@ -35,7 +35,7 @@ export default class Webgl {
 
   init () {
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(45, this.options.width / this.options.height, 1, 10000); // 60?
+    this.camera = new THREE.PerspectiveCamera(60, this.options.width / this.options.height, 1, 10000); // 60?
 
     // Setup target
     this.target = new THREE.Vector3();

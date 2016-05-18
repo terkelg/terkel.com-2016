@@ -100,6 +100,17 @@ export default {
       height: this.$el.offsetHeight
     });
 
+    // console.log(this.$root.$children[2].$el);
+    var newDiv = document.createElement('div');
+    var newContent = document.createTextNode('Hi there and greetings!');
+    newDiv.appendChild(newContent);
+    var object = new THREE.CSS3DObject(newDiv);
+    this.css3d.addObject(object);
+
+    /*
+     * Tror det skal laves dynamisk
+     */
+
     this.css3d.init();
 
     // Kick off render loop
@@ -120,9 +131,11 @@ export default {
     },
 
     onResize (size) {
-      console.log(size, this.$el.offsetWidth);
-      this.webgl.onWindowResize(this.$el.offsetWidth, this.$el.offsetHeight);
-      // css3 size
+      // console.log(size, this.$el.offsetWidth);
+      let width = this.$el.offsetWidth;
+      let height = this.$el.offsetHeight;
+      this.webgl.onWindowResize(width, height);
+      this.css3d.onWindowResize(width, height);
     },
 
     onMouseMove (e) {

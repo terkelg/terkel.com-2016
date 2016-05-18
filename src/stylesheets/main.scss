@@ -21,28 +21,27 @@ a {
   color: $blue;
   text-decoration: none;
   transition: color $secondary-sec $secondary-ease;
+  backface-visibility: hidden;
   .dark & { color: $white; }
 }
 a::after {
   position: absolute;
   display: inline-block;
   content: '';
-  height: 0.5em;
+  height: 0.0em;
   bottom: 0.1em;
   left: -0.15em;
   right: -0.15em;
   z-index: -1;
-  transition: all 0.2s ease;
   pointer-events: none;
-  transform: scaleY(0.0);
-  transform-origin: bottom;
   background-color: $yellow;
-  transition: transform 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
               background $secondary-sec $secondary-ease;
   .dark & { background-color: $blue; }
 }
 a:hover::after,
 a.active::after {
-  //height: 0.5em;
-  transform: scaleY(1);
+  height: 0.5em;
 }

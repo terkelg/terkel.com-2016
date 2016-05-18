@@ -140,6 +140,7 @@ export default {
   will-change: width;
   transition: width $secondary-sec $secondary-ease;
   .secondary__inner {
+    // width: $nav-width + $border-size + 1; // Width here fixes jump whwen loading!
     background-color: $white;
     padding-top: $border-size;
     padding-bottom: $border-size;
@@ -149,6 +150,7 @@ export default {
 .secondary--desktop.open {
   width: 100%;
   .secondary__inner {
+    // width: 100%;
     transform: translateX(1px) translateZ(0);
     background-color: $dark;
   }
