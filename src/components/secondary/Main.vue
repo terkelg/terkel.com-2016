@@ -120,6 +120,7 @@ export default {
 
 /* Test scroll content
  * TODO: Styling split/scrollbar. Maybe detect browser
+ * Brug evt custom scrollbar plugin for perfekt styling.
  */
 .sidecontent {
   overflow-y: scroll;

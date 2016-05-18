@@ -1,3 +1,17 @@
+<template>
+  <main v:el="wrapper" v-bind:class="theme">
+    <!-- Bottom -->
+    <border></border>
+
+    <!-- <world></world> -->
+    <secondary></secondary>
+    <primary></primary>
+
+    <!-- <router-view></router-view> -->
+  </main>
+</template>
+
+<script>
 import store from 'vuex/store';
 
 import {
@@ -9,16 +23,14 @@ import { getDevice, getTheme } from 'vuex/getters';
 
 import debounce from 'lodash.debounce';
 
-import Border from '../Border';
-import World from '../World';
-import Secondary from '../secondary/Main';
-import Primary from '../Primary';
+import Border from './Border';
+import World from './World';
+import Secondary from './secondary/Main';
+import Primary from './Primary';
 
 import 'stylesheets/main.scss';
-import './styles.scss';
 
-export default Vue.extend({
-  template: require('./template.html'),
+export default {
 
   vuex: {
     actions: {
@@ -93,4 +105,5 @@ export default Vue.extend({
   },
 
   store // make this and all child components aware of the new store
-});
+};
+</script>

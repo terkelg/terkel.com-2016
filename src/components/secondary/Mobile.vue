@@ -3,9 +3,9 @@
     <div class="section-bg" v-if="secondary.status === 'closed'" transition="section">
       <slot name="section"></slot>
     </div>
-    <div class="navigation" v-if="secondary.status === 'open'" transition="nav">
+    <nav class="navigation" v-if="secondary.status === 'open'" transition="nav">
       <slot name="navigation"></slot>
-    </div>
+    </nav>
     <div class="menu-links" v-if="secondary.status === 'closed'" transition="links">
       <slot name="menu"></slot>
     </div>

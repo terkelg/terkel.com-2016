@@ -11,7 +11,7 @@
 */
 import VueRouter from 'vue-router';
 
-import App from 'components/app';
+import App from 'components/App';
 import Home from 'components/Home';
 // import Cases from 'components/Cases';
 
