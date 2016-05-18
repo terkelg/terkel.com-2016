@@ -1,5 +1,6 @@
 <template>
   <div class="background">
+      <div id="test" v-el:test><a href="www.dr.dk">This is a test!!</a></div>
   </div>
 </template>
 
@@ -10,22 +11,23 @@
    * Mobile
    */
   .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /*
     position: fixed;
     top: $border-size;
     right: $border-size;
     bottom: $nav-mobile-height + $border-size;
     left: $border-size;
-    z-index: -100;
-
-    canvas {
-      margin: 0;
-      padding: 0;
-    }
+    */
   }
 
   /*
    * Desktop
-   */
+
   @media #{$break-medium} {
     .background {
       left: $nav-width + $border-size;
@@ -34,6 +36,7 @@
       bottom: $border-size;
     }
   }
+  */
 </style>
 
 <script>
@@ -101,10 +104,12 @@ export default {
     });
 
     // console.log(this.$root.$children[2].$el);
-    var newDiv = document.createElement('div');
-    var newContent = document.createTextNode('Hi there and greetings!');
-    newDiv.appendChild(newContent);
-    var object = new THREE.CSS3DObject(newDiv);
+    // var newDiv = document.createElement('div');
+    // var newContent = document.createTextNode('Hi there and greetings!');
+    // newDiv.appendChild(newContent);
+    console.log(this.$els.test);
+    // const el = document.getElementById('test');
+    var object = new THREE.CSS3DObject(this.$els.test);
     this.css3d.addObject(object);
 
     /*
@@ -124,14 +129,22 @@ export default {
     });
   },
 
+  beforeDestroy: function () {
+    this.removeEventListeners();
+  },
+
   methods: {
     addEventListeners () {
       window.addEventListener('resize', this.onResize, false);
       document.addEventListener('mousemove', this.onMouseMove, false);
     },
 
+    removeEventListeners () {
+      window.removeEventListener('resize', this.onResize, false);
+      document.removeEventListener('mousemove', this.onMouseMove, false);
+    },
+
     onResize (size) {
-      // console.log(size, this.$el.offsetWidth);
       let width = this.$el.offsetWidth;
       let height = this.$el.offsetHeight;
       this.webgl.onWindowResize(width, height);

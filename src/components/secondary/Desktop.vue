@@ -86,6 +86,7 @@ export default {
    * visual use. It really set the height
    */
   $nav-height: 30px;
+  $nav-length: 600px;
 
   position: relative;
   width: $nav-width;
@@ -106,11 +107,16 @@ export default {
     position: absolute;
     top: 50%;
     transform: translateY(-50%) translateY(0);
+
+    //  Prevnt overlay on normal content
+    width: 0;
+    left: -($nav-length/2);
+
     ul {
       position: relative;
       left: -50%;
-      transform: rotate(90deg) translateY(-50%);
-      min-width: 600px; // Can work with auto, but not with relative on sidebar itself
+      transform: rotate(90deg) translateY(-50%) translateZ(0);
+      width: $nav-length; // Can work with auto, but not with relative on sidebar itself
       height: $nav-height;
       line-height: $nav-height;
     }

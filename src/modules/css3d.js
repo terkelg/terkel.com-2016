@@ -70,6 +70,7 @@ export default class CSS3D {
   }
 
   onWindowResize (width, height) {
+    console.log('css3d resize called');
     this.options.width = width;
     this.options.height = height;
 

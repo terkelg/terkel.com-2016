@@ -40,7 +40,7 @@ export default class Webgl {
     // Setup target
     this.target = new THREE.Vector3();
     this.camera.lookAt(this.target);
-    this.camera.position.set(0, 0, 800);
+    this.camera.position.set(0, 0, 0);
 
     // Add world/scene related stuff
     for (let object of this.objects) {
@@ -60,10 +60,11 @@ export default class Webgl {
     this.renderer.setClearColor(this.options.backgroundColor, this.options.backgroundOpacity);
     this.renderer.shadowMap.enable = true;
 
-    // Set to width / height of child component?
+    this.renderer.domElement.style.position = 'absolute';
+    this.renderer.domElement.style.top = 0;
     this.container.appendChild(this.renderer.domElement);
 
-    this.camera.position.set(0, 0, 800);
+    this.camera.position.set(0, 0, 1200);
 
     if (this.options.debug) {
       console.log('Debug mode activated');
@@ -147,8 +148,8 @@ export default class Webgl {
     this.options.width = width;
     this.options.height = height;
 
-    this.windowHalfX = width / 2;
-    this.windowHalfY = height / 2;
+    this.windowHalfX = this.options.width / 2;
+    this.windowHalfY = this.options.height / 2;
 
     this.camera.aspect = this.options.width / this.options.height;
     this.camera.updateProjectionMatrix();
