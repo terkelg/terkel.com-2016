@@ -141,12 +141,10 @@ export default {
   transform: translateZ(0);
   .secondary__inner {
     transform: translateZ(0);
+    backface-visibility: hidden;
     width: 100%;
     height: 100%;
     transition: background $secondary-sec $secondary-ease;
-
-    // backface-visibility: hidden;
-    // transform: translateZ(0);
   }
 }
 

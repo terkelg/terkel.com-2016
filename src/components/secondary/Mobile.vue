@@ -21,6 +21,7 @@
   border-top: 1px solid $babyBlue;
   border-bottom: 1px solid rgba($white, 0.1);
   transform: translateZ(0);
+  backface-visibility: hidden;
   .navigation {
     position: absolute;
     width: 100%;

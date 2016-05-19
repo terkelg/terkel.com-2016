@@ -1,13 +1,13 @@
 <template>
   <div>
-    Home
+    About View here!
   </div>
 </template>
 
 <script>
 export default {
   ready () {
-    console.log('Navigate to home position!');
+    console.log('About Me Details');
   },
   methods: {},
   route: {

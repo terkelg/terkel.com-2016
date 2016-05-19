@@ -1,7 +1,5 @@
 /*
   TODO:
-  - Canvas placement.
-  - Router / Subviews
   - 3D World
 
   # Nice to have
@@ -12,8 +10,8 @@
 import VueRouter from 'vue-router';
 
 import App from 'components/App';
-import Home from 'components/Home';
-// import Cases from 'components/Cases';
+import Case from 'components/Case';
+import About from 'components/About';
 
 // eslint-disable-next-line
 import gsap from 'gsap';
@@ -29,11 +27,11 @@ let router = new VueRouter({
 router.map({
   '/cases/:case': {
     name: 'cases',
-    component: Home
+    component: Case
   },
   '/about': {
     name: 'about',
-    component: Home
+    component: About
   }
 });
 

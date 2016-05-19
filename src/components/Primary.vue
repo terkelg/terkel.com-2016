@@ -20,6 +20,7 @@
 @import '../stylesheets/variables';
 
 .primary {
+  transform: translateY();
   margin-bottom: $nav-width + $border-size;
   padding: $border-size;
   .primary__inner {}
