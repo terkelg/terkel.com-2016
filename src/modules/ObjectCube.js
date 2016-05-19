@@ -7,6 +7,9 @@ export default class ObjectCube {
       'wireframe': options.wireframe || true
     };
 
+    this.type = 'object';
+    this.renderer = 'webgl';
+
     this.options = defaultOptions;
     this.position = options.position;
 
@@ -15,6 +18,10 @@ export default class ObjectCube {
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.position.set(0, 0, 0);
+  }
+
+  getType () {
+    return this.type;
   }
 
   getMesh () {

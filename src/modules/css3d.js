@@ -12,7 +12,7 @@ export default class CSS3D {
 
     // options
     this.options = defaultOptions;
-    this.camera = camera; // this should be the same instance as the webgl
+    this.camera = camera;
     this.scene = null;
     this.renderer = null;
     this.container = defaultOptions.container;
@@ -35,8 +35,6 @@ export default class CSS3D {
     this.renderer.domElement.style.top = 0;
 
     this.container.appendChild(this.renderer.domElement);
-
-    this.animate();
   }
 
   animate () {

@@ -41,9 +41,7 @@ import {
 
 import Stats from 'modules/libs/stats.min';
 
-import Webgl from 'modules/webgl';
-import Css3d from 'modules/css3d';
-
+import World from 'modules/world';
 import Quick from 'modules/object3D';
 import Cube from 'modules/objectCube';
 
@@ -61,63 +59,36 @@ export default {
   },
 
   ready () {
-    this.addEventListeners();
-
     this.stats = new Stats();
     this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild(this.stats.dom);
 
-    // Make them share the same option object!
-    // - maybe create const for scene positions
-
-    /*
-     * WEBGL
-     */
-    this.webgl = new Webgl({
-      debug: true,
-      container: this.$el,
-      width: this.$el.offsetWidth,
-      height: this.$el.offsetHeight
+    this.world = new World({
+      'container': this.$el
     });
 
-    // Objects
+    // add objects
     let quick = new Quick();
     let cube = new Cube();
-    this.webgl.addObject(quick);
-    this.webgl.addObject(cube);
+    this.world.webgl.addObject(quick);
+    this.world.webgl.addObject(cube);
 
-    this.webgl.init();
-
-    /*
-     * CSS3D
-     */
-    console.log(this.$root.$children[2].$els.home);
-    console.log(this.$el);
-    this.css3d = new Css3d(this.webgl.getCamera(), {
-      container: this.$el,
-      width: this.$el.offsetWidth,
-      height: this.$el.offsetHeight
-    });
-
-    // const el = document.getElementById('test');
     var object = new THREE.CSS3DObject(this.$root.$children[3].$els.home);
-    this.css3d.addObject(object);
-
     var object2 = new THREE.CSS3DObject(this.$root.$children[3].$els.cases);
     object2.position.set(0, 300, 0);
-    this.css3d.addObject(object2);
+    this.world.css3d.addObject(object);
+    this.world.css3d.addObject(object2);
 
-    this.css3d.init();
+    this.world.init();
 
-    // Kick off render loop
+    // Kick off render loop (Move to eventlisteners)
     TweenLite.ticker.addEventListener('tick', () => {
       this.stats.begin();
-
-      this.webgl.animate();
-      this.css3d.animate();
-
+      this.world.animate();
       this.stats.end();
     });
+
+    this.addEventListeners();
   },
 
   beforeDestroy: function () {
@@ -126,7 +97,6 @@ export default {
 
   methods: {
     addEventListeners () {
-      // TODO: Maybe a little debounce is a good idea anyway
       window.addEventListener('resize', this.onResize, false);
       document.addEventListener('mousemove', this.onMouseMove, false);
     },
@@ -136,15 +106,12 @@ export default {
       document.removeEventListener('mousemove', this.onMouseMove, false);
     },
 
-    onResize (size) {
-      let width = this.$el.offsetWidth;
-      let height = this.$el.offsetHeight;
-      this.webgl.onWindowResize(width, height);
-      this.css3d.onWindowResize(width, height);
+    onResize () {
+      this.world.onWindowResize(this.$el.offsetWidth, this.$el.offsetWidth);
     },
 
     onMouseMove (e) {
-      this.webgl.onMouseMove(e.clientX, e.clientY);
+      this.world.onMouseMove(e.clientX, e.clientY);
     }
   }
 

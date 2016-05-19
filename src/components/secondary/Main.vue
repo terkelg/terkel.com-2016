@@ -153,7 +153,7 @@ export default {
  */
 .secondary--desktop {
   padding-right: $border-size;
-  transform: translateX(calc(-100% + #{$nav-width + $border-size * 2 + 1})); // plus page border and 1px border
+  transform: translateX(calc(-100% + #{$nav-width + $border-size * 2})); // plus page border and 1px border
   .secondary__inner {
     background-color: $white;
     padding-top: $border-size;
