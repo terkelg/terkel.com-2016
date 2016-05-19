@@ -46,6 +46,8 @@ router.redirect({
 
 router.beforeEach(function (transition) {
   if (transition.to.path === '/forbidden') {
+    // TODO: Hvis til en secondary ting, open menu og gå til dark mode
+    // when done, do transition
     transition.abort();
   } else {
     console.log(transition.to.path);

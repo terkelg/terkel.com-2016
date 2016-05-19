@@ -132,10 +132,12 @@ export default {
  */
 .secondary {
   position: fixed;
-  transform: translateZ(0);
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+  transition: transform $secondary-sec $secondary-ease;
   backface-visibility: hidden;
-
+  transform: translateZ(0);
   .secondary__inner {
     width: 100%;
     height: 100%;
@@ -151,10 +153,8 @@ export default {
  */
 .secondary--desktop {
   padding-right: $border-size;
-  width: $nav-width + $border-size * 2 + 1; // plus page border and 1px border
-  height: 100%;
-  will-change: width;
-  transition: width $secondary-sec $secondary-ease;
+  transform: translateX(calc(-100% + #{$nav-width + $border-size * 2 + 1})); // plus page border and 1px border
+  will-change: translateX;
   .secondary__inner {
     // width: $nav-width + $border-size + 1; // Width here fixes jump whwen loading!
     background-color: $white;
@@ -164,10 +164,8 @@ export default {
   }
 }
 .secondary--desktop.open {
-  width: 100%;
+  transform: translateX(0);
   .secondary__inner {
-    // width: 100%;
-    transform: translateZ(0);
     background-color: $dark;
   }
 }
@@ -177,10 +175,8 @@ export default {
  */
 .secondary--mobile {
   bottom: 0;
-  width: 100%;
-  height: $nav-mobile-height + $border-size * 2;
-  will-change: height;
-  transition: height $secondary-sec $secondary-ease;
+  transform: translateY(calc(100% - #{$nav-mobile-height + $border-size * 2})); // border size x 2
+  will-change: translateY;
   .secondary__inner {
     background-color: $white;
     padding-left: $border-size;
@@ -189,7 +185,7 @@ export default {
   }
 }
 .secondary--mobile.open {
-  height: 100%;
+  transform: translateY(0);
   .secondary__inner {
     background-color: $dark;
   }
