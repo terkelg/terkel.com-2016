@@ -97,7 +97,7 @@ export default class World {
     this.webgl.onWindowResize(width, height);
     this.css3d.onWindowResize(width, height);
 
-    // this.resizeCamera();
+    this.resizeCamera();
   }
 
   onMouseMove (mouseX, mouseY) {

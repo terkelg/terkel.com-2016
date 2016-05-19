@@ -100,8 +100,7 @@ export default class Webgl {
   }
 
   onWindowResize (width, height) {
-    console.log('resize', width, height);
-    this.renderer.setSize(this.options.width, this.options.height);
+    this.renderer.setSize(width, height);
   }
 
   onMouseMove (mouseX, mouseY) {}

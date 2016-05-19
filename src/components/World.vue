@@ -107,7 +107,7 @@ export default {
     },
 
     onResize () {
-      this.world.onWindowResize(this.$el.offsetWidth, this.$el.offsetWidth);
+      this.world.onWindowResize(this.$el.offsetWidth, this.$el.offsetHeight);
     },
 
     onMouseMove (e) {

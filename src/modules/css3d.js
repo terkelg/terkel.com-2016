@@ -25,7 +25,6 @@ export default class CSS3D {
 
     // Add objects
     for (let object of this.objects) {
-      console.log(object);
       this.scene.add(object);
     }
 
@@ -68,10 +67,6 @@ export default class CSS3D {
   }
 
   onWindowResize (width, height) {
-    console.log('css3d resize called');
-    this.options.width = width;
-    this.options.height = height;
-
-    this.renderer.setSize(this.options.width, this.options.height);
+    this.renderer.setSize(width, height);
   }
 };

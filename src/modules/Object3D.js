@@ -3,9 +3,6 @@ let glslify = require('glslify');
 export default class Object3D {
 
   constructor () {
-    this.type = 'object';
-    this.renderer = 'webgl';
-
     this.vertexShader = glslify('./shaders/vertex/simple.vert');
     this.fragmentShader = glslify('./shaders/fragment/simple.frag');
 
@@ -24,10 +21,6 @@ export default class Object3D {
 
   getMesh () {
     return this.mesh;
-  }
-
-  getType () {
-    return this.type;
   }
 
   update (elapsed, ts, tick) {
