@@ -90,6 +90,8 @@ export default {
     /*
      * CSS3D
      */
+    console.log(this.$root.$children[2].$els.home);
+    console.log(this.$el);
     this.css3d = new Css3d(this.webgl.getCamera(), {
       container: this.$el,
       width: this.$el.offsetWidth,
@@ -97,16 +99,12 @@ export default {
     });
 
     // const el = document.getElementById('test');
-    var object = new THREE.CSS3DObject(this.$root.$children[2].$els.home);
+    var object = new THREE.CSS3DObject(this.$root.$children[3].$els.home);
     this.css3d.addObject(object);
 
-    var object2 = new THREE.CSS3DObject(this.$root.$children[2].$els.cases);
+    var object2 = new THREE.CSS3DObject(this.$root.$children[3].$els.cases);
     object2.position.set(0, 300, 0);
     this.css3d.addObject(object2);
-
-    /*
-     * Tror det skal laves dynamisk
-     */
 
     this.css3d.init();
 

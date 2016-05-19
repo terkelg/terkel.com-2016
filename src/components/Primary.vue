@@ -22,23 +22,15 @@
 .primary {
   margin-bottom: $nav-width + $border-size;
   padding: $border-size;
-  background: green;
-
-  .primary__inner {
-
-  }
+  .primary__inner {}
 }
 
 @media #{$break-medium} {
   .primary {
     margin-left: $nav-width + $border-size;
     padding: $border-size;
-    background: green;
   }
-
-  .primary__inner {
-
-  }
+  .primary__inner {}
 }
 
 </style>

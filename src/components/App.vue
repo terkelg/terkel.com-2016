@@ -1,7 +1,7 @@
 <template>
   <main v:el="wrapper" v-bind:class="theme">
     <!-- Bottom -->
-    <!-- <border></border> -->
+    <border></border>
 
     <world></world>
     <secondary></secondary>

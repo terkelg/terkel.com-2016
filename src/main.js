@@ -27,25 +27,14 @@ let router = new VueRouter({
 });
 
 router.map({
-  '/': {
-    name: 'home',
-    component: Home
-  }
-
-  /*
-  '/cases': {
+  '/cases/:case': {
     name: 'cases',
-    component: Main
+    component: Home
   },
   '/about': {
     name: 'about',
-    component: Main
-  },
-  '/contact': {
-    name: 'contact',
-    component: Main
+    component: Home
   }
-  */
 });
 
 // TODO: Implement 404 here
@@ -54,5 +43,15 @@ router.redirect({
   '*': '/'
 });
 */
+
+router.beforeEach(function (transition) {
+  if (transition.to.path === '/forbidden') {
+    transition.abort();
+  } else {
+    console.log(transition.to.path);
+    // set state!
+    transition.next();
+  }
+});
 
 router.start(App, '#app');
