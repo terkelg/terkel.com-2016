@@ -156,11 +156,9 @@ export default {
   transform: translateX(calc(-100% + #{$nav-width + $border-size * 2 + 1})); // plus page border and 1px border
   will-change: translateX;
   .secondary__inner {
-    // width: $nav-width + $border-size + 1; // Width here fixes jump whwen loading!
     background-color: $white;
     padding-top: $border-size;
     padding-bottom: $border-size;
-    transform: translateZ(0); // Hide border
   }
 }
 .secondary--desktop.open {
