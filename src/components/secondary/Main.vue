@@ -136,15 +136,17 @@ export default {
   height: 100%;
   overflow: hidden;
   transition: transform $secondary-sec $secondary-ease;
+  will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0);
   .secondary__inner {
+    transform: translateZ(0);
     width: 100%;
     height: 100%;
     transition: background $secondary-sec $secondary-ease;
 
-    backface-visibility: hidden;
-    transform: translateZ(0);
+    // backface-visibility: hidden;
+    // transform: translateZ(0);
   }
 }
 
@@ -154,7 +156,6 @@ export default {
 .secondary--desktop {
   padding-right: $border-size;
   transform: translateX(calc(-100% + #{$nav-width + $border-size * 2 + 1})); // plus page border and 1px border
-  will-change: translateX;
   .secondary__inner {
     background-color: $white;
     padding-top: $border-size;
@@ -174,7 +175,6 @@ export default {
 .secondary--mobile {
   bottom: 0;
   transform: translateY(calc(100% - #{$nav-mobile-height + $border-size * 2})); // border size x 2
-  will-change: translateY;
   .secondary__inner {
     background-color: $white;
     padding-left: $border-size;
