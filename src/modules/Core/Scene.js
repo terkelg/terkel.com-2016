@@ -1,6 +1,3 @@
-import Clock from '../Helpers/Clock';
-// import BasicCube from '../BasicCube';
-
 /**
  * Scene class
  */
@@ -15,9 +12,6 @@ class Scene extends THREE.Scene {
 
     this.renderer = Renderer;
     this.camera = Camera;
-    // this.postProcessing = new PostProcessing( this, this.renderer, this.camera );
-
-    this.clock = new Clock();
 
     this.createScene();
   }
@@ -32,8 +26,7 @@ class Scene extends THREE.Scene {
     this.cube = new THREE.Mesh(geometry, material);
     this.add(this.cube);
 
-    // this.render();
-    // this.raf = raf( ::this.render ).start();
+    this.render();
   }
 
   /**
@@ -44,9 +37,6 @@ class Scene extends THREE.Scene {
     this.cube.rotation.y += 0.02;
 
     // this.cube.update(this.clock.time);
-
-    // this.postProcessing.update(); <- Same as renderer.render
-    this.camera.update(this.clock.delta);
   };
 }
 

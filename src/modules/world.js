@@ -1,4 +1,7 @@
 import RendererWEBGL from './Core/RendererWEBGL';
+import Clock from './Helpers/Clock';
+import PostProcessing from './PostProcessing/PostProcessing';
+
 // import RendererCSS3D from './Core/RendererCSS3D';
 import Camera from './Core/Camera';
 import Scene from './Core/Scene'; // Use the same for both WebGL and CSS3D
@@ -29,17 +32,25 @@ class World {
 
     // SCENE (Add stages info here too!)
     this.scene = new Scene(this.renderer, this.camera);
+
+    // POST PROCESSING
+    this.postProcessing = new PostProcessing(this.scene, this.renderer, this.camera);
+
+    // CLOCK
+    this.clock = new Clock();
   }
 
   animate () {
     // console.log(this.scene.children[0].position.x += 0.5);
     this.scene.render();
+    this.camera.update(this.clock.delta);
 
     this.render();
   }
 
   render () {
-    this.renderer.render(this.scene, this.camera);
+    this.postProcessing.update();
+    // this.renderer.render(this.scene, this.camera);
   }
 
   /*
