@@ -1,17 +1,14 @@
 /**
  * BasicCubeMaterial class
  */
-class BasicCubeMaterial extends THREE.MeshLambertMaterial {
+class BasicCubeMaterial extends THREE.MeshBasicMaterial {
 
   /**
    * Constructor function
    * @param {Object} options Options
    */
-  constructor (options) {
-    super(options);
-
-    this.color = new THREE.Color(0xff0000);
-    this.wireframe = true;
+  constructor () {
+    super({color: 0x00ff00});
   }
 
   /**

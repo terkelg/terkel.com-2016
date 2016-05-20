@@ -60,10 +60,18 @@ export default {
     this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild(this.stats.dom);
 
+    var stages = [
+      this.$root.$children[3].$els.home,
+      this.$root.$children[3].$els.cases
+    ];
+    console.log(stages);
+
     // This
-    this.world = new World(this.$el);
+    this.world = new World(this.$el, stages);
     TweenMax.ticker.addEventListener('tick', () => {
+      this.stats.begin();
       this.world.render();
+      this.stats.end();
     });
 
     this.addEventListeners();

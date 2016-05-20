@@ -1,9 +1,9 @@
 import Emitter from '../Helpers/Emitter';
-
+import '../libs/renderers/CSS3DRenderer';
 /**
- * Renderer WEBGL class
+ * Renderer CSS3D class
  */
-class RendererWEBGL extends THREE.WebGLRenderer {
+class RendererCSS3D extends THREE.CSS3DRenderer {
   /**
    * Constructor function
    * @param {integer} width Width
@@ -11,14 +11,12 @@ class RendererWEBGL extends THREE.WebGLRenderer {
    * @param {object} options Options
    * @constructor
    */
-  constructor (container, options = { antialias: true, alpha: true }) {
-    super(options);
+  constructor (container) {
+    super();
 
     this.setSize(container.offsetWidth, container.offsetHeight);
-    this.setPixelRatio(window.devicePixelRatio);
-    this.setClearColor(0x0a0a0a, 1.0);
 
-    this.domElement.style.position = 'absoulte';
+    this.domElement.style.position = 'absolute';
     this.domElement.style.top = 0;
     container.appendChild(this.domElement);
 
@@ -36,4 +34,4 @@ class RendererWEBGL extends THREE.WebGLRenderer {
   }
 };
 
-export default RendererWEBGL;
+export default RendererCSS3D;

@@ -1,4 +1,4 @@
-// import BasicCube from '../BasicCube';
+import BasicCube from '../BasicCube';
 import PostProcessing from '../PostProcessing/PostProcessing';
 
 /**
@@ -9,6 +9,7 @@ class Scene extends THREE.Scene {
    * Constructor function
    * @param {Renderer} Renderer Renderer instance
    * @param {Camera}   Camera   Camera instance
+   * @param {Clock}    Clock    Clock instance
    */
   constructor (Renderer, Camera, Clock) {
     super();
@@ -25,11 +26,10 @@ class Scene extends THREE.Scene {
    * CreateScene function
    */
   createScene () {
-    // this.cube = new BasicCube();
-    var geometry = new THREE.BoxGeometry(20, 20, 20);
-    var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-    this.cube = new THREE.Mesh(geometry, material);
+    this.cube = new BasicCube();
     this.add(this.cube);
+
+    // Lights, Particles
 
     this.render();
   }

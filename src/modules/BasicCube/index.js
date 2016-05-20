@@ -10,7 +10,7 @@ class BasicCube extends THREE.Mesh {
    * Constructor function
    */
   constructor () {
-    super(new BasicCubeGeometry(), new BasicCubeMaterial({ wireframe: true }));
+    super(new BasicCubeGeometry(), new BasicCubeMaterial());
   }
 
   /**
