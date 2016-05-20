@@ -1,8 +1,6 @@
 import RendererWEBGL from './Core/RendererWEBGL';
-import Clock from './Helpers/Clock';
-import PostProcessing from './PostProcessing/PostProcessing';
-
 // import RendererCSS3D from './Core/RendererCSS3D';
+import Clock from './Helpers/Clock';
 import Camera from './Core/Camera';
 import Scene from './Core/Scene'; // Use the same for both WebGL and CSS3D
 import Emitter from './Helpers/Emitter';
@@ -22,6 +20,9 @@ class World {
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
 
+    // CLOCK
+    this.clock = new Clock();
+
     // RENDER
     this.renderer = new RendererWEBGL(width, height);
     this.container.appendChild(this.renderer.domElement);
@@ -31,26 +32,14 @@ class World {
     this.camera.position.z = 100;
 
     // SCENE (Add stages info here too!)
-    this.scene = new Scene(this.renderer, this.camera);
-
-    // POST PROCESSING
-    this.postProcessing = new PostProcessing(this.scene, this.renderer, this.camera);
-
-    // CLOCK
-    this.clock = new Clock();
-  }
-
-  animate () {
-    // console.log(this.scene.children[0].position.x += 0.5);
-    this.scene.render();
-    this.camera.update(this.clock.delta);
-
-    this.render();
+    this.scene = new Scene(this.renderer, this.camera, this.clock);
   }
 
   render () {
-    this.postProcessing.update();
-    // this.renderer.render(this.scene, this.camera);
+    this.camera.update(this.clock.delta);
+
+    this.scene.render();
+    // this.scene.css3d.render(); -> calls renderer.render in that scene
   }
 
   /*

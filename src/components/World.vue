@@ -63,7 +63,7 @@ export default {
     // This
     this.world = new World(this.$el);
     TweenMax.ticker.addEventListener('tick', () => {
-      this.world.animate();
+      this.world.render();
     });
 
     this.addEventListeners();

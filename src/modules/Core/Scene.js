@@ -1,3 +1,6 @@
+// import BasicCube from '../BasicCube';
+import PostProcessing from '../PostProcessing/PostProcessing';
+
 /**
  * Scene class
  */
@@ -7,11 +10,13 @@ class Scene extends THREE.Scene {
    * @param {Renderer} Renderer Renderer instance
    * @param {Camera}   Camera   Camera instance
    */
-  constructor (Renderer, Camera) {
+  constructor (Renderer, Camera, Clock) {
     super();
 
     this.renderer = Renderer;
     this.camera = Camera;
+    this.clock = Clock;
+    this.postProcessing = new PostProcessing(this, this.renderer, this.camera);
 
     this.createScene();
   }
@@ -37,6 +42,8 @@ class Scene extends THREE.Scene {
     this.cube.rotation.y += 0.02;
 
     // this.cube.update(this.clock.time);
+
+    this.postProcessing.update();
   };
 }
 
