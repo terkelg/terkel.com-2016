@@ -44,6 +44,7 @@ import Stats from 'modules/libs/stats.min';
 import World from 'modules/world';
 import Quick from 'modules/object3D';
 import Cube from 'modules/objectCube';
+// import Stage from 'modules/stage';
 
 export default {
   vuex: {
@@ -67,19 +68,28 @@ export default {
       'container': this.$el
     });
 
-    // add objects
+    // add objects webgl test
     let quick = new Quick();
     let cube = new Cube();
     this.world.webgl.addObject(quick);
     this.world.webgl.addObject(cube);
 
+    // css3 test
     var object = new THREE.CSS3DObject(this.$root.$children[3].$els.home);
     var object2 = new THREE.CSS3DObject(this.$root.$children[3].$els.cases);
     object2.position.set(0, 300, 0);
     this.world.css3d.addObject(object);
     this.world.css3d.addObject(object2);
 
+    // Stage/Group test
+    // var home = new Stage();
+    // this.world.webgl.addObject(home);
+
     this.world.init();
+
+    let cube2 = new Cube();
+    cube2.getMesh().position.x = 200;
+    console.log(this.world.webgl.scene.add(cube2.getMesh()));
 
     // Kick off render loop (Move to eventlisteners)
     TweenLite.ticker.addEventListener('tick', () => {

@@ -29,7 +29,12 @@ export default class Webgl {
 
     // Add world/scene related stuff
     for (let object of this.objects) {
-      this.scene.add(object.getMesh());
+      if (object.type === 'stage') {
+        console.log(object);
+        this.scene.add(object.getStage());
+      } else {
+        this.scene.add(object.getMesh());
+      }
     }
 
     // TODO: Check device and optimize here

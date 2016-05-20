@@ -8,7 +8,6 @@
 
 import Webgl from 'modules/webgl';
 import Css3d from 'modules/css3d';
-// import Stage from 'modules/stage';
 
 export default class World {
 
@@ -36,6 +35,8 @@ export default class World {
     this.camera.position.set(0, 0, 1200);
     this.cameraShakeY = 0;
 
+    this.stages = [];
+
     this.windowHalfX = this.width / 2;
     this.windowHalfY = this.height / 2;
     this.mouse = {
@@ -57,18 +58,10 @@ export default class World {
       width: this.width,
       height: this.height
     });
-
-    // Create stages
   }
 
   init () {
-    /*
-    this.createStage(new THREE.Vector3(0, 0, 0), 'home');
-    this.createStage(new THREE.Vector3(0, -500, 0), 'cases');
-    this.createStage(new THREE.Vector3(0, -1000, 0), 'about');
-    this.createStage(new THREE.Vector3(0, -1500, 0), 'contact');
-    */
-
+    /* Jeg har misforstået min egen struktur */
     this.webgl.init();
     this.css3d.init();
   }

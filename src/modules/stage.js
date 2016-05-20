@@ -1,36 +1,23 @@
+import Cube from 'modules/objectCube';
+
 export default class Stage {
 
-  constructor (vec3) {
+  constructor () {
+    this.position = new THREE.Vector3(340, 4, 4);
     this.group = new THREE.Group();
-    this.group.position.set(vec3);
-    this.position = vec3;
-    this.objects = [];
+    this.group.position.set(this.position);
     this.type = 'stage';
 
-    console.log('Lets go!');
+    this.group.add(new Cube().getMesh());
+    console.log(this.group);
   }
 
-  addObject (object) {
-    this.objects.push(object);
-    this.group.add(object);
-  }
-
-  update () {
-    for (var object of this.objects) {
-      object.update();
-    }
-  }
-
-  getPosition () {
-    return this.position;
-  }
-
-  getType () {
-    return this.type;
-  }
-
-  getGroup () {
+  getStage () {
     return this.group;
   }
 
+  update () {
+    // Called in update
+    console.log('update');
+  }
 }
