@@ -1,117 +1,60 @@
-// Something should be state or params?
-// Start simple! Few options
-// Camera is common, share it between both views
+import RendererWEBGL from './Core/RendererWEBGL';
+// import RendererCSS3D from './Core/RendererCSS3D';
+import Camera from './Core/Camera';
+import Scene from './Core/Scene'; // Use the same for both WebGL and CSS3D
+import Emitter from './Helpers/Emitter';
 
-// 1) Få det til at virke
-// 2) Flyt camera til World
-// 3) .. ryd op?
+/*
+ * World class
+ */
+class World {
+  /**
+   * Constructor function
+   * @param {domElement} container Canvas container
+   * @constructor
+   */
+  constructor (container) {
+    this.container = container;
 
-import Webgl from 'modules/webgl';
-import Css3d from 'modules/css3d';
+    const width = this.container.offsetWidth;
+    const height = this.container.offsetHeight;
 
-export default class World {
+    // RENDER
+    this.renderer = new RendererWEBGL(width, height);
+    this.container.appendChild(this.renderer.domElement);
 
-  constructor (options = {}) {
-    /*
-     * Default options
-     */
-    let defaultOptions = {
-      'container': options.container || document.body,
-      'active': options.active || true,
-      'debug': options.debug || false
-    };
-    this.options = defaultOptions;
+    // CAMERA
+    this.camera = new Camera(60, width / height, 0.1, 10000);
+    this.camera.position.z = 100;
 
-    /*
-     * Properties
-     */
-    this.container = this.options.container;
-    this.width = this.options.container.offsetWidth;
-    this.height = this.options.container.offsetHeight;
-
-    this.target = new THREE.Vector3(0, 0, 0);
-    this.camera = new THREE.PerspectiveCamera(60, this.width / this.height, 1, 10000);
-    this.camera.lookAt(this.target); // I want a smart target system. Comes with move system.
-    this.camera.position.set(0, 0, 1200);
-    this.cameraShakeY = 0;
-
-    this.stages = [];
-
-    this.windowHalfX = this.width / 2;
-    this.windowHalfY = this.height / 2;
-    this.mouse = {
-      x: null,
-      y: null
-    };
-
-    /*
-     * Setup renderers
-     */
-    this.webgl = new Webgl(this.camera, {
-      container: this.container,
-      width: this.width,
-      height: this.height
-    });
-
-    this.css3d = new Css3d(this.camera, {
-      container: this.container,
-      width: this.width,
-      height: this.height
-    });
-  }
-
-  init () {
-    /* Jeg har misforstået min egen struktur */
-    this.webgl.init();
-    this.css3d.init();
-  }
-
-  addObject (object, renderer) {
-    if (renderer === 'webgl') {
-      this.webgl.addObject(object);
-    } else {
-      this.css3d.addObject(object);
-    }
+    // SCENE (Add stages info here too!)
+    this.scene = new Scene(this.renderer, this.camera);
   }
 
   animate () {
-    this.webgl.animate();
-    this.css3d.animate();
-    this.animateCamera();
+    // console.log(this.scene.children[0].position.x += 0.5);
+    this.scene.render();
+
+    this.render();
   }
 
-  onWindowResize (width, height) {
-    this.width = width;
-    this.height = height;
-
-    this.windowHalfX = this.width / 2;
-    this.windowHalfY = this.height / 2;
-
-    this.webgl.onWindowResize(width, height);
-    this.css3d.onWindowResize(width, height);
-
-    this.resizeCamera();
+  render () {
+    this.renderer.render(this.scene, this.camera);
   }
 
-  onMouseMove (mouseX, mouseY) {
-    this.mouse.x = mouseX - this.windowHalfX;
-    this.mouse.y = mouseY - this.windowHalfY;
+  /*
+   * Animate camera functions here
+   */
+
+  /* ----------------- */
+
+  resize (width, height) {
+    Emitter.emit('resize', width, height);
   }
 
-  /* ---------- HELPERS -------------- */
-
-  animateCamera () {
-    this.camera.position.x += (this.mouse.x - this.camera.position.x) * 0.05;
-    this.camera.position.y += (-this.mouse.y - this.camera.position.y + this.target.y) * 0.02;
-    this.camera.lookAt(this.target);
-
-    this.camera.position.y += Math.cos(this.cameraShakeY) / 10;
-    this.cameraShakeY += 0.02;
+  mouseMove (x, y) {
+    Emitter.emit('mousemove', x, y);
   }
-
-  resizeCamera () {
-    this.camera.aspect = this.width / this.height;
-    this.camera.updateProjectionMatrix();
-  }
-
 };
+
+export default World;

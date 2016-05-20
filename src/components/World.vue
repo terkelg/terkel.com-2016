@@ -40,11 +40,7 @@ import {
 } from 'vuex/getters';
 
 import Stats from 'modules/libs/stats.min';
-
-import World from 'modules/world';
-import Quick from 'modules/object3D';
-import Cube from 'modules/objectCube';
-// import Stage from 'modules/stage';
+import World from 'modules/World';
 
 export default {
   vuex: {
@@ -64,38 +60,10 @@ export default {
     this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild(this.stats.dom);
 
-    this.world = new World({
-      'container': this.$el
-    });
-
-    // add objects webgl test
-    let quick = new Quick();
-    let cube = new Cube();
-    this.world.webgl.addObject(quick);
-    this.world.webgl.addObject(cube);
-
-    // css3 test
-    var object = new THREE.CSS3DObject(this.$root.$children[3].$els.home);
-    var object2 = new THREE.CSS3DObject(this.$root.$children[3].$els.cases);
-    object2.position.set(0, 300, 0);
-    this.world.css3d.addObject(object);
-    this.world.css3d.addObject(object2);
-
-    // Stage/Group test
-    // var home = new Stage();
-    // this.world.webgl.addObject(home);
-
-    this.world.init();
-
-    let cube2 = new Cube();
-    cube2.getMesh().position.x = 200;
-    console.log(this.world.webgl.scene.add(cube2.getMesh()));
-
-    // Kick off render loop (Move to eventlisteners)
-    TweenLite.ticker.addEventListener('tick', () => {
-      this.stats.begin();
+    // This
+    this.world = new World(this.$el);
+    TweenMax.ticker.addEventListener('tick', () => {
       this.world.animate();
-      this.stats.end();
     });
 
     this.addEventListeners();
@@ -117,11 +85,11 @@ export default {
     },
 
     onResize () {
-      this.world.onWindowResize(this.$el.offsetWidth, this.$el.offsetHeight);
+      this.world.resize(this.$el.offsetWidth, this.$el.offsetHeight);
     },
 
     onMouseMove (e) {
-      this.world.onMouseMove(e.clientX, e.clientY);
+      this.world.mouseMove(e.clientX, e.clientY);
     }
   }
 
