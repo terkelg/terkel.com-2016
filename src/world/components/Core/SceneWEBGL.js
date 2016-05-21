@@ -1,5 +1,5 @@
-import BasicCube from '../BasicCube';
-import PostProcessing from '../PostProcessing/PostProcessing';
+import BasicCube from '../Objects/BasicCube';
+import PostProcessing from '../../PostProcessing/PostProcessing';
 
 /**
  * Scene class

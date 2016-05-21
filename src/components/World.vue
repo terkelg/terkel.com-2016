@@ -45,8 +45,8 @@ import {
   getVisibility
 } from 'vuex/getters';
 
-import Stats from 'modules/libs/stats.min';
-import World from 'modules/World';
+import Stats from 'world/libs/stats.min';
+import World from 'world';
 
 export default {
   vuex: {

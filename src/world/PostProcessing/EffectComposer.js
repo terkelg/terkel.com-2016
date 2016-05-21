@@ -1,5 +1,5 @@
 import { Composer } from '@superguigui/wagner';
-import Emitter from '../Helpers/Emitter';
+import Emitter from '../components/Helpers/Emitter';
 
 /**
  * EffectComposer class

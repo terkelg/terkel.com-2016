@@ -1,5 +1,5 @@
 import Emitter from '../Helpers/Emitter';
-import '../libs/renderers/CSS3DRenderer';
+import '../../libs/CSS3DRenderer';
 /**
  * Renderer CSS3D class
  */
