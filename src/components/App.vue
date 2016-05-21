@@ -5,9 +5,8 @@
 
     <world></world>
     <secondary></secondary>
-    <primary></primary>
+    <primary></primary> <!-- Måske ikke nødvendig, kan laves i kode -->
 
-    <!-- <router-view></router-view> -->
   </main>
 </template>
 

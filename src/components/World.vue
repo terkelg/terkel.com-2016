@@ -1,6 +1,6 @@
 <template>
-  <div class="background">
-    <div class="background__inner" v-el:container>
+  <div class="world">
+    <div class="world__inner" v-el:container>
 
     </div>
   </div>
@@ -12,16 +12,16 @@
   /*
    * Mobile
    */
-  .background {
+  .world {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     overflow: hidden;
-    padding: $border-size $border-size $border-size ($nav-width + $border-size);
+    padding: $border-size $border-size ($nav-mobile-height + $border-size) $border-size;
     transform: translateZ(0);
-    .background__inner {
+    .world__inner {
       position: relative;
       width: 100%;
       height: 100%;
@@ -30,8 +30,13 @@
 
   /*
    * Desktop
-  @media #{$break-medium} {}
-  */
+   */
+  @media #{$break-medium} {
+    .world {
+      padding: $border-size $border-size $border-size ($nav-width + $border-size);
+      .world__inner {}
+    }
+  }
 </style>
 
 <script>
