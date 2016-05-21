@@ -1,7 +1,7 @@
 /**
  * BasicCubeMaterial class
  */
-class BasicCubeMaterial extends THREE.MeshBasicMaterial {
+class BasicCubeMaterial extends THREE.MeshLambertMaterial {
 
   /**
    * Constructor function

@@ -6,7 +6,7 @@ class BasicCubeGeometry extends THREE.BoxGeometry {
    * Constructor function
    */
   constructor () {
-    super(20, 20, 20);
+    super(80, 80, 80);
   }
 };
 

@@ -15,7 +15,7 @@ class World {
   /**
    * Constructor function
    * @param {domElement} container Canvas container
-   * @param {[domElement]} stages Array of domElements to display in world
+   * @param {domElement[]} stages Array of domElements to display in world
    * @constructor
    */
   constructor (container, stages) {
@@ -34,8 +34,8 @@ class World {
     };
 
     // CAMERA
-    this.camera = new Camera(60, width / height, 0.1, 10000);
-    this.camera.position.z = 100;
+    this.camera = new Camera(width, height);
+    this.camera.position.z = 1200;
 
     // SCENE (Add stages info/data here too!)
     this.scene = {
@@ -62,6 +62,7 @@ class World {
   }
 
   mouseMove (x, y) {
+    // this.camera.mouse(x, y);
     Emitter.emit('mousemove', x, y);
   }
 };

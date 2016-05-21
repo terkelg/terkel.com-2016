@@ -4,9 +4,9 @@
 class Scene extends THREE.Scene {
   /**
    * Constructor function
-   * @param {Renderer}      Renderer Renderer instance
-   * @param {Camera}        Camera   Camera instance
-   * @param {[domElement]}  Array of dom elements to load into stages
+   * @param {Renderer}      Renderer - Renderer instance
+   * @param {Camera}        Camera   - Camera instance
+   * @param {domElement[]}  Array    - Dom elements to load into stages
    */
   constructor (Renderer, Camera, stages) {
     super();

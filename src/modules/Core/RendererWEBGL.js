@@ -18,6 +18,9 @@ class RendererWEBGL extends THREE.WebGLRenderer {
     this.setPixelRatio(window.devicePixelRatio);
     this.setClearColor(0x0a0a0a, 1.0);
 
+    this.shadowMap.enable = true;
+    this.shadowMap.type = THREE.PCFSoftShadowMap;
+
     this.domElement.style.position = 'absoulte';
     this.domElement.style.top = 0;
     container.appendChild(this.domElement);
