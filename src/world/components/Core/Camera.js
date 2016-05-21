@@ -70,31 +70,25 @@ class Camera extends THREE.PerspectiveCamera {
 
   /**
    * Move To Position
-   * @param {Vector3} vec3 - Vector3 Position
+   * @param {Vector3} position - Vector3 Position
    * @return {void}
    */
-  moveTo (vec3) {
-    console.log('3:');
-    console.log('incoming: ', vec3);
-    console.log('camera position: ', this.position);
-    console.log('target position: ', this.target);
-    console.log(this);
-
+  moveTo (position) {
+    // Target - always center in Stage
     TweenLite.to(this.targetPoint, 2, {
-      x: vec3.x,
-      y: vec3.y,
-      z: vec3.z
+      x: position.x,
+      y: position.y,
+      z: position.z
     });
 
     TweenLite.to(this.position, 8, {
       x: 0,
-      y: vec3.y,
+      y: position.y,
       z: 1200, // Distance - should be const!,
       onUpdate: () => {
-        TweenLite.to(this.position, 1, {x: this.mouse.x - this.position.x * 0.05});
-      },
-      onOverwrite: function () {
-        console.log('Overwrite');
+        TweenLite.to(this.position, 0.8, {
+          x: this.mouse.x - this.position.x * 0.05
+        });
       }
     });
   }

@@ -65,9 +65,6 @@ class World {
     if (this.css3d) {
       this.scene.css3d.render();
     }
-
-    // this.camera.lookAt(this.camera.target);
-    // console.log(this.camera.position.y);
   }
 
   /*
