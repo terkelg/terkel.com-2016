@@ -4,6 +4,8 @@ import RendererCSS3D from './components/Core/RendererCSS3D';
 import SceneWEBGL from './components/Core/SceneWEBGL';
 import SceneCSS3D from './components/Core/SceneCSS3D';
 
+import Stage from './components/Core/Stage';
+
 import Clock from './components/Helpers/Clock';
 import Camera from './components/Core/Camera';
 import Emitter from './components/Helpers/Emitter';
@@ -14,12 +16,20 @@ import Emitter from './components/Helpers/Emitter';
 class World {
   /**
    * Constructor function
-   * @param {domElement} container Canvas container
-   * @param {domElement[]} stages Array of domElements to display in world
+   * @param {domElement} container - Canvas container
+   * @param {object[]} stages      - Object with element and position
    * @constructor
    */
   constructor (container, stages) {
     this.container = container;
+    this.stages = [];
+
+    this.css3d = true;
+
+    // CREATE STAGES
+    stages.forEach((stage) => {
+      this.stages.push(new Stage(stage.position, stage.el));
+    });
 
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
@@ -30,7 +40,7 @@ class World {
     // RENDER
     this.renderer = {
       webgl: new RendererWEBGL(this.container),
-      css3d: new RendererCSS3D(this.container)
+      css3d: this.css3d ? new RendererCSS3D(this.container) : null
     };
 
     // CAMERA
@@ -39,8 +49,8 @@ class World {
 
     // SCENE (Add stages info/data here too!)
     this.scene = {
-      webgl: new SceneWEBGL(this.renderer.webgl, this.camera, this.clock),
-      css3d: new SceneCSS3D(this.renderer.css3d, this.camera, stages)
+      webgl: new SceneWEBGL(this.renderer.webgl, this.camera, this.clock, this.stages),
+      css3d: this.css3d ? new SceneCSS3D(this.renderer.css3d, this.camera, this.stages) : null
     };
   }
 
@@ -50,7 +60,9 @@ class World {
    */
   render () {
     this.scene.webgl.render();
-    this.scene.css3d.render();
+    if (this.css3d) {
+      this.scene.css3d.render();
+    }
 
     this.camera.update(this.clock.delta); // Maybe first
   }

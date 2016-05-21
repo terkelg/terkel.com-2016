@@ -70,9 +70,19 @@ export default {
     this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild(this.stats.dom);
 
+    /* Make Stage a class?
+     * - TODO: Better way to get elements on - Direct vue?
+     * - TODO: Add a way to deactivate CSS3D Renderer
+     */
     var stages = [
-      this.$root.$children[3].$els.home,
-      this.$root.$children[3].$els.cases
+      {
+        position: new THREE.Vector3(0, 200, 0),
+        el: this.$root.$children[3].$els.home
+      },
+      {
+        position: new THREE.Vector3(0, -500, 0),
+        el: this.$root.$children[3].$els.cases
+      }
     ];
     console.log(stages);
 

@@ -23,9 +23,11 @@ class Scene extends THREE.Scene {
    * @return {void}
    */
   createScene () {
-    // Test CSS Object
-    const elm = this.stages[0];
-    this.add(new THREE.CSS3DObject(elm));
+    // Create stages
+    this.stages.forEach((stage) => {
+      stage.addDOMComponent();
+      this.add(stage);
+    });
   }
 
   /**

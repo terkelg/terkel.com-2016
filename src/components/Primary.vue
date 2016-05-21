@@ -1,10 +1,10 @@
 <template>
-  <div class="primary">
+  <div class="primary" v-show="!use3D">
     <div class="primary__inner">
 
       <section class="stage" v-el:home>
         <p>I'm Terkel</p>
-        <p><a href="#">content here</a></p>
+        <p><a href="#" @click=testClick>content here</a></p>
       </section>
 
       <section class="stage" v-el:cases>
@@ -26,6 +26,15 @@
   .primary__inner {}
 }
 
+.stage {}
+.no3d .stage {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  text-align: center;
+}
+
 @media #{$break-medium} {
   .primary {
     margin-left: $nav-width + $border-size;
@@ -33,18 +42,51 @@
   }
   .primary__inner {}
 }
-
 </style>
 
 <script>
+import {
+  secondaryOpen,
+  secondaryClose,
+  theme
+} from 'vuex/actions';
+import { getSize, getSecondary } from 'vuex/getters';
+
 export default {
+  vuex: {
+    actions: {
+      secondaryClose: secondaryClose,
+      secondaryOpen: secondaryOpen,
+      theme: theme
+    },
+    getters: {
+      size: getSize,
+      secondary: getSecondary
+    }
+  },
+
   ready () {
     console.log('Primary ready!');
     console.log(this.$route.path);
   },
 
-  methods: {
+  data: () => {
+    return {
+      use3D: true
+    };
+  },
 
+  methods: {
+    testClick () {
+      console.log('Test click!');
+      if (this.secondary.status === 'open') {
+        this.secondaryClose();
+        this.theme('light');
+      } else {
+        this.theme('dark');
+        this.secondaryOpen();
+      }
+    }
   },
 
   route: {
