@@ -47,6 +47,7 @@ import {
 
 import Stats from 'world/libs/stats.min';
 import World from 'world';
+import debounce from 'lodash.debounce';
 
 export default {
   vuex: {
@@ -56,9 +57,12 @@ export default {
     }
   },
 
-  // Set camera here etc to access it everywhere
   data: () => {
     return {};
+  },
+
+  created () {
+    this.onResize = debounce(this.onResize, 100);
   },
 
   ready () {
@@ -72,7 +76,6 @@ export default {
     ];
     console.log(stages);
 
-    // This
     this.world = new World(this.$els.container, stages);
     TweenMax.ticker.addEventListener('tick', () => {
       this.stats.begin();
