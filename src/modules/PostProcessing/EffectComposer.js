@@ -14,7 +14,7 @@ class EffectComposer extends Composer {
   constructor (renderer, options) {
     super(renderer, options);
 
-    this.setSize(window.innerWidth, window.innerHeight);
+    this.setSize(renderer.getSize().width * window.devicePixelRatio, renderer.getSize().height * window.devicePixelRatio);
 
     Emitter.on('resize', this.resize.bind(this));
   }

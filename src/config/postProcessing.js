@@ -6,7 +6,7 @@ import NoisePass from '@superguigui/wagner/src/passes/noise/noise';
 import FXAAPass from '@superguigui/wagner/src/passes/fxaa/FXAAPass';
 
 export default {
-  active: true,
+  active: false,
   effectComposer: {
     useRGBA: true
   },
@@ -18,7 +18,7 @@ export default {
         blurAmount: 0.5,
         applyZoomBlur: true,
         zoomBlurStrength: 0.8,
-        blendMode: BlendMode.Lighten
+        blendMode: BlendMode.Darken
       })
     },
     {
