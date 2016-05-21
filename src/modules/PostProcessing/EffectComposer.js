@@ -7,26 +7,26 @@ import Emitter from '../Helpers/Emitter';
 class EffectComposer extends Composer {
   /**
    * Constructor function
-   * @param  {object} renderer Renderer
-   * @param  {object} options  Options
+   * @param  {object} renderer - Renderer
+   * @param  {object} options  - Options
    * @return {void}
    */
   constructor (renderer, options) {
     super(renderer, options);
 
-    this.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
+    this.setSize(window.innerWidth, window.innerHeight);
 
     Emitter.on('resize', this.resize.bind(this));
   }
 
   /**
    * Resize function
-   * @param  {integer} width  Width
-   * @param  {integer} height Height
+   * @param  {integer} width  - Width
+   * @param  {integer} height - Height
    * @return {void}
    */
   resize (width, height) {
-    this.setSize(width * window.devicePixelRatio, height * window.devicePixelRatio);
+    this.setSize(width, height);
   }
 };
 
