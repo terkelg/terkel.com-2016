@@ -67,7 +67,6 @@ export default {
 
   ready () {
     console.log('Primary ready!');
-    console.log(this.$route.path);
   },
 
   data: () => {
@@ -86,16 +85,6 @@ export default {
         this.theme('dark');
         this.secondaryOpen();
       }
-    }
-  },
-
-  route: {
-    activate: function () {
-      console.log('activate');
-    },
-    canDeactivate: function (transition) {
-      console.log('canDeactivate');
-      transition.next();
     }
   }
 };

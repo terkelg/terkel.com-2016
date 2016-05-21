@@ -25,6 +25,14 @@ let router = new VueRouter({
 });
 
 router.map({
+  '/': {
+    name: 'home',
+    component: {}
+  },
+  '/cases': {
+    name: 'case',
+    component: {}
+  },
   '/cases/:case': {
     name: 'cases',
     component: Case
@@ -32,6 +40,14 @@ router.map({
   '/about': {
     name: 'about',
     component: About
+  },
+  '/about/cv': {
+    name: 'cv',
+    component: {}
+  },
+  'contact': {
+    name: 'contact',
+    component: {}
   }
 });
 
@@ -48,7 +64,7 @@ router.beforeEach(function (transition) {
     // when done, do transition
     transition.abort();
   } else {
-    console.log(transition.to.path);
+    // console.log(transition.to.path);
     // set state!
     transition.next();
   }

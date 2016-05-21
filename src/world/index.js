@@ -59,17 +59,30 @@ class World {
    * @return {void}
    */
   render () {
+    this.camera.update(this.clock.delta); // Maybe first
+
     this.scene.webgl.render();
     if (this.css3d) {
       this.scene.css3d.render();
     }
 
-    this.camera.update(this.clock.delta); // Maybe first
+    // this.camera.lookAt(this.camera.target);
+    // console.log(this.camera.position.y);
   }
 
   /*
    * Animate camera functions here
    */
+  moveToStage (name) {
+    console.log('2: state: ', name);
+    console.log(this.camera.position);
+
+    TweenLite.to(this.camera.position, 2, {
+      x: 0,
+      y: 500,
+      z: 1200 // Distance - should be const!
+    });
+  }
 
   /* ----------------- */
 

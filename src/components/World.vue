@@ -61,6 +61,10 @@ export default {
     return {};
   },
 
+  watch: {
+    '$route': 'toStage'
+  },
+
   created () {
     this.onResize = debounce(this.onResize, 100);
   },
@@ -70,13 +74,15 @@ export default {
     this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild(this.stats.dom);
 
+    // CHECK ROUTE HERE IF LOADED WITH INITIAL!
+    // this.toStage();
+
     /* Make Stage a class?
      * - TODO: Better way to get elements on - Direct vue?
-     * - TODO: Add a way to deactivate CSS3D Renderer
      */
     var stages = [
       {
-        position: new THREE.Vector3(0, 200, 0),
+        position: new THREE.Vector3(0, 500, 0),
         el: this.$root.$children[3].$els.home
       },
       {
@@ -84,14 +90,27 @@ export default {
         el: this.$root.$children[3].$els.cases
       }
     ];
-    console.log(stages);
+
+    console.log(this.$route);
 
     this.world = new World(this.$els.container, stages);
-    TweenMax.ticker.addEventListener('tick', () => {
+
+    TweenLite.ticker.addEventListener('tick', () => {
       this.stats.begin();
       this.world.render();
       this.stats.end();
     });
+
+    /*
+    this.render = function render () {
+      // eslint-disable-next-line
+      requestAnimationFrame(this.render);
+      this.stats.begin();
+      this.world.render();
+      this.stats.end();
+    };
+    this.render();
+    */
 
     this.addEventListeners();
   },
@@ -117,8 +136,13 @@ export default {
 
     onMouseMove (e) {
       this.world.mouseMove(e.clientX, e.clientY);
+    },
+
+    toStage () {
+      console.log('1:', this.$route.name);
+      this.world.moveToStage(this.$route.name);
+      // console.log(this.world.toStage());
     }
   }
-
 };
 </script>

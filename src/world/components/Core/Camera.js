@@ -18,6 +18,7 @@ class Camera extends THREE.PerspectiveCamera {
     super(fov, aspect, near, far);
 
     this.target = new THREE.Vector3(0, 0, 0);
+
     this.cameraShakeY = 0;
     this.windowHalfX = width / 2;
     this.windowHalfY = height / 2;
@@ -34,7 +35,7 @@ class Camera extends THREE.PerspectiveCamera {
    */
   update (delta) {
     this.position.x += (this.mouse.x - this.position.x) * 0.05;
-    this.position.y += (-this.mouse.y - this.position.y + this.target.y) * 0.02;
+    this.position.y += (-this.mouse.y - this.position.y) * 0.02;
     this.lookAt(this.target);
 
     this.position.y += Math.cos(this.cameraShakeY) / 10;
@@ -65,6 +66,19 @@ class Camera extends THREE.PerspectiveCamera {
       x: x - this.windowHalfX,
       y: y - this.windowHalfY
     };
+  }
+
+  /**
+   * Move To Position
+   * @param {Vector3} vec3 - Vector3 Position
+   * @return {void}
+   */
+  moveTo (vec3) {
+    console.log('3:');
+    console.log('incoming: ', vec3);
+    console.log('camera position: ', this.position);
+    console.log('target position: ', this.target);
+    console.log(this);
   }
 };
 
