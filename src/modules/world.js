@@ -44,11 +44,15 @@ class World {
     };
   }
 
+  /**
+   * Render function
+   * @return {void}
+   */
   render () {
-    this.camera.update(this.clock.delta);
-
     this.scene.webgl.render();
-    // this.scene.css3d.render(); -> calls renderer.render in that scene
+    this.scene.css3d.render();
+
+    this.camera.update(this.clock.delta); // Maybe first
   }
 
   /*

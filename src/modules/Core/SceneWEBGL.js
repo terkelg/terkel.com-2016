@@ -24,6 +24,7 @@ class Scene extends THREE.Scene {
 
   /**
    * CreateScene function
+   * @return {void}
    */
   createScene () {
     this.cube = new BasicCube();
@@ -44,6 +45,7 @@ class Scene extends THREE.Scene {
 
   /**
    * Render function
+   * @return {void}
    */
   render () {
     // this.cube.rotation.x += 0.01;

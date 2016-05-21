@@ -20,17 +20,17 @@ class Scene extends THREE.Scene {
 
   /**
    * CreateScene function
+   * @return {void}
    */
   createScene () {
     // Test CSS Object
     const elm = this.stages[0];
     this.add(new THREE.CSS3DObject(elm));
-
-    this.render();
   }
 
   /**
    * Render function
+   * @return {void}
    */
   render () {
     this.renderer.render(this, this.camera);
