@@ -75,13 +75,14 @@ class World {
    */
   moveToStage (name) {
     console.log('2: state: ', name);
-    console.log(this.camera.position);
-
-    TweenLite.to(this.camera.position, 2, {
-      x: 0,
-      y: 500,
-      z: 1200 // Distance - should be const!
-    });
+    switch (name) {
+      case 'home':
+        this.camera.moveTo(this.stages[0].position);
+        break;
+      case 'case':
+        this.camera.moveTo(this.stages[1].position);
+        break;
+    }
   }
 
   /* ----------------- */

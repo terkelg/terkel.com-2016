@@ -17,7 +17,7 @@ class Camera extends THREE.PerspectiveCamera {
 
     super(fov, aspect, near, far);
 
-    this.target = new THREE.Vector3(0, 0, 0);
+    this.targetPoint = new THREE.Vector3(0, 0, 0);
 
     this.cameraShakeY = 0;
     this.windowHalfX = width / 2;
@@ -35,8 +35,8 @@ class Camera extends THREE.PerspectiveCamera {
    */
   update (delta) {
     this.position.x += (this.mouse.x - this.position.x) * 0.05;
-    this.position.y += (-this.mouse.y - this.position.y) * 0.02;
-    this.lookAt(this.target);
+    this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.02;
+    this.lookAt(this.targetPoint);
 
     this.position.y += Math.cos(this.cameraShakeY) / 10;
     this.cameraShakeY += 0.02;
@@ -79,6 +79,24 @@ class Camera extends THREE.PerspectiveCamera {
     console.log('camera position: ', this.position);
     console.log('target position: ', this.target);
     console.log(this);
+
+    TweenLite.to(this.targetPoint, 2, {
+      x: vec3.x,
+      y: vec3.y,
+      z: vec3.z
+    });
+
+    TweenLite.to(this.position, 8, {
+      x: 0,
+      y: vec3.y,
+      z: 1200, // Distance - should be const!,
+      onUpdate: () => {
+        TweenLite.to(this.position, 1, {x: this.mouse.x - this.position.x * 0.05});
+      },
+      onOverwrite: function () {
+        console.log('Overwrite');
+      }
+    });
   }
 };
 
