@@ -6,6 +6,7 @@
       <cases-stage v-el:cases></cases-stage>
       <about-stage v-el:about></about-stage>
       <contact-stage v-el:contact></contact-stage>
+      <!---->
 
     </div>
   </div>
@@ -14,11 +15,78 @@
 <style lang="scss">
 @import '../stylesheets/variables';
 
+/*
+ * Default
+ */
+.primary {
+  display: none;
+}
+
+.stage {
+  color: $blue;
+}
+.stage__inner {
+  transform: rotateZ(0);
+  backface-visibility: hidden;
+}
+
+/*
+ * No 3D styles - Fallback
+ */
+.no3d {
+  .primary {
+    display: block!important; // TODO: delete important
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: $nav-mobile-height + $border-size;
+    left: 0;
+    overflow: hidden;
+    padding: $border-size $border-size 0 $border-size;
+    transform: translateZ(0);
+
+    .primary__inner {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .stage {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .stage__inner {
+    max-width: 900px;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: green;
+    overflow: hidden;
+  }
+
+  /*
+   * Default Desktop
+   */
+  @media #{$break-medium} {
+    .primary {
+      bottom: 0;
+      left: $nav-width + $border-size;
+      padding: $border-size $border-size $border-size 0;
+    }
+  }
+}
+
+
+/*
 .primary {
   // position: absolute;
   // display: block!important;
-  transform: translateY(0);
-  margin-bottom: $nav-width + $border-size;
+  // transform: translateY(0);
+  //margin-bottom: $nav-width + $border-size;
   padding: $border-size;
   .primary__inner {}
 }
@@ -33,7 +101,7 @@
     // transform: translateY(0);
     backface-visibility: hidden;
   }
-}
+}*/
 
 .stage--home {
   text-align: center;
@@ -55,13 +123,7 @@
    * Responsive ratio anything (block or inline-block element)
    */
   .container {
-    display: block;
-  	width: 900px;
-    // height: auto;
-    transform: translateY(0);
     list-style: none;
-    margin: 0;
-    padding: 0;
   }
   .block {
   	display: block;

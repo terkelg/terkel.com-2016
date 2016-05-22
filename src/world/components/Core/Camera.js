@@ -85,12 +85,13 @@ class Camera extends THREE.PerspectiveCamera {
     TweenLite.to(this.position, 4, {
       x: vec3.x,
       y: vec3.y,
-      z: vec3.z + this.distance,
+      z: vec3.z + this.distance
+      /* TODO: Activate when performance works
       onUpdate: () => {
         TweenLite.to(this.position, 0.8, {
           x: this.mouse.x - this.position.x * 0.05
         });
-      }
+      } */
     });
   }
 };

@@ -47,8 +47,6 @@ class Scene extends THREE.Scene {
 
     var ambient = new THREE.AmbientLight(0xffffff, 0.1);
     this.add(ambient);
-
-    this.render();
   }
 
   /**
