@@ -105,5 +105,42 @@
         </li>
       </ul>
     </div>
+
   </section>
 </template>
+
+<style lang="scss">
+@import '../../stylesheets/variables';
+
+.stage--contact {
+  .container {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    .social {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      &::before {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 2px;
+        background-color: $blue;
+        margin: 28px auto;
+      }
+    }
+    li {
+      margin: 0 8px;
+      display: inline-block;
+    }
+    a {
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+}
+</style>

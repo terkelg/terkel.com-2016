@@ -42,10 +42,10 @@ class Scene extends THREE.Scene {
     var spotLight = new THREE.SpotLight(0xffffff, 1);
     spotLight.position.set(20, 20, 300);
     spotLight.castShadow = true;
-    spotLight.distance = 500;
+    spotLight.distance = 2500;
     this.add(spotLight);
 
-    var ambient = new THREE.AmbientLight(0xffffff, 0.1);
+    var ambient = new THREE.AmbientLight(0xffffff, 0.4);
     this.add(ambient);
   }
 

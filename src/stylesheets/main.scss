@@ -20,7 +20,7 @@ body {
 /*
  * Default link
  */
-a {
+a{
   position: relative;
   color: $blue;
   text-decoration: none;
@@ -72,7 +72,8 @@ a.active::after {
 /*
  * Back box
  */
-.boxed {
+.boxed,
+.v-link-active {
   position: relative;
   &::after {
     position: absolute;

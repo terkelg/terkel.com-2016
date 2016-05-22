@@ -14,3 +14,36 @@
     </div>
   </section>
 </template>
+
+<style lang="scss">
+@import '../../stylesheets/variables';
+
+.stage--about {
+  .container {
+    display: block;
+    max-width: 800px;
+    height: auto;
+  }
+  img {
+    border-radius: 50%;
+    float: left;
+    margin-right: 5%;
+    width: 20%;
+  }
+  .content {
+    float: left;
+    width: 75%;
+  }
+  h2 {
+    font-size: 1.8em;
+    display: inline-block;
+    text-align: left;
+    margin: 0;
+  }
+  p {
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  a { font-weight: 600; }
+}
+</style>
