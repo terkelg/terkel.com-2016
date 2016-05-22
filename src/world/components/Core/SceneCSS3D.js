@@ -4,16 +4,18 @@
 class Scene extends THREE.Scene {
   /**
    * Constructor function
-   * @param {Renderer}      Renderer - Renderer instance
-   * @param {Camera}        Camera   - Camera instance
-   * @param {domElement[]}  Array    - Dom elements to load into stages
+   * @param {Renderer}     Renderer - Renderer instance
+   * @param {Camera}       Camera   - Camera instance
+   * @param {Stages[]}     Stages   - Stages
+   * @param {domElement[]} Pages    - Pages to add to stages
    */
-  constructor (Renderer, Camera, stages) {
+  constructor (Renderer, Camera, Stages, Pages) {
     super();
 
     this.renderer = Renderer;
     this.camera = Camera;
-    this.stages = stages;
+    this.stages = Stages;
+    this.pages = Pages;
 
     this.createScene();
   }
@@ -23,9 +25,11 @@ class Scene extends THREE.Scene {
    * @return {void}
    */
   createScene () {
-    // Create stages
-    this.stages.forEach((stage) => {
-      stage.addDOMComponent();
+    this.stages.forEach((s, i) => {
+      const stage = s.clone();
+      const obj = new THREE.CSS3DObject(this.pages[i]);
+      obj.position.z = 200; // move a little in front
+      stage.add(obj);
       this.add(stage);
     });
   }

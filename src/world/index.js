@@ -17,19 +17,21 @@ class World {
   /**
    * Constructor function
    * @param {domElement} container - Canvas container
-   * @param {object[]} stages      - Object with element and position
+   * @param {domElement[]} pages   - Dom elements to add to stages
    * @constructor
    */
-  constructor (container, stages) {
+  constructor (container, pages) {
     this.container = container;
-    this.stages = [];
+    this.stages = [
+      new Stage('home', new THREE.Vector3(0, 1500, 0)),
+      new Stage('cases', new THREE.Vector3(450, 500, -400)),
+      new Stage('about', new THREE.Vector3(0, -500, 0)),
+      new Stage('contact', new THREE.Vector3(0, -1500, 0))
+    ];
 
     this.css3d = true;
 
-    // CREATE STAGES
-    stages.forEach((stage) => {
-      this.stages.push(new Stage(stage.position, stage.el));
-    });
+    console.log(this.stages[0]);
 
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
@@ -50,7 +52,7 @@ class World {
     // SCENE (Add stages info/data here too!)
     this.scene = {
       webgl: new SceneWEBGL(this.renderer.webgl, this.camera, this.clock, this.stages),
-      css3d: this.css3d ? new SceneCSS3D(this.renderer.css3d, this.camera, this.stages) : null
+      css3d: this.css3d ? new SceneCSS3D(this.renderer.css3d, this.camera, this.stages, pages) : null
     };
   }
 
@@ -59,7 +61,7 @@ class World {
    * @return {void}
    */
   render () {
-    this.camera.update(this.clock.delta); // Maybe first
+    this.camera.update(this.clock.delta);
 
     this.scene.webgl.render();
     if (this.css3d) {
@@ -78,6 +80,12 @@ class World {
         break;
       case 'case':
         this.camera.moveTo(this.stages[1].position);
+        break;
+      case 'about':
+        this.camera.moveTo(this.stages[2].position);
+        break;
+      case 'contact':
+        this.camera.moveTo(this.stages[3].position);
         break;
     }
   }

@@ -17,6 +17,7 @@ class Camera extends THREE.PerspectiveCamera {
 
     super(fov, aspect, near, far);
 
+    this.distance = 1200;
     this.targetPoint = new THREE.Vector3(0, 0, 0);
 
     this.cameraShakeY = 0;
@@ -70,21 +71,21 @@ class Camera extends THREE.PerspectiveCamera {
 
   /**
    * Move To Position
-   * @param {Vector3} position - Vector3 Position
+   * @param {Vector3} vec3 - Vector3 Position
    * @return {void}
    */
-  moveTo (position) {
+  moveTo (vec3) {
     // Target - always center in Stage
     TweenLite.to(this.targetPoint, 2, {
-      x: position.x,
-      y: position.y,
-      z: position.z
+      x: vec3.x,
+      y: vec3.y,
+      z: vec3.z
     });
 
-    TweenLite.to(this.position, 8, {
-      x: 0,
-      y: position.y,
-      z: 1200, // Distance - should be const!,
+    TweenLite.to(this.position, 4, {
+      x: vec3.x,
+      y: vec3.y,
+      z: vec3.z + this.distance,
       onUpdate: () => {
         TweenLite.to(this.position, 0.8, {
           x: this.mouse.x - this.position.x * 0.05

@@ -1,23 +1,24 @@
+import clone from 'lodash.clone';
+
 class Stage extends THREE.Group {
   /**
    * Constructor function
+   * @param {String} name      - Stage name
    * @param {Vector3} position - Position in world
-   * @param {domElement} el - Dom element to place in stage
    * @constructor
    */
-  constructor (position, el) {
+  constructor (name, position) {
     super();
+    this.name = name;
     this.position.set(position.x, position.y, position.z);
-    this.component = el || false;
   }
 
   /**
-   * Vue Component function
+   * Clone Group
+   * @return {Stage}
    */
-  addDOMComponent () {
-    if (this.component) {
-      this.add(new THREE.CSS3DObject(this.component));
-    }
+  clone () {
+    return clone(this);
   }
 };
 

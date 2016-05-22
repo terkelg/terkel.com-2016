@@ -10,13 +10,16 @@ class Scene extends THREE.Scene {
    * @param {Renderer} Renderer - Renderer instance
    * @param {Camera}   Camera   - Camera instance
    * @param {Clock}    Clock    - Clock instance
+   * @param {Stages[]} Stages   - Stages
    */
-  constructor (Renderer, Camera, Clock) {
+  constructor (Renderer, Camera, Clock, Stages) {
     super();
 
     this.renderer = Renderer;
     this.camera = Camera;
     this.clock = Clock;
+    this.stages = Stages;
+    // console.log(this.stages);
     this.postProcessing = new PostProcessing(this, this.renderer, this.camera);
 
     this.createScene();
@@ -27,8 +30,13 @@ class Scene extends THREE.Scene {
    * @return {void}
    */
   createScene () {
-    this.cube = new BasicCube();
-    this.add(this.cube);
+    this.stages.forEach((stage) => {
+      this.add(stage.clone());
+    });
+
+    // this.add(this.stages[0].add(new BasicCube()));
+    this.stages[0].add(new BasicCube());
+    this.stages[1].add(new BasicCube());
 
     // Lights, Particles (Egen fil)
     var spotLight = new THREE.SpotLight(0xffffff, 1);

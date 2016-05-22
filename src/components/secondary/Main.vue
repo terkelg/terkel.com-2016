@@ -42,8 +42,8 @@
           <ul>
             <li><a href="#" v-link="'/'">Home</a></li>
             <li><a href="#" v-link="'cases'">Cases</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#" @click=homeClick>Contact</a></li>
+            <li><a href="#" v-link="'about'">About</a></li>
+            <li><a href="#" v-link="'contact'">Contact</a></li>
           </li>
         </div>
 

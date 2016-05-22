@@ -75,25 +75,17 @@ export default {
     document.body.appendChild(this.stats.dom);
 
     // CHECK ROUTE HERE IF LOADED WITH INITIAL!
-    // this.toStage();
 
     /* Make Stage a class?
      * - TODO: Better way to get elements on - Direct vue?
      */
-    var stages = [
-      {
-        position: new THREE.Vector3(0, 500, 0),
-        el: this.$root.$children[3].$els.home
-      },
-      {
-        position: new THREE.Vector3(0, -500, 0),
-        el: this.$root.$children[3].$els.cases
-      }
+    const pages = [
+      this.$root.$children[3].$els.home,
+      this.$root.$children[3].$els.cases,
+      this.$root.$children[3].$els.about,
+      this.$root.$children[3].$els.contact
     ];
-
-    console.log(this.$route);
-
-    this.world = new World(this.$els.container, stages);
+    this.world = new World(this.$els.container, pages);
 
     TweenLite.ticker.addEventListener('tick', () => {
       this.stats.begin();
@@ -101,16 +93,8 @@ export default {
       this.stats.end();
     });
 
-    /*
-    this.render = function render () {
-      // eslint-disable-next-line
-      requestAnimationFrame(this.render);
-      this.stats.begin();
-      this.world.render();
-      this.stats.end();
-    };
-    this.render();
-    */
+    // TODO: Create a first cool motion!
+    this.toStage();
 
     this.addEventListeners();
   },

@@ -3,13 +3,21 @@
     <div class="primary__inner">
 
       <section class="stage" v-el:home>
-        <p>I'm Terkel</p>
+        <p><h1>I'm Terkel</h1></p>
         <p><a href="#" @click=testClick>content here</a></p>
       </section>
 
       <section class="stage" v-el:cases>
         <p>This is Cases</p>
         <p>Nice right?</p>
+      </section>
+
+      <section class="stage" v-el:about>
+        <p>About me</p>
+      </section>
+
+      <section class="stage" v-el:contact>
+        <p>Contact me!</p>
       </section>
 
     </div>
