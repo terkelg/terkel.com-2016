@@ -16,6 +16,7 @@
   #borders {
     .border {
       position: fixed;
+      pointer-events: none;
       z-index: 20;
       background-color: $babyBlue;
       will-change: transform;
