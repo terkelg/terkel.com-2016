@@ -23,10 +23,19 @@
 }
 .stage {
   color: $blue;
-  .stage__inner {
-    transform: rotateZ(0);
-    backface-visibility: hidden;
-    background-color: red;
+  width: 100%;
+  max-width: 1200px;
+  transform: rotateZ(0);
+  backface-visibility: hidden;
+  background-color: pink;
+
+  .stage__inner {}
+}
+
+@media #{$break-landscape} {
+  .stage {
+    background-color: green;
+    width: 90%;
   }
 }
 
@@ -78,26 +87,6 @@
       padding: $border-size $border-size $border-size 0;
     }
   }
-}
-
-/*
- * Mobile
- * TODO: Test!
- */
- @media #{$break-medium} {
- .stage--cases {
-   .block {
-     .inner-block {
-       background-image: url(http://placekitten.com/200/400);
-       background-size: cover;
-     }
-     .responsive-element {
-       background-color: rgba($babyBlue, 0.50);
-       transition: background 0.4s ease;
-     }
-     .number {}
-   }
- }
 }
 </style>
 

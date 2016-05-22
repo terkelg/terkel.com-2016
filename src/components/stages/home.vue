@@ -4,18 +4,21 @@
 
       <h1>I'm Terkel</h1>
       <p>Interactive Designer & Developer</p>
-      <a href="#">content here</a>
 
     </div>
   </section>
 </template>
 
 <style lang="scss">
+@import '../../stylesheets/variables';
+
 .stage--home {
+  width: 150%;
   text-align: center;
   h1 {
-    font-size: 7em;
+    font-size: 6em;
     font-weight: 600;
+    white-space: nowrap
   }
   p {
     font-size: 1.2em;
@@ -25,4 +28,13 @@
     letter-spacing: 1px;
   }
 }
+@media #{$break-medium} {
+  .stage--home {
+    width: 100%;
+    h1 {
+      font-size: 7em;
+    }
+  }
+}
+@media #{$break-landscape} {}
 </style>

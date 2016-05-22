@@ -31,3 +31,4 @@ $break-small-only: "only screen and (max-width: #{$small})";
 $break-medium: "only screen and (min-width: #{$medium})";
 $break-medium-only: "only screen and (min-width: #{$medium}) and (max-width: #{$large})";
 $break-large: "only screen and (min-width: #{$large})";
+$break-landscape: "screen and (orientation:portrait)";

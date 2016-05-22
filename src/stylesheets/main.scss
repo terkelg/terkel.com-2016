@@ -80,7 +80,7 @@ a.active::after {
     display: inline-block;
     content: '';
     height: 0.5em;
-    bottom: 0.1em;
+    bottom: -0.1em;
     left: -0.15em;
     right: -0.15em;
     z-index: -1;
@@ -93,6 +93,18 @@ a.active::after {
   }
   .dark &::after { background-color: $blue; }
 }
+
+/*
+ * Headings
+ */
+ h1, h2, h3 {
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+ }
+
+h1 {}
+h2 { font-size: 2.8em; }
 
 
 
@@ -118,9 +130,4 @@ main#app {
   position: relative;
   width: 100%;
   min-height: 100%;
-}
-
-h1, h2 {
-  margin: 0;
-  padding: 0;
 }

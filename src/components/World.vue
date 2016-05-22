@@ -19,7 +19,7 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    padding: $border-size $border-size ($nav-mobile-height + $border-size) $border-size;
+    // padding: $border-size $border-size ($nav-mobile-height + $border-size) $border-size;
     transform: translateZ(0);
     .world__inner {
       position: relative;
@@ -33,8 +33,9 @@
    */
   @media #{$break-medium} {
     .world {
-      padding: $border-size $border-size $border-size ($nav-width + $border-size);
-      .world__inner {}
+      .world__inner {
+        padding-left: ($nav-width + $border-size) / 2;
+      }
     }
   }
 </style>
