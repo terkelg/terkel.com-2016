@@ -24,7 +24,7 @@ class World {
     this.container = container;
     this.stages = [
       new Stage('home', new THREE.Vector3(0, 1500, 0)),
-      new Stage('cases', new THREE.Vector3(450, 500, -400)),
+      new Stage('cases', new THREE.Vector3(0, 500, 0)),
       new Stage('about', new THREE.Vector3(0, -500, 0)),
       new Stage('contact', new THREE.Vector3(0, -1500, 0))
     ];

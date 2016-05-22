@@ -87,9 +87,11 @@ class Camera extends THREE.PerspectiveCamera {
       y: vec3.y,
       z: vec3.z + this.distance,
       onUpdate: () => {
+        /*
         TweenLite.to(this.position, 0.8, {
           x: this.mouse.x - this.position.x * 0.05
         });
+        */
       }
     });
   }
