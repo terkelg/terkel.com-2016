@@ -31,8 +31,8 @@
     margin-right: 5%;
     float: left;
     img {
-      float: left;
-      position: absolute;
+      // float: left;
+      // position: absolute;
       display: block;
       margin: 0 auto;
       width: 100%;

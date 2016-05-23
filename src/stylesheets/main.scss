@@ -33,7 +33,7 @@ a::after {
   display: inline-block;
   content: '';
   height: 0.0em;
-  bottom: 0.1em;
+  bottom: -0.08em;
   left: -0.15em;
   right: -0.15em;
   z-index: -1;
@@ -80,7 +80,7 @@ a.active::after {
     display: inline-block;
     content: '';
     height: 0.5em;
-    bottom: -0.1em;
+    bottom: -0.08em;
     left: -0.15em;
     right: -0.15em;
     z-index: -1;
