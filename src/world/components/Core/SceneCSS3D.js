@@ -28,7 +28,7 @@ class Scene extends THREE.Scene {
     this.stages.forEach((s, i) => {
       const stage = s.clone();
       const obj = new THREE.CSS3DObject(this.pages[i]);
-      obj.position.z = 0; // move a little in front
+      // obj.position.z = 0; // move a little in front
       stage.add(obj);
       this.add(stage);
     });

@@ -27,8 +27,6 @@
   max-width: 1200px;
   transform: rotateZ(0);
   backface-visibility: hidden;
-  background-color: pink;
-
   .stage__inner {}
 }
 

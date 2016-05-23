@@ -22,26 +22,25 @@
 
 .stage--about {
   .container {
-    width: 100%;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
   }
   .profile {
-    position: relative;
-    width: 20%;
-    margin-right: 5%;
-    float: left;
+    display: flex;
+    flex: 1.2;
+    align-self: stretch;
     img {
-      // float: left;
-      // position: absolute;
-      display: block;
-      margin: 0 auto;
-      width: 100%;
+      align-self:center;
       border-radius: 50%;
+      flex: 1;
+      width: 100%;
+      height: 100%;
     }
   }
   .content {
-    float: left;
-    width: 70%;
+    padding-left: 3%;
+    flex: 4;
   }
   h2 { display: inline-block; }
   p {
@@ -58,8 +57,7 @@
    .container {
      max-width: 1000px;
    }
-   img {
-   }
+   img {}
  }
 }
 </style>

@@ -67,7 +67,7 @@ export default {
   },
 
   created () {
-    this.onResize = debounce(this.onResize, 100);
+    this.onResize = debounce(this.onResize, 10);
   },
 
   ready () {

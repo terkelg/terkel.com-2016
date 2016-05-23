@@ -5,7 +5,7 @@
       <ul class="container">
 
         <li class="block">
-          <a class="inner-block">
+          <a class="inner-block" @click=open>
             <div class="responsive-element">
               <div class="content">
                 <h2>Radio24syv</h2>
@@ -206,5 +206,44 @@
     .content {}
   }
 }
-
 </style>
+
+<script>
+import {
+  secondaryOpen,
+  secondaryClose,
+  theme
+} from 'vuex/actions';
+import { getSize, getSecondary } from 'vuex/getters';
+
+export default {
+  vuex: {
+    actions: {
+      secondaryClose: secondaryClose,
+      secondaryOpen: secondaryOpen,
+      theme: theme
+    },
+    getters: {
+      size: getSize,
+      secondary: getSecondary
+    }
+  },
+
+  ready () {
+    console.log('Stage Cases ready!');
+  },
+
+  methods: {
+    open () {
+      console.log('Test click!');
+      if (this.secondary.status === 'open') {
+        this.secondaryClose();
+        this.theme('light');
+      } else {
+        this.theme('dark');
+        this.secondaryOpen();
+      }
+    }
+  }
+};
+</script>
