@@ -6,7 +6,6 @@
       <cases-stage v-el:cases></cases-stage>
       <about-stage v-el:about></about-stage>
       <contact-stage v-el:contact></contact-stage>
-      <!---->
 
     </div>
   </div>
