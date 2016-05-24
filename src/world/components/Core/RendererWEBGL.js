@@ -11,7 +11,7 @@ class RendererWEBGL extends THREE.WebGLRenderer {
    * @param {object} options Options
    * @constructor
    */
-  constructor (container, options = { antialias: true, alpha: true }) {
+  constructor (container, options = { antialias: true, alpha: false }) {
     super(options);
 
     this.setSize(container.offsetWidth, container.offsetHeight);

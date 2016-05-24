@@ -1,5 +1,5 @@
-import CubeGeometry from './CubeGeometry';
-import CubeMaterial from './CubeMaterial';
+import CubeGeometry from './cubeGeometry';
+import CubeMaterial from './cubeMaterial';
 
 /**
  * Cube class
