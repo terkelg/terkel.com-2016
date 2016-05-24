@@ -37,8 +37,19 @@ class Scene extends THREE.Scene {
     this.fog = new THREE.Fog(0xffffff, 1300, 3500);
 
     // Add lights
-    var light = new THREE.AmbientLight(0xffffff);
+    const light = new THREE.AmbientLight(0xffffff);
     this.add(light);
+
+    // Add logo to home stage
+    // Manager - should be passed in constructor
+    var manager = new THREE.LoadingManager();
+    var loader = new THREE.ObjectLoader(manager);
+    loader.load('static/logo-object.json', (logo) => {
+      console.log(logo);
+      logo.position.z = -1500;
+      logo.scale.multiplyScalar(500);
+      this.stages[0].add(logo);
+    });
 
     // Add boxes to World
     this.objectCloud = new ObjectCloud();
@@ -51,8 +62,7 @@ class Scene extends THREE.Scene {
    * @return {void}
    */
   render () {
-    this.objectCloud.update();
-    // this.cube.update(this.clock.time);
+    // this.objectCloud.update(this.clock.time);
 
     this.postProcessing.update();
   };

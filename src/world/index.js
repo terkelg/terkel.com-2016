@@ -36,8 +36,6 @@ class World {
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
 
-    // LAODER HERE?
-
     // CLOCK
     this.clock = new Clock();
 
@@ -90,6 +88,14 @@ class World {
         this.camera.moveTo(this.stages[3].position);
         break;
     }
+  }
+
+  startAnimate () {
+    const x = this.stages[0].position.x;
+    const y = this.stages[0].position.y;
+    const z = this.stages[0].position.z - 4000;
+
+    this.camera.start(new THREE.Vector3(x, y, z), this.stages[0].position);
   }
 
   /* ----------------- */
