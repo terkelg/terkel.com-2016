@@ -11,15 +11,15 @@ class RendererWEBGL extends THREE.WebGLRenderer {
    * @param {object} options Options
    * @constructor
    */
-  constructor (container, options = { antialias: true, alpha: false }) {
+  constructor (container, options = { antialias: true, alpha: true }) {
     super(options);
 
     this.setSize(container.offsetWidth, container.offsetHeight);
     this.setPixelRatio(window.devicePixelRatio);
     this.setClearColor(0xffffff, 1.0);
 
-    this.shadowMap.enable = true;
-    this.shadowMap.type = THREE.PCFSoftShadowMap;
+    // this.shadowMap.enable = true;
+    // this.shadowMap.type = THREE.PCFSoftShadowMap;
 
     this.domElement.style.position = 'absoulte';
     this.domElement.style.top = 0;

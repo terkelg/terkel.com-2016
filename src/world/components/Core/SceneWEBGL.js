@@ -1,4 +1,4 @@
-import BasicCube from '../Objects/BasicCube';
+import ObjectCloud from '../objects/objectCloud';
 import PostProcessing from '../../postProcessing/postProcessing';
 
 /**
@@ -33,10 +33,17 @@ class Scene extends THREE.Scene {
       this.add(stage.clone());
     });
 
-    this.add(this.stages[0].add(new BasicCube()));
-    this.add(this.stages[1].add(new BasicCube()));
-    this.add(this.stages[2].add(new BasicCube()));
-    this.add(this.stages[3].add(new BasicCube()));
+    // Fog
+    this.fog = new THREE.Fog(0xffffff, 1300, 3500);
+
+    // Add lights
+    var light = new THREE.AmbientLight(0xffffff);
+    this.add(light);
+
+    // Add boxes to World
+    this.objectCloud = new ObjectCloud();
+    this.objectCloud.z = -1000;
+    this.add(this.objectCloud);
   }
 
   /**
@@ -44,9 +51,7 @@ class Scene extends THREE.Scene {
    * @return {void}
    */
   render () {
-    // this.cube.rotation.x += 0.01;
-    // this.cube.rotation.y += 0.02;
-
+    this.objectCloud.update();
     // this.cube.update(this.clock.time);
 
     this.postProcessing.update();

@@ -23,10 +23,10 @@ class World {
   constructor (container, pages) {
     this.container = container;
     this.stages = [
-      new Stage('home', new THREE.Vector3(0, 1500, 0)),
+      new Stage('home', new THREE.Vector3(0, 2000, 0)),
       new Stage('cases', new THREE.Vector3(0, 500, 0)),
       new Stage('about', new THREE.Vector3(0, -500, 0)),
-      new Stage('contact', new THREE.Vector3(0, -1500, 0))
+      new Stage('contact', new THREE.Vector3(0, -2000, 0))
     ];
 
     this.css3d = true;
@@ -35,6 +35,8 @@ class World {
 
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
+
+    // LAODER HERE?
 
     // CLOCK
     this.clock = new Clock();
@@ -47,7 +49,7 @@ class World {
 
     // CAMERA
     this.camera = new Camera(width, height);
-    this.camera.position.z = 1200;
+    this.camera.position.z = 1000;
 
     // SCENE (Add stages info/data here too!)
     this.scene = {

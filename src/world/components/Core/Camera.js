@@ -17,7 +17,7 @@ class Camera extends THREE.PerspectiveCamera {
 
     super(fov, aspect, near, far);
 
-    this.distance = 1200;
+    this.distance = 1000;
     this.targetPoint = new THREE.Vector3(0, 0, 0);
 
     this.cameraShakeY = 0;
@@ -82,7 +82,7 @@ class Camera extends THREE.PerspectiveCamera {
       z: vec3.z
     });
 
-    TweenLite.to(this.position, 4, {
+    TweenLite.to(this.position, 4.5, {
       x: vec3.x,
       y: vec3.y,
       z: vec3.z + this.distance
@@ -92,7 +92,7 @@ class Camera extends THREE.PerspectiveCamera {
           x: this.mouse.x - this.position.x * 0.05
         });
       } */
-    });
+    }, 0.2);
   }
 };
 
