@@ -1,4 +1,4 @@
-// import BasicCube from '../Objects/BasicCube';
+import BasicCube from '../Objects/BasicCube';
 import PostProcessing from '../../postProcessing/postProcessing';
 
 /**
@@ -19,7 +19,6 @@ class Scene extends THREE.Scene {
     this.camera = Camera;
     this.clock = Clock;
     this.stages = Stages;
-    // console.log(this.stages);
     this.postProcessing = new PostProcessing(this, this.renderer, this.camera);
 
     this.createScene();
@@ -31,16 +30,13 @@ class Scene extends THREE.Scene {
    */
   createScene () {
     this.stages.forEach((stage) => {
-      // this.add(stage.clone());
+      this.add(stage.clone());
     });
 
-    const geometry = new THREE.BoxGeometry(80, 80, 80);
-    const material = new THREE.MeshBasicMaterial({color: 0x1E1E20});
-    const cube = new THREE.Mesh(geometry, material);
-
-    // this.add(this.stages[0].add(new BasicCube()));
-    this.add(cube);
-    // this.stages[1].add(cube);
+    this.add(this.stages[0].add(new BasicCube()));
+    this.add(this.stages[1].add(new BasicCube()));
+    this.add(this.stages[2].add(new BasicCube()));
+    this.add(this.stages[3].add(new BasicCube()));
   }
 
   /**
