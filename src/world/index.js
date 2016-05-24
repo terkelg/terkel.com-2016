@@ -1,14 +1,14 @@
-import RendererWEBGL from './components/Core/RendererWEBGL';
-import RendererCSS3D from './components/Core/RendererCSS3D';
+import RendererWEBGL from './components/core/rendererWEBGL';
+import RendererCSS3D from './components/core/rendererCSS3D';
 
-import SceneWEBGL from './components/Core/SceneWEBGL';
-import SceneCSS3D from './components/Core/SceneCSS3D';
+import SceneWEBGL from './components/core/sceneWEBGL';
+import SceneCSS3D from './components/core/sceneCSS3D';
 
-import Stage from './components/Core/Stage';
+import Stage from './components/core/stage';
 
-import Clock from './components/Helpers/Clock';
-import Camera from './components/Core/Camera';
-import Emitter from './components/Helpers/Emitter';
+import Clock from './components/helpers/clock';
+import Camera from './components/core/camera';
+import Emitter from './components/helpers/emitter';
 
 /*
  * World class

@@ -1,4 +1,4 @@
-import Emitter from '../Helpers/Emitter';
+import Emitter from '../helpers/emitter';
 /*
  * Camera class
  */

@@ -1,5 +1,5 @@
-import BasicCubeGeometry from './BasicCubeGeometry';
-import BasicCubeMaterial from './BasicCubeMaterial';
+import BasicCubeGeometry from './basicCubeGeometry';
+import BasicCubeMaterial from './basicCubeMaterial';
 
 /**
  * Cube class

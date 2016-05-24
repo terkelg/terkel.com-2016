@@ -1,4 +1,4 @@
-import Emitter from '../Helpers/Emitter';
+import Emitter from '../helpers/emitter';
 import '../../libs/CSS3DRenderer';
 /**
  * Renderer CSS3D class

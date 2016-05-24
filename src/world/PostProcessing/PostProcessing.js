@@ -1,4 +1,4 @@
-import EffectComposer from './EffectComposer';
+import EffectComposer from './effectComposer';
 import postProcessingConfig from '../config/postProcessing';
 
 /**

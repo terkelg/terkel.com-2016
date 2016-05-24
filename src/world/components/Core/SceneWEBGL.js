@@ -1,5 +1,5 @@
-import BasicCube from '../Objects/BasicCube';
-import PostProcessing from '../../PostProcessing/PostProcessing';
+// import BasicCube from '../Objects/BasicCube';
+import PostProcessing from '../../postProcessing/postProcessing';
 
 /**
  * Scene class
@@ -31,22 +31,16 @@ class Scene extends THREE.Scene {
    */
   createScene () {
     this.stages.forEach((stage) => {
-      this.add(stage.clone());
+      // this.add(stage.clone());
     });
 
+    const geometry = new THREE.BoxGeometry(80, 80, 80);
+    const material = new THREE.MeshBasicMaterial({color: 0x1E1E20});
+    const cube = new THREE.Mesh(geometry, material);
+
     // this.add(this.stages[0].add(new BasicCube()));
-    this.stages[0].add(new BasicCube());
-    this.stages[1].add(new BasicCube());
-
-    // Lights, Particles (Egen fil)
-    var spotLight = new THREE.SpotLight(0xffffff, 1);
-    spotLight.position.set(20, 20, 300);
-    spotLight.castShadow = true;
-    spotLight.distance = 2500;
-    this.add(spotLight);
-
-    var ambient = new THREE.AmbientLight(0xffffff, 0.4);
-    this.add(ambient);
+    this.add(cube);
+    // this.stages[1].add(cube);
   }
 
   /**
