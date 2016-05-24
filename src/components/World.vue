@@ -96,7 +96,7 @@ export default {
 
     // TODO: Create a first cool motion!
     // if main route
-    this.world.startAnimate(this.$route.name);
+    this.world.startAnimate(this.$route.index);
 
     this.addEventListeners();
   },
@@ -125,7 +125,7 @@ export default {
     },
 
     toStage () {
-      this.world.moveToStage(this.$route.name);
+      this.world.moveToStage(this.$route.index);
       // console.log(this.world.toStage());
     }
   }

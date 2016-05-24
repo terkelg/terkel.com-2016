@@ -1,6 +1,7 @@
 <template>
   <div>
     Load case '{{ $route.params }}' here ({{$route.query}})'
+    Load case based on query!
   </div>
 </template>
 
@@ -13,7 +14,10 @@ export default {
   },
   methods: {},
   route: {
-    activate: function () {},
+    activate: function () {
+      console.log('You loaded me!');
+      // if ()
+    },
     canDeactivate: function (transition) {
       transition.next();
     }

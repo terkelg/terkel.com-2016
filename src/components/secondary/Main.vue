@@ -47,7 +47,7 @@
           </li>
         </div>
 
-        <div slot="section">01</div>
+        <div slot="section">0{{$route.index + 1}}</div>
       </component>
 
       <div class="content">
@@ -70,7 +70,6 @@ import desktop from './Desktop';
 import mobile from './Mobile';
 
 export default {
-
   vuex: {
     actions: {
       secondaryClose: secondaryClose,

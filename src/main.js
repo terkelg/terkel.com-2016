@@ -27,26 +27,32 @@ let router = new VueRouter({
 router.map({
   '/': {
     name: 'home',
+    index: 0,
     component: {}
   },
   '/cases': {
-    name: 'case',
+    name: 'cases',
+    index: 1,
     component: {}
   },
   '/cases/:case': {
-    name: 'cases',
+    name: 'case',
+    index: 1,
     component: Case
   },
   '/about': {
     name: 'about',
+    index: 2,
     component: About
   },
   '/about/cv': {
     name: 'cv',
+    index: 2,
     component: {}
   },
   'contact': {
     name: 'contact',
+    index: 3,
     component: {}
   }
 });

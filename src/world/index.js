@@ -71,50 +71,23 @@ class World {
 
   /**
    * Move camera to stage
-   * @param {string} stage - Stage name
+   * @param {integer} stage - Stage index
    * @return {void}
    */
-  moveToStage (stage) {
-    const index = this.stageIndex(stage);
+  moveToStage (index) {
     this.camera.moveTo(this.stages[index].position);
   }
 
   /**
    * Start animation when entering route
-   * @param {string} stage - Naem of start stage
+   * @param {integer} stage - Stage index
    * @return {void}
    */
-  startAnimate (stage) {
-    const index = this.stageIndex(stage);
+  startAnimate (index) {
     const x = this.stages[index].position.x;
     const y = this.stages[index].position.y;
     const z = this.stages[index].position.z - 4000;
     this.camera.start(new THREE.Vector3(x, y, z), this.stages[index].position);
-  }
-
-  /**
-   * Name to Stage index
-   * @param {string} stage - Name of stage
-   * @return {integer} - Index
-   */
-  stageIndex (stage) {
-    let index;
-    switch (stage) {
-      case 'home':
-        index = 0;
-        break;
-      case 'case':
-        index = 1;
-        break;
-      case 'about':
-        index = 2;
-        break;
-      case 'contact':
-        index = 3;
-        break;
-    }
-
-    return index;
   }
 
   /* ----------------- */
