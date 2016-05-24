@@ -20,6 +20,7 @@ class Scene extends THREE.Scene {
     this.clock = Clock;
     this.stages = Stages;
     this.postProcessing = new PostProcessing(this, this.renderer, this.camera);
+    this.manager = new THREE.LoadingManager();
 
     this.createScene();
   }
@@ -41,11 +42,8 @@ class Scene extends THREE.Scene {
     this.add(light);
 
     // Add logo to home stage
-    // Manager - should be passed in constructor
-    var manager = new THREE.LoadingManager();
-    var loader = new THREE.ObjectLoader(manager);
-    loader.load('static/logo-object.json', (logo) => {
-      console.log(logo);
+    var loader = new THREE.ObjectLoader(this.manager);
+    loader.load('/static/logo-object.json', (logo) => {
       logo.position.z = -1500;
       logo.scale.multiplyScalar(500);
       this.stages[0].add(logo);

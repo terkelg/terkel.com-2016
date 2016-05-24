@@ -96,12 +96,7 @@ export default {
 
     // TODO: Create a first cool motion!
     // if main route
-    if (this.$route.name === 'home') {
-      console.log('start');
-      this.world.startAnimate();
-    } else {
-      this.toStage();
-    }
+    this.world.startAnimate(this.$route.name);
 
     this.addEventListeners();
   },
