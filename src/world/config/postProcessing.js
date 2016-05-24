@@ -13,7 +13,7 @@ export default {
   passes: [
     {
       name: 'multiPassBloomPass',
-      active: true,
+      active: false,
       constructor: new MultiPassBloomPass({
         blurAmount: 0.5,
         applyZoomBlur: true,
@@ -35,7 +35,7 @@ export default {
     },
     {
       name: 'horizontalTiltShiftPass',
-      active: false,
+      active: true,
       constructor: new HorizontalTiltShiftPass({
         h: 1 / 256,
         r: 0.5
@@ -43,7 +43,7 @@ export default {
     },
     {
       name: 'noisePass',
-      active: false,
+      active: true,
       constructor: new NoisePass({
         amount: 0.02,
         speed: 0.1
@@ -51,7 +51,7 @@ export default {
     },
     {
       name: 'fxaaPass',
-      active: false,
+      active: true,
       constructor: new FXAAPass()
     }
   ]
