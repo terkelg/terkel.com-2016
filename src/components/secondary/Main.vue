@@ -263,7 +263,7 @@ export default {
   .btn.disabled {
     fill: rgba($white, 0.2);
     cursor: default;
-    &:hover { }
+    transition: opacity .3s ease;
   }
 }
 </style>
