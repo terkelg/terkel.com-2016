@@ -1,8 +1,17 @@
 <template>
   <div>
-    <component :is="$route.params.case"></component>
+    <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
+
+<style scoped>
+.fade-transition {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave {
+  opacity: 0;
+}
+</style>
 
 <script>
 import {
