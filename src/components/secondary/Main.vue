@@ -50,9 +50,10 @@
         <div slot="section">0{{$route.index + 1}}</div>
       </component>
 
-      <div class="content">
-        {{ getIndex() + 1 }} of {{ cases.length }}
-        <router-view></router-view>
+      <div class="content" v-el:content>
+        <div class="content__inner">
+            <router-view></router-view>
+        </div>
       </div>
 
     </div>
@@ -106,13 +107,18 @@ export default {
 
   methods: {
     close () {
+      // TODO: Fade out content
+      let backTo;
       if (this.$route.name === 'case') {
-        this.$router.go({name: 'cases'});
+        backTo = 'cases';
       } else if (this.$route.name === 'cv') {
-        this.$router.go({name: 'about'});
+        backTo = 'about';
       } else {
-        this.$router.go({name: 'home'});
+        backTo = 'home';
       }
+
+      // Detect when router is about to change
+      this.$router.go({name: backTo});
     },
 
     goNext () {
@@ -161,17 +167,6 @@ export default {
 <style lang="scss" scoped>
 @import '../../stylesheets/variables';
 
-/* Test scroll content
- * TODO: Styling split/scrollbar. Maybe detect browser
- * Brug evt custom scrollbar plugin for perfekt styling.
- */
-.content {
-  overflow-y: scroll;
-  height: 100%;
-  margin-left: 1px; /* Find a smart way to do this. Maybe just hide the border, and use the scrollbar as that */
-  padding: 50px;
-}
-
 /*
  * Shared
  */
@@ -203,6 +198,7 @@ export default {
     background-color: $white;
     padding-top: $border-size;
     padding-bottom: $border-size;
+    padding-left: $border-size;
   }
 }
 .secondary--desktop.open {
@@ -264,6 +260,49 @@ export default {
     fill: rgba($white, 0.2);
     cursor: default;
     transition: opacity .3s ease;
+  }
+}
+
+
+/*
+ * Secondary Content - Allow scroll Y
+ */
+.content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  // background-color: green;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.content__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px;
+}
+
+@media #{$break-medium} {
+  .content__inner {
+    padding: 120px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $blue;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba($white, 0.1);
+}
+
+@media #{$break-medium} {
+  ::-webkit-scrollbar {
+    width: 1px;
   }
 }
 </style>

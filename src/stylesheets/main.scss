@@ -16,11 +16,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main#app {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
 
 /*
  * Default link
  */
-a{
+a {
   position: relative;
   color: $blue;
   text-decoration: none;
@@ -97,37 +102,23 @@ a.active::after {
 /*
  * Headings
  */
- h1, h2, h3 {
+ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   margin: 0;
   padding: 0;
  }
-
-h1 {}
 h2 { font-size: 2.8em; }
-
-
-
-// TODO: Move to right component.
-// If mobile, bigger scrollbar!
-::-webkit-scrollbar {
-  width: 1px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $blue;
-}
-
-::-webkit-scrollbar-track {
-  background: #242424;
-}
 
 ::selection {
   background: $yellow;
 }
 
-main#app {
-  position: relative;
-  width: 100%;
-  min-height: 100%;
+/*
+ * Transitions
+ */
+.fade-transition {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave {
+  opacity: 0;
 }

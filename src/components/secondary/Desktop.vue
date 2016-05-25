@@ -94,7 +94,7 @@ export default {
   float: right;
   user-select: none;
   border-right: 1px solid $babyBlue;
-  border-left: 1px solid rgba($white, 0.1);
+  // border-left: 1px solid rgba($white, 0.1); // Uses scrollbar as border instead
   transform: translateZ(0);
   backface-visibility: hidden;
   .menu__vertical {
