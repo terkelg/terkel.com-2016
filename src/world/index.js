@@ -90,12 +90,23 @@ class World {
 
   /* ----------------- */
 
+  /**
+   * Resize
+   * @param {integer} width  - Width
+   * @param {integer} height - Height
+   * @return {void}
+   */
   resize (width, height) {
     Emitter.emit('resize', width, height);
   }
 
+  /**
+   * Mouse Move
+   * @param {integer} x  - Position X
+   * @param {integer} y - Position Y
+   * @return {void}
+   */
   mouseMove (x, y) {
-    // this.camera.mouse(x, y);
     Emitter.emit('mousemove', x, y);
   }
 };
