@@ -4,74 +4,14 @@
 
       <ul class="container">
 
-        <li class="block">
-          <a class="inner-block" @click=open>
+        <li class="block" v-for="case in cases">
+          <a v-link="{name: 'case', params: {case: case.id}}" class="inner-block" v-bind:style="{ backgroundImage: 'url(' + case.thumbnail + ')' }">
             <div class="responsive-element">
               <div class="content">
-                <h2>Radio24syv</h2>
+                <h2>{{ case.title }}</h2>
                 <span class="link line">view case</span>
               </div>
-              <span class="number">01</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="block">
-          <a class="inner-block">
-            <div class="responsive-element">
-              <div class="content">
-                <h2>Terrible Christmas</h2>
-                <span class="link line">view case</span>
-              </div>
-              <span class="number">01</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="block">
-          <a class="inner-block">
-            <div class="responsive-element">
-              <div class="content">
-                <h2>Radio24syv</h2>
-                <span class="link line">view case</span>
-              </div>
-              <span class="number">01</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="block">
-          <a class="inner-block">
-            <div class="responsive-element">
-              <div class="content">
-                <h2>Radio24syv</h2>
-                <span class="link line">view case</span>
-              </div>
-              <span class="number">01</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="block">
-          <a class="inner-block">
-            <div class="responsive-element">
-              <div class="content">
-                <h2>Radio24syv</h2>
-                <span class="link line">view case</span>
-              </div>
-              <span class="number">01</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="block">
-          <a class="inner-block">
-            <div class="responsive-element">
-              <div class="content">
-                <h2>Radio24syv</h2>
-                <span class="link line">view case</span>
-              </div>
-              <span class="number">01</span>
+              <span class="number">{{ $index + 1 }}</span>
             </div>
           </a>
         </li>
@@ -110,7 +50,7 @@
   	width: 100%;
     &::after { display: none; }
 
-    background-image: url(http://placekitten.com/200/400);
+    // background-image: url(http://placekitten.com/200/400);
     background-size: cover;
 
   	/* padding bottom of desired height / desired width */
@@ -209,41 +149,18 @@
 </style>
 
 <script>
-import {
-  secondaryOpen,
-  secondaryClose,
-  theme
-} from 'vuex/actions';
-import { getSize, getSecondary } from 'vuex/getters';
+import { getCases } from 'vuex/getters';
 
 export default {
   vuex: {
-    actions: {
-      secondaryClose: secondaryClose,
-      secondaryOpen: secondaryOpen,
-      theme: theme
-    },
+    actions: {},
     getters: {
-      size: getSize,
-      secondary: getSecondary
+      cases: getCases
     }
   },
 
   ready () {
     console.log('Stage Cases ready!');
-  },
-
-  methods: {
-    open () {
-      console.log('Test click!');
-      if (this.secondary.status === 'open') {
-        this.secondaryClose();
-        this.theme('light');
-      } else {
-        this.theme('dark');
-        this.secondaryOpen();
-      }
-    }
   }
 };
 </script>

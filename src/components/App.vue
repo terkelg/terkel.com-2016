@@ -1,12 +1,9 @@
 <template>
   <main v:el="wrapper" v-bind:class="theme">
-    <!-- Bottom -->
     <border></border>
-
     <world></world>
     <secondary></secondary>
-    <primary></primary> <!-- Måske ikke nødvendig, kan laves i kode -->
-
+    <primary></primary>
   </main>
 </template>
 
@@ -16,9 +13,17 @@ import store from 'vuex/store';
 import {
   windowResize,
   windowVisible,
-  deviceDetect
+  deviceDetect,
+  secondaryOpen,
+  secondaryClose
 } from 'vuex/actions';
-import { getDevice, getTheme } from 'vuex/getters';
+
+import {
+  getDevice,
+  getRoute,
+  getTheme,
+  getSecondary
+} from 'vuex/getters';
 
 import debounce from 'lodash.debounce';
 
@@ -35,12 +40,20 @@ export default {
     actions: {
       resize: windowResize,
       visible: windowVisible,
-      device: deviceDetect
+      device: deviceDetect,
+      secondaryClose: secondaryClose,
+      secondaryOpen: secondaryOpen
     },
     getters: {
       getDevice: getDevice,
-      theme: getTheme
+      route: getRoute,
+      theme: getTheme,
+      secondary: getSecondary
     }
+  },
+
+  watch: {
+    'route.path': 'routeChange'
   },
 
   created () {
@@ -93,6 +106,15 @@ export default {
 
     dispatchVisibilityChange () {
       this.visible();
+    },
+
+    routeChange (e) {
+      if (this.$route.secondary) {
+        this.secondaryOpen();
+        console.log('Open', e, this.$route.name);
+      } else {
+        this.secondaryClose();
+      }
     }
   },
 

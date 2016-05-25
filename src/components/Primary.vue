@@ -90,8 +90,7 @@
 <script>
 import {
   secondaryOpen,
-  secondaryClose,
-  theme
+  secondaryClose
 } from 'vuex/actions';
 import { getSize, getSecondary } from 'vuex/getters';
 
@@ -104,8 +103,7 @@ export default {
   vuex: {
     actions: {
       secondaryClose: secondaryClose,
-      secondaryOpen: secondaryOpen,
-      theme: theme
+      secondaryOpen: secondaryOpen
     },
     getters: {
       size: getSize,
@@ -123,18 +121,7 @@ export default {
     };
   },
 
-  methods: {
-    testClick () {
-      console.log('Test click!');
-      if (this.secondary.status === 'open') {
-        this.secondaryClose();
-        this.theme('light');
-      } else {
-        this.theme('dark');
-        this.secondaryOpen();
-      }
-    }
-  },
+  methods: {},
 
   components: {
     'home-stage': HomeStage,

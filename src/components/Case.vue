@@ -7,8 +7,7 @@
 <script>
 import {
   secondaryOpen,
-  secondaryClose,
-  theme
+  secondaryClose
 } from 'vuex/actions';
 
 import Radio24syv from './cases/radio24syv';
@@ -18,17 +17,13 @@ export default {
   vuex: {
     actions: {
       secondaryClose: secondaryClose,
-      secondaryOpen: secondaryOpen,
-      theme: theme
+      secondaryOpen: secondaryOpen
     }
   },
 
   ready () {
-    console.log(this.$route.params);
-    console.log(this.$route.query);
-
-    this.theme('dark');
-    this.secondaryOpen();
+    // this.theme('dark');
+    // this.secondaryOpen();
   },
 
   methods: {
@@ -45,7 +40,6 @@ export default {
   route: {
     activate: function () {
       console.log('You loaded me!');
-      // if ()
     },
     canDeactivate: function (transition) {
       transition.next();

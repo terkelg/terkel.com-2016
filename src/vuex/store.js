@@ -5,6 +5,9 @@ Vue.use(Vuex);
 // Create an object to hold the initial state when
 // the app starts up
 const state = {
+  theme: 'dark',
+  pageVisible: true,
+  playSound: true,
   device: {
     browser: '',
     type: ''
@@ -17,9 +20,38 @@ const state = {
   secondary: {
     status: 'closed'
   },
-  theme: 'light',
-  pageVisible: true,
-  playSound: true
+  cases: [
+    {
+      id: 'radio24syv',
+      title: 'Radio24syv',
+      thumbnail: 'http://placekitten.com/200/400'
+    },
+    {
+      id: 'skagen',
+      title: 'Sakgen Museeum',
+      thumbnail: 'http://placekitten.com/200/400'
+    },
+    {
+      id: 'radio24syv',
+      title: 'Radio24syv',
+      thumbnail: 'http://placekitten.com/200/400'
+    },
+    {
+      id: 'radio24syv',
+      title: 'Radio24syv',
+      thumbnail: 'http://placekitten.com/200/400'
+    },
+    {
+      id: 'radio24syv',
+      title: 'Radio24syv',
+      thumbnail: 'http://placekitten.com/200/400'
+    },
+    {
+      id: 'radio24syv',
+      title: 'Radio24syv',
+      thumbnail: 'http://placekitten.com/200/400'
+    }
+  ]
 };
 
 const mutations = {

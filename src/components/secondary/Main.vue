@@ -41,7 +41,7 @@
         <div slot="menu">
           <ul>
             <li><a v-link="{ path: '/', exact: true }">Home</a></li>
-            <li><a v-link="'/cases'">Cases</a></li>
+            <li><a v-link="{ name: 'cases' }">Cases</a></li>
             <li><a v-link="'/about'">About</a></li>
             <li><a v-link="'/contact'">Contact</a></li>
           </li>
@@ -62,8 +62,7 @@
 <script>
 import {
   secondaryOpen,
-  secondaryClose,
-  theme
+  secondaryClose
 } from 'vuex/actions';
 import { getSize, getSecondary } from 'vuex/getters';
 
@@ -74,8 +73,7 @@ export default {
   vuex: {
     actions: {
       secondaryClose: secondaryClose,
-      secondaryOpen: secondaryOpen,
-      theme: theme
+      secondaryOpen: secondaryOpen
     },
     getters: {
       size: getSize,
@@ -99,7 +97,13 @@ export default {
 
   methods: {
     close () {
-      this.toggleSecondary();
+      if (this.$route.name === 'case') {
+        this.$router.go({name: 'cases'});
+      } else if (this.$route.name === 'cv') {
+        this.$router.go({name: 'about'});
+      } else {
+        this.$router.go({name: 'home'});
+      }
     },
 
     next () {
@@ -108,16 +112,6 @@ export default {
 
     previous () {
       console.log('Previous');
-    },
-
-    toggleSecondary () {
-      if (this.secondary.status === 'open') {
-        this.secondaryClose();
-        this.theme('light');
-      } else {
-        this.theme('dark');
-        this.secondaryOpen();
-      }
     },
 
     getIndex () {

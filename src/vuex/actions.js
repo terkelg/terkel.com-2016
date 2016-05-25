@@ -45,12 +45,10 @@ export const deviceDetect = function ({ dispatch, state }) {
 
 export const secondaryOpen = function ({ dispatch, state }) {
   dispatch('SECONDARY_OPEN');
+  dispatch('THEME', 'dark');
 };
 
 export const secondaryClose = function ({ dispatch, state }) {
   dispatch('SECONDARY_CLOSE');
-};
-
-export const theme = function ({ dispatch, state }, theme) {
-  dispatch('THEME', theme);
+  dispatch('THEME', 'light');
 };

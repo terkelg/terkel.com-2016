@@ -7,13 +7,13 @@
   - Easter Eggs og Detaljer
   - Acceleorameter on mobile
 */
+import { sync } from 'vuex-router-sync';
+import store from 'vuex/store';
 import VueRouter from 'vue-router';
 
 import App from 'components/App';
 import Case from 'components/Case';
 import About from 'components/About';
-
-import store from 'vuex/store';
 
 // eslint-disable-next-line
 import gsap from 'gsap';
@@ -25,6 +25,8 @@ let router = new VueRouter({
   history: true,
   pushstate: true
 });
+
+sync(store, router);
 
 router.map({
   '/': {
@@ -40,6 +42,7 @@ router.map({
   '/cases/:case': {
     name: 'case',
     index: 1,
+    secondary: true,
     component: Case
   },
   '/about': {
@@ -50,6 +53,7 @@ router.map({
   '/about/cv': {
     name: 'cv',
     index: 2,
+    secondary: true,
     component: {}
   },
   'contact': {
@@ -65,20 +69,5 @@ router.redirect({
   '*': '/'
 });
 */
-
-router.beforeEach(function (transition) {
-  if (transition.to.path === '/forbidden') {
-    // TODO: Hvis til en secondary ting, open menu og gå til dark mode
-    // when done, do transition
-    // hvis du går væk fra secondary, luk!
-    store.dispatch('SECONDARY_OPEN');
-
-    transition.abort();
-  } else {
-    // console.log(transition.to.path);
-    // set state!
-    transition.next();
-  }
-});
 
 router.start(App, '#app');
