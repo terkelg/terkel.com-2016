@@ -13,6 +13,8 @@ import App from 'components/App';
 import Case from 'components/Case';
 import About from 'components/About';
 
+import store from 'vuex/store';
+
 // eslint-disable-next-line
 import gsap from 'gsap';
 
@@ -68,6 +70,9 @@ router.beforeEach(function (transition) {
   if (transition.to.path === '/forbidden') {
     // TODO: Hvis til en secondary ting, open menu og gå til dark mode
     // when done, do transition
+    // hvis du går væk fra secondary, luk!
+    store.dispatch('SECONDARY_OPEN');
+
     transition.abort();
   } else {
     // console.log(transition.to.path);

@@ -75,8 +75,6 @@ export default {
     this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild(this.stats.dom);
 
-    // CHECK ROUTE HERE IF LOADED WITH INITIAL!
-
     /* Make Stage a class?
      * - TODO: Better way to get elements on - Direct vue?
      */
@@ -94,9 +92,7 @@ export default {
       this.stats.end();
     });
 
-    // TODO: Create a first cool motion!
-    // if main route
-    this.world.startAnimate(this.$route.index);
+    this.world.startAnimate(this.$route.index || 0);
 
     this.addEventListeners();
   },

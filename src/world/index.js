@@ -31,8 +31,6 @@ class World {
 
     this.css3d = true;
 
-    console.log(this.stages[0]);
-
     const width = this.container.offsetWidth;
     const height = this.container.offsetHeight;
 

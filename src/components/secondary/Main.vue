@@ -4,7 +4,7 @@
 
       <component :is="size.layout">
         <div slot="navigation">
-          <a class="btn btn--close" @click=homeClick>
+          <a class="btn btn--close" @click=close>
             <svg version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 26.3 26.3;"
@@ -15,7 +15,7 @@
             </svg>
           </a>
 
-          <a class="btn btn--next">
+          <a class="btn btn--next" @click=next>
             <svg version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30.7 24;"
@@ -26,7 +26,7 @@
             </svg>
           </a>
 
-          <a class="btn btn--prev">
+          <a class="btn btn--prev" @click=previous>
             <svg version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30.7 24;"
@@ -51,6 +51,7 @@
       </component>
 
       <div class="content">
+        {{ getIndex() + 1 }} of {{ cases.length }}
         <router-view></router-view>
       </div>
 
@@ -82,19 +83,34 @@ export default {
     }
   },
 
+  // DUMMY, SKAL KOMME FRA STATE!
+  data: () => {
+    return {
+      cases: [
+        {id: 'radio24syv'},
+        {id: 'skagen'}
+      ]
+    };
+  },
+
   ready () {
     console.log(this.secondary.status);
   },
 
   methods: {
-    homeClick (event) {
+    close () {
       this.toggleSecondary();
     },
 
+    next () {
+      console.log('Next');
+    },
+
+    previous () {
+      console.log('Previous');
+    },
+
     toggleSecondary () {
-      /*
-       * Behøver intet callback, bare et delay på animationer
-       */
       if (this.secondary.status === 'open') {
         this.secondaryClose();
         this.theme('light');
@@ -102,6 +118,10 @@ export default {
         this.theme('dark');
         this.secondaryOpen();
       }
+    },
+
+    getIndex () {
+      return this.cases.findIndex(x => x.id === this.$route.params.case);
     }
   },
 
