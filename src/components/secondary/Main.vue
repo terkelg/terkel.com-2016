@@ -15,7 +15,7 @@
             </svg>
           </a>
 
-          <a class="btn btn--next" @click=next>
+          <a class="btn btn--next" v-bind:class="next" @click=goNext v-show="this.$route.name === 'case'">
             <svg version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30.7 24;"
@@ -26,7 +26,7 @@
             </svg>
           </a>
 
-          <a class="btn btn--prev" @click=previous>
+          <a class="btn btn--prev" v-bind:class="prev" @click=goPrevious v-show="this.$route.name === 'case'">
             <svg version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30.7 24;"
@@ -64,7 +64,13 @@ import {
   secondaryOpen,
   secondaryClose
 } from 'vuex/actions';
-import { getSize, getSecondary } from 'vuex/getters';
+
+import {
+  getSize,
+  getSecondary,
+  getCases,
+  getRoute
+} from 'vuex/getters';
 
 import desktop from './Desktop';
 import mobile from './Mobile';
@@ -77,22 +83,25 @@ export default {
     },
     getters: {
       size: getSize,
-      secondary: getSecondary
+      secondary: getSecondary,
+      cases: getCases,
+      route: getRoute
     }
   },
 
-  // DUMMY, SKAL KOMME FRA STATE!
+  watch: {
+    'route.path': 'setButtonState'
+  },
+
   data: () => {
     return {
-      cases: [
-        {id: 'radio24syv'},
-        {id: 'skagen'}
-      ]
+      next: 'disabled',
+      prev: 'disabled'
     };
   },
 
   ready () {
-    console.log(this.secondary.status);
+    // this.setButtonState();
   },
 
   methods: {
@@ -106,12 +115,35 @@ export default {
       }
     },
 
-    next () {
-      console.log('Next');
+    goNext () {
+      if (this.next !== 'disabled') {
+        this.$router.go(this.cases[this.getIndex() + 1].id);
+        this.setButtonState();
+      }
     },
 
-    previous () {
-      console.log('Previous');
+    goPrevious () {
+      if (this.prev !== 'disabled') {
+        this.$router.go(this.cases[this.getIndex() - 1].id);
+        this.setButtonState();
+      }
+    },
+
+    setButtonState () {
+      console.log('Set State');
+      if (this.$route.name !== 'cv') {
+        if (this.getIndex() - 1 < 0) {
+          this.prev = 'disabled';
+        } else {
+          this.prev = '';
+        }
+
+        if (this.getIndex() + 1 >= this.cases.length) {
+          this.next = 'disabled';
+        } else {
+          this.next = '';
+        }
+      }
     },
 
     getIndex () {
@@ -221,10 +253,17 @@ export default {
     text-transform: uppercase;
   }
   .btn {
+    fill: $white;
     cursor: pointer;
+    width: 20px;
     transition: fill 0.2s ease;
     &:hover { fill: $blue; }
     &:hover::after { display: none; }
+  }
+  .btn.disabled {
+    fill: rgba($white, 0.2);
+    cursor: default;
+    &:hover { }
   }
 }
 </style>

@@ -134,9 +134,7 @@ export default {
     top: 0;
     margin-top: 20px;
     .btn {
-      fill: $white;
       display: block;
-      width: 20px;
       margin: 0 auto;
       margin-bottom: 20px;
     }

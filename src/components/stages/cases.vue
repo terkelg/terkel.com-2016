@@ -48,11 +48,8 @@
   	position: relative;
   	display: block;
   	width: 100%;
-    &::after { display: none; }
-
-    // background-image: url(http://placekitten.com/200/400);
     background-size: cover;
-
+    &::after { display: none; }
   	/* padding bottom of desired height / desired width */
   	padding-bottom: 65%;
   }
@@ -153,7 +150,6 @@ import { getCases } from 'vuex/getters';
 
 export default {
   vuex: {
-    actions: {},
     getters: {
       cases: getCases
     }

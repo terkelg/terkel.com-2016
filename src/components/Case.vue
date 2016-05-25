@@ -21,10 +21,7 @@ export default {
     }
   },
 
-  ready () {
-    // this.theme('dark');
-    // this.secondaryOpen();
-  },
+  ready () {},
 
   methods: {
     getIndex () {

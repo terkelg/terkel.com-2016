@@ -89,7 +89,7 @@ export default {
 
     removeEventListeners () {
       window.removeEventListener('resize', this.onResize, false);
-      window.removeEventListener('visibilitychange', this.broadcastVisibilityChange);
+      window.removeEventListener('visibilitychange', this.dispatchVisibilityChange);
     },
 
     addBrowserClass () {
@@ -111,7 +111,6 @@ export default {
     routeChange (e) {
       if (this.$route.secondary) {
         this.secondaryOpen();
-        console.log('Open', e, this.$route.name);
       } else {
         this.secondaryClose();
       }

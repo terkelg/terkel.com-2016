@@ -32,23 +32,23 @@ const state = {
       thumbnail: 'http://placekitten.com/200/400'
     },
     {
-      id: 'radio24syv',
-      title: 'Radio24syv',
+      id: 'yeezify',
+      title: 'Yeezify',
       thumbnail: 'http://placekitten.com/200/400'
     },
     {
-      id: 'radio24syv',
-      title: 'Radio24syv',
+      id: 'thebear',
+      title: 'The Bear',
       thumbnail: 'http://placekitten.com/200/400'
     },
     {
-      id: 'radio24syv',
-      title: 'Radio24syv',
+      id: 'breaker',
+      title: 'Halloween Breaker',
       thumbnail: 'http://placekitten.com/200/400'
     },
     {
-      id: 'radio24syv',
-      title: 'Radio24syv',
+      id: 'terkeliknibe',
+      title: 'Terkel I Knibe',
       thumbnail: 'http://placekitten.com/200/400'
     }
   ]

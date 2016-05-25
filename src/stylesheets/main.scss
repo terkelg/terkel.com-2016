@@ -26,7 +26,7 @@ a{
   text-decoration: none;
   transition: color $secondary-sec $secondary-ease;
   backface-visibility: hidden;
-  .dark & { color: $white; }
+  .dark .secondary & { color: $white; }
 }
 a::after {
   position: absolute;
@@ -43,7 +43,7 @@ a::after {
   transform: translateZ(0);
   transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
               background $secondary-sec $secondary-ease;
-  .dark & { background-color: $blue; }
+  .dark .secondary & { background-color: $blue; }
 }
 a:hover::after,
 a.active::after {
@@ -66,7 +66,7 @@ a.active::after {
     left: 0;
     transform: translateY(-50%);
   }
-  .dark &::before { background-color: $white; }
+  .dark .secondary &::before { background-color: $white; }
 }
 
 /*
@@ -91,7 +91,7 @@ a.active::after {
     transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
                 background $secondary-sec $secondary-ease;
   }
-  .dark &::after { background-color: $blue; }
+  .dark .secondary &::after { background-color: $blue; }
 }
 
 /*

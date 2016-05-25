@@ -32,10 +32,7 @@
       transform: translateY(-35%);
       width: 100%;
       .btn {
-        fill: $white;
         display: inline-block;
-        cursor: pointer;
-        width: 20px;
         margin: 0 20px;
       }
       .btn--prev { float: left; }
