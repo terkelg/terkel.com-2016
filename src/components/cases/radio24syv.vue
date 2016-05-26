@@ -55,15 +55,10 @@
       lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi. Sidste ord.
       </p>
 
+      <!--
+      <iframe class="player" src="//player.vimeo.com/video/66006284" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      -->
+
     </section>
   </article>
 </template>
-
-<script>
-export default {
-  activate: function (done) {
-    console.log('Test');
-    done();
-  }
-};
-</script>

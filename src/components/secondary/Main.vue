@@ -102,7 +102,7 @@ export default {
   },
 
   ready () {
-    console.log('All loaded');
+    console.log('Main: All loaded');
   },
 
   methods: {
@@ -295,7 +295,7 @@ export default {
 }
 
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 1px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -304,11 +304,5 @@ export default {
 
 ::-webkit-scrollbar-track {
   background: rgba($white, 0.1);
-}
-
-@media #{$break-medium} {
-  ::-webkit-scrollbar {
-    width: 1px;
-  }
 }
 </style>

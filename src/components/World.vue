@@ -1,8 +1,6 @@
 <template>
   <div class="world">
-    <div class="world__inner" v-el:container>
-
-    </div>
+    <div class="world__inner" v-el:container></div>
   </div>
 </template>
 
@@ -122,7 +120,6 @@ export default {
 
     toStage () {
       this.world.moveToStage(this.$route.index);
-      // console.log(this.world.toStage());
     }
   }
 };

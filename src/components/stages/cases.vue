@@ -48,7 +48,7 @@
   }
   .responsive-element {}
   .content {
-    margin-bottom: 13%;
+    margin-bottom: 70px;
     h2 {
       font-size: 1.75em;
       line-height: 1;
