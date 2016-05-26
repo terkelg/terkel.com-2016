@@ -11,7 +11,6 @@
                 <h2>{{ case.title }}</h2>
                 <span class="link line">view case</span>
               </div>
-              <span class="number">{{ $index + 1 }}</span>
             </div>
           </a>
         </li>
@@ -22,7 +21,7 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../stylesheets/variables';
 
 .stage--cases {
@@ -37,77 +36,31 @@
   }
   .block {
   	display: block;
-    float: left;
-  	width: 50%;
+    text-align: center;
     box-sizing: border-box;
-    padding: 6%;
     font-size: 16px;
     cursor: pointer;
   }
   .inner-block {
-  	position: relative;
-  	display: block;
-  	width: 100%;
-    background-size: cover;
-    &::after { display: none; }
-  	/* padding bottom of desired height / desired width */
-  	padding-bottom: 65%;
+    &::after {
+      display: none;
+    }
   }
-  .responsive-element {
-  	position: absolute;
-  	top: 0;
-  	left: 0;
-  	width: 100%;
-  	height: 100%;
-
-    background-color: rgba($babyBlue, 0.50);
-    transition: background 0.4s ease;
-    transform: translateZ(10px); // Avoid text going beghind image
-  }
+  .responsive-element {}
   .content {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -8%;
-    font-size: 1em;
+    margin-bottom: 13%;
     h2 {
-      font-size: 1.4em;
+      font-size: 1.75em;
       line-height: 1;
       position: relative;
-      &::after {
-        position: absolute;
-        display: inline-block;
-        content: '';
-        height: 0%;
-        bottom: -0.10em;
-        left: -0.15em;
-        right: -0.15em;
-        z-index: -1;
-        pointer-events: none;
-        background-color: $yellow;
-        backface-visibility: hidden;
-        transform: translateZ(0);
-        transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
-                    background $secondary-sec $secondary-ease;
-      }
     }
     .link {
       position: relative;
       text-transform: uppercase;
-      font-size: 0.55em;
+      font-size: 0.65em;
       font-weight: 600;
     }
   }
-  .number {
-    position: absolute;
-    right: 4%;
-    bottom: 4%;
-    font-size: 2em;
-    color: rgba($white, 0.5);
-    font-weight: 600;
-    user-select: none;
-  }
-
   .block:hover {
     &::after { display: none; }
     .responsive-element { background-color: transparent; }
@@ -120,21 +73,65 @@
 @media #{$break-medium} {
   .stage--cases {
     .container {}
-    .content {
-      font-size: 1.4em;
-    }
     .block {
     	width: 33.3333%;
       padding: 3% 4%;
+      text-align: left;
+      float: left;
     }
+    .inner-block {
+      position: relative;
+      display: block;
+      width: 100%;
+      background-size: cover;
+      &::after { display: none; }
+      /* padding bottom of desired height / desired width */
+      padding-bottom: 65%;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -8%;
+      font-size: 1em;
+      margin: 0;
+      h2 {
+        // font-size: 1.4em;
+        line-height: 1;
+        position: relative;
+        &::after {
+          position: absolute;
+          display: inline-block;
+          content: '';
+          height: 0%;
+          bottom: -0.10em;
+          left: -0.15em;
+          right: -0.15em;
+          z-index: -1;
+          pointer-events: none;
+          background-color: $yellow;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
+                      background $secondary-sec $secondary-ease;
+        }
+      }
+    }
+  }
+  .responsive-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($babyBlue, 0.50);
+    transition: background 0.4s ease;
+    transform: translateZ(10px); // Avoid text going beghind image
   }
 }
 
 @media #{$break-large} {
   .stage--cases {
-    .content {
-      font-size: 1.65em;
-    }
   }
 }
 
@@ -155,8 +152,6 @@ export default {
     }
   },
 
-  ready () {
-    console.log('Stage Cases ready!');
-  }
+  ready () {}
 };
 </script>

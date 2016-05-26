@@ -23,9 +23,9 @@ $secondary-ease: ease-in-out;
 /*
   Media Queries
  */
-$small: 400px;
-$medium: 700px + $nav-width;
-$large: 900px + $nav-width;
+$small: 650px;
+$medium: 900px + $nav-width;
+$large: 1100px + $nav-width;
 
 $break-small-only: "only screen and (max-width: #{$small})";
 $break-medium: "only screen and (min-width: #{$medium})";

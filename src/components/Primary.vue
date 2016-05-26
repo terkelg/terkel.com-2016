@@ -26,13 +26,17 @@
   max-width: 1200px;
   transform: rotateZ(0);
   backface-visibility: hidden;
-  .stage__inner {}
+  .stage__inner {
+    padding: 0 8%;
+  }
 }
 
 @media #{$break-landscape} {
   .stage {
-    background-color: green;
-    width: 90%;
+    width: 80%;
+  }
+  .stage__inner {
+    padding: 0 2%;
   }
 }
 

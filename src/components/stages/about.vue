@@ -17,47 +17,58 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../stylesheets/variables';
 
 .stage--about {
+  width: 100%;
   .container {
     margin: 0 auto;
     display: flex;
     align-items: center;
+    max-width: 500px;
+    text-align: center;
   }
   .profile {
-    display: flex;
-    flex: 1.2;
-    align-self: stretch;
-    img {
-      align-self:center;
-      border-radius: 50%;
-      flex: 1;
-      width: 100%;
-      height: 100%;
-    }
+    display: none;
+    img {}
   }
   .content {
-    padding-left: 3%;
     flex: 4;
+    padding-left: 5%;
   }
-  h2 { display: inline-block; }
+  h2 {
+    font-size: 2em;
+    display: inline-block;
+  }
   p {
     margin-top: 20px;
-    font-size: 1.4em;
-    line-height: 1.4;
+    font-size: 1.2em;
+    line-height: 1.6;
   }
   a { font-weight: 600; }
 }
 
 @media #{$break-medium} {
  .stage--about {
-  width: 80%;
-   .container {
-     max-width: 1000px;
-   }
-   img {}
- }
+    width: 80%;
+    .container {
+      max-width: 900px;
+      text-align: left;
+    }
+    h2 { font-size: 1.65em; }
+    .profile {
+      display: flex;
+      flex: 1.25;
+      align-self: stretch;
+      img {
+        align-self:center;
+        border-radius: 50%;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }
 </style>
