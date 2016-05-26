@@ -176,9 +176,7 @@ export default {
   route: {
     data: function (transition) {
       setTimeout(function () {
-        transition.next({
-          message: 'data fetched!'
-        });
+        transition.next();
       }, 1000);
     }
   }

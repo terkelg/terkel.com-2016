@@ -36,7 +36,7 @@ router.map({
     index: 0,
     component: {}
   },
-  '/case': {
+  '/cases': {
     name: 'cases',
     index: 1,
     component: Case,
@@ -44,7 +44,12 @@ router.map({
       '/:case': {
         name: 'case',
         component: {
-          ready () { console.log('Test!', this.$route.path); }
+          ready () { console.log('Test!', this.$route.path); },
+          route: {
+            activate: function () {
+              console.log('hook: ' + this.$route.path);
+            }
+          }
         }
       }
     }
