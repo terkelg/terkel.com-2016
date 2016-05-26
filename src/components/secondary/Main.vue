@@ -91,7 +91,7 @@ export default {
   },
 
   watch: {
-    'route.path': 'setButtonState'
+    'route.path': 'routeChange'
   },
 
   data: () => {
@@ -119,6 +119,12 @@ export default {
 
       // Detect when router is about to change
       this.$router.go({name: backTo});
+    },
+
+    routeChange () {
+      if (this.$route.name === 'case') {
+        this.setButtonState();
+      }
     },
 
     goNext () {
