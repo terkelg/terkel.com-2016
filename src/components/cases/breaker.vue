@@ -61,9 +61,8 @@
 
 <script>
 export default {
-  activate: function (done) {
-    console.log('Test');
-    done();
+  ready () {
+    console.log('Breaker case');
   }
 };
 </script>

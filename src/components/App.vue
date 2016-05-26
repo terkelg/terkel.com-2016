@@ -110,10 +110,8 @@ export default {
 
     routeChange (e) {
       if (this.$route.secondary) {
-        console.log('Skal til at åbne.');
         this.secondaryOpen();
       } else {
-        console.log('Skal til at lukke.');
         this.secondaryClose();
       }
     }

@@ -1,7 +1,8 @@
 <template>
   <div class="case">
+    Case here
     <!-- Load here - v-if-->
-    <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -159,6 +160,10 @@ export default {
     }
   },
 
+  ready () {
+    console.log('Case subrouter view is loaded');
+  },
+
   components: {
     Radio24syv,
     Skagen,
@@ -169,11 +174,12 @@ export default {
   },
 
   route: {
-    activate: function () {
-      console.log('You loaded me!');
-    },
-    canDeactivate: function (transition) {
-      transition.next();
+    data: function (transition) {
+      setTimeout(function () {
+        transition.next({
+          message: 'data fetched!'
+        });
+      }, 1000);
     }
   }
 };

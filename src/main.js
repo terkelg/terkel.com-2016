@@ -14,6 +14,9 @@ import VueRouter from 'vue-router';
 import App from 'components/App';
 import Case from 'components/Case';
 
+// import Radio24syv from 'components/cases/radio24syv';
+// import Breaker from 'components/cases/breaker';
+
 // eslint-disable-next-line
 import gsap from 'gsap';
 
@@ -33,16 +36,18 @@ router.map({
     index: 0,
     component: {}
   },
-  '/cases': {
+  '/case': {
     name: 'cases',
     index: 1,
-    component: {}
-  },
-  '/cases/:case': {
-    name: 'case',
-    index: 1,
-    secondary: true,
-    component: Case
+    component: Case,
+    subRoutes: {
+      '/:case': {
+        name: 'case',
+        component: {
+          ready () { console.log('Test!', this.$route.path); }
+        }
+      }
+    }
   },
   '/about': {
     name: 'about',
