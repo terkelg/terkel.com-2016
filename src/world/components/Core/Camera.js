@@ -25,8 +25,29 @@ class Camera extends THREE.PerspectiveCamera {
     this.windowHalfY = height / 2;
     this.mouse = {x: 0, y: 0};
 
-    Emitter.on('resize', this.resize.bind(this));
+    this.average = {
+      alpha: [],
+      gamma: [],
+      beta: []
+    };
+    this.latestTilt = {
+      alpha: null,
+      gamma: null,
+      beta: null
+    };
+
+    window.requestAnimationFrame = window.requestAnimationFrame ||
+                                    window.mozRequestAnimationFrame ||
+                                    window.webkitRequestAnimationFrame ||
+                                    window.msRequestAnimationFrame;
+
+    if (window.DeviceOrientationEvent) {
+      console.log('use device');
+      window.addEventListener('deviceorientation', this.deviceOrientation.bind(this), false);
+    }
+
     Emitter.on('mousemove', this.mouseMove.bind(this));
+    Emitter.on('resize', this.resize.bind(this));
   }
 
   /**
@@ -35,12 +56,19 @@ class Camera extends THREE.PerspectiveCamera {
    * @return {void}
    */
   update (delta) {
-    this.position.x += (this.mouse.x - this.position.x) * 0.05;
-    this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.02;
+    if (window.DeviceOrientationEvent) {
+      this.position.x += this.latestTilt.gamma * 6 - this.position.x;
+    } else {
+      this.position.x += (this.mouse.x - this.position.x) * 0.05;
+      this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.02;
+    }
+
     this.lookAt(this.targetPoint);
 
+    /*
     this.position.y += Math.cos(this.cameraShakeY) / 10;
     this.cameraShakeY += 0.02;
+    */
   }
 
   /**
@@ -116,6 +144,24 @@ class Camera extends THREE.PerspectiveCamera {
       y: endpos.y,
       z: endpos.z + this.distance
     });
+  }
+
+  /**
+   * Mobile Acceleorameter
+   */
+  deviceOrientation (e) {
+    console.log(this.average.gamma);
+
+    if (this.average.gamma.length > 8) {
+      this.average.gamma.shift();
+    }
+
+    this.average.gamma.push(e.gamma);
+    this.latestTilt.gamma = this.average.gamma.reduce((a, b) => a + b) / this.average.gamma.length;
+    /*
+    this.average.alpha.push(e.alpha);
+    this.latestTilt.alpha = this.average.alpha.reduce((a, b) => a + b) / this.average.alpha.length;
+    */
   }
 };
 
