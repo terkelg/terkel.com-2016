@@ -1,5 +1,6 @@
 <template>
   <div class="case">
+    <!-- Load here - v-if-->
     <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
@@ -138,24 +139,33 @@
 </style>
 
 <script>
+import {
+  getSecondary,
+  getCases
+} from 'vuex/getters';
+
 import Radio24syv from './cases/radio24syv';
 import Skagen from './cases/skagen';
+import Breaker from './cases/breaker';
+import Terkeliknibe from './cases/terkeliknibe';
+import Thebear from './cases/thebear';
+import Yeezify from './cases/yeezify';
 
 export default {
-
-  props: ['index', 'total'],
-
-  ready () {},
-
-  methods: {
-    getIndex () {
-      return this.cases.findIndex(x => x.id === this.$route.params.case);
+  vuex: {
+    getters: {
+      secondary: getSecondary,
+      cases: getCases
     }
   },
 
   components: {
     Radio24syv,
-    Skagen
+    Skagen,
+    Breaker,
+    Terkeliknibe,
+    Thebear,
+    Yeezify
   },
 
   route: {

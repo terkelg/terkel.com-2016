@@ -1,5 +1,5 @@
 <template>
-  <div class="primary" v-show="!use3D">
+  <div class="primary">
     <div class="primary__inner">
 
       <home-stage v-el:home></home-stage>
@@ -114,18 +114,6 @@ export default {
       secondary: getSecondary
     }
   },
-
-  ready () {
-    console.log('Primary ready!');
-  },
-
-  data: () => {
-    return {
-      use3D: true
-    };
-  },
-
-  methods: {},
 
   components: {
     'home-stage': HomeStage,

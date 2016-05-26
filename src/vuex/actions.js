@@ -5,10 +5,6 @@
 import MobileDetect from 'mobile-detect';
 import Browser from 'detect-browser';
 
-export const incrementCounter = function ({ dispatch, state }) {
-  dispatch('INCREMENT', 1);
-};
-
 export const windowResize = function ({ dispatch, state }) {
   let size = {
     width: window.innerWidth,

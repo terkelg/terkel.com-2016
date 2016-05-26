@@ -102,7 +102,7 @@ export default {
   },
 
   ready () {
-    // this.setButtonState();
+    console.log('All loaded');
   },
 
   methods: {
@@ -136,8 +136,7 @@ export default {
     },
 
     setButtonState () {
-      console.log('Set State');
-      if (this.$route.name !== 'cv') {
+      if (this.$route.name === 'case') {
         if (this.getIndex() - 1 < 0) {
           this.prev = 'disabled';
         } else {
