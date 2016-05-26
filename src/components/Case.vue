@@ -16,16 +16,11 @@
   img {
     width: 100%;
     height: auto;
-    margin: 7% 0;
+    margin: 15% 0;
   }
   img.cover { margin: 0; }
-
-  .head { position: relative; }
   .head__content {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -4.5%;
+    margin: 35px 0;
     h1 {
       font-size: 2.5em;
       color: $white;
@@ -47,7 +42,7 @@
   }
   .body {
     margin: 0 auto;
-    font-size: 1.2em;
+    font-size: 1.0em;
     p {
       width: $case-content-width;
       margin: 0 auto;
@@ -83,6 +78,7 @@
           margin: 4px 0;
         }
       }
+      font-size: 0.95em;
       width: 33.333333333%;
       list-style: none;
       display: block;
@@ -92,10 +88,28 @@
     }
   }
 }
+@media #{$break-small} {
+  .case {
+    $case-content-width: 100%;
+    img { margin: 6% 0; }
+    .head { position: relative; }
+    .head__content {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -4.5%;
+      h1 { font-size: 2.5em; }
+    }
+    .body {
+      font-size: 1.2em;
+    }
+  }
+}
 
 @media #{$break-medium} {
   .case {
-    $case-content-width: 70%;
+    $case-content-width: 85%;
     .head__content {
       left: -8%;
       h1 { font-size: 3.5em; }
@@ -105,6 +119,18 @@
     }
     .body__details {
       margin: 50px auto;
+      width: $case-content-width;
+    }
+  }
+}
+
+@media #{$break-large} {
+  .case {
+    $case-content-width: 70%;
+    .body {
+      p, h3 { width: $case-content-width; }
+    }
+    .body__details {
       width: $case-content-width;
     }
   }

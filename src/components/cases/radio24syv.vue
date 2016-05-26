@@ -13,16 +13,16 @@
       <footer class="body__details">
         <ul>
           <li>
-            <h5 class="type">Type of Project</h5>
+            <h5 class="type">Type</h5>
             Web Design
           </li>
           <li>
             <h5 class="type">Date</h5>
-            Web Design
+            11/06/12
           </li>
           <li>
             <h5 class="type">Role</h5>
-            Web Design
+            Front-end
           </li>
         </ul>
       </footer>
@@ -52,7 +52,7 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Cras sed tincidunt enim. Aenean ante quam, euismod in felis at, porta mol
       estie augue. Nunc ligula quam, varius in mi quis, finibus malesuada sem. Nunc sce
-      lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
+      lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi. Sidste ord.
       </p>
 
     </section>

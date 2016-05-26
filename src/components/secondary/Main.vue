@@ -279,7 +279,14 @@ export default {
 .content__inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px;
+  padding: 5%;
+  margin-bottom: 80px;
+}
+
+@media #{$break-small} {
+  .content__inner {
+    padding: 60px;
+  }
 }
 
 @media #{$break-medium} {
@@ -289,7 +296,7 @@ export default {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
