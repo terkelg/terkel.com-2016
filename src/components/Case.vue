@@ -83,7 +83,7 @@
       list-style: none;
       display: block;
       float: left;
-      padding: 10px;
+      padding-right: 10px;
       box-sizing: border-box;
     }
   }

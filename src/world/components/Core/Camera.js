@@ -94,6 +94,12 @@ class Camera extends THREE.PerspectiveCamera {
     });
   }
 
+  /**
+   * Start animation
+   * @param {Vector3} startpos - Start position
+   * @param {Vector3} endpos   - End position
+   * @return {Void}
+   */
   start (startpos, endpos) {
     // camera is always {ditance} away from target
     this.targetPoint.set(startpos.x, startpos.y, startpos.z);
