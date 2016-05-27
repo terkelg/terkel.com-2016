@@ -131,7 +131,6 @@ export default {
     },
 
     onResize (event) {
-      console.log('Resizing ... ');
       this.$el.classList.add('notransition');
       this.dispatchWindowSize();
       this.resizeEnd(event);
@@ -139,7 +138,6 @@ export default {
 
     resizeEnd () {
       this.$el.classList.remove('notransition');
-      console.log('Resize ended');
     }
   },
 
