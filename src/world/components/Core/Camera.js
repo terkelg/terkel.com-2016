@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Emitter from '../helpers/emitter';
 /*
  * Camera class
@@ -35,6 +37,24 @@ class Camera extends THREE.PerspectiveCamera {
       gamma: null,
       beta: null
     };
+    this.originals = {
+      x: 0,
+      y: 2000,
+      z: 1000
+    };
+    this.diff = {
+      x: 50,
+      y: 100,
+      z: 500
+    };
+    this.calculateCoord = function(name, coord) {
+      var temp = this.average[name].reduce((a, b) => a + b) / this.average[name].length;
+      var pos = (temp * this.position[coord]) + this.position[coord];
+      if (pos > this.originals[coord] + this.diff[coord]) pos = this.originals[coord] + this.diff[coord];
+      if (pos < this.originals[coord] - this.diff[coord]) pos = this.originals[coord] - this.diff[coord];
+      
+      return pos;
+    };    
 
     window.requestAnimationFrame = window.requestAnimationFrame ||
                                     window.mozRequestAnimationFrame ||
@@ -56,9 +76,11 @@ class Camera extends THREE.PerspectiveCamera {
    * @return {void}
    */
   update (delta) {
-    if (this.latestTilt.gamma) {
-      this.position.x += this.latestTilt.gamma * 6 - this.position.x;
-      // this.position.y += -this.latestTilt.beta * 6 - this.position.y + this.targetPoint.y;
+    console.log(this.position);
+    if (this.latestTilt.gamma || this.latestTilt.alpha || this.latestTilt.beta) {
+      this.position.x = this.latestTilt.gamma;
+      this.position.y = this.latestTilt.beta;
+//      this.position.z = this.latestTilt.alpha;
     } else {
       this.position.x += (this.mouse.x - this.position.x) * 0.025;
       this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.01;
@@ -151,8 +173,6 @@ class Camera extends THREE.PerspectiveCamera {
    * Mobile Acceleorameter
    */
   deviceOrientation (e) {
-    console.log(this.average.gamma);
-
     if (this.average.gamma.length > 8) {
       this.average.gamma.shift();
     }
@@ -165,14 +185,27 @@ class Camera extends THREE.PerspectiveCamera {
       this.average.beta.shift();
     }
 
-    this.average.gamma.push(e.gamma);
-    this.latestTilt.gamma = this.average.gamma.reduce((a, b) => a + b) / this.average.gamma.length;
+    this.average.gamma.push(e.gamma / 100);
+    this.average.alpha.push(e.alpha / 1000);
+    this.average.beta.push(e.beta / 1000);
+    
+    this.latestTilt.gamma = this.calculateCoord('gamma', 'x');
+    this.latestTilt.alpha = this.calculateCoord('alpha', 'z');
+    this.latestTilt.beta = this.calculateCoord('beta', 'y');
 
-    this.average.alpha.push(e.alpha);
-    this.latestTilt.alpha = this.average.alpha.reduce((a, b) => a + b) / this.average.alpha.length;
-
-    this.average.beta.push(e.alpha);
-    this.latestTilt.beta = this.average.beta.reduce((a, b) => a + b) / this.average.beta.length;
+//    this.average.alpha.push(e.alpha / 1000);
+//    var alpha = this.average.alpha.reduce((a, b) => a + b) / this.average.alpha.length;
+//    var posX = (alpha * this.position.x) - this.position.x;
+//    if (posX > this.original.x * this.max) posX = this.original.x * this.max;
+//    if (posX < this.original.x * -this.max) posX = this.original.x * -this.max;
+//    this.latestTilt.alpha = posX;
+//
+//    this.average.beta.push(e.beta / 1000);
+//    var beta = this.average.beta.reduce((a, b) => a + b) / this.average.beta.length;
+//    var posY = (beta * this.position.y) - this.position.y;
+//    if (posY > this.original.y.value * this.originalmax) posY = this.original.y * this.max;
+//    if (posY < this.original.y * -this.max) posY = this.original.y * -this.max;
+//    this.latestTilt.beta = posY;
   }
 };
 
