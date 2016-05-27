@@ -1,7 +1,7 @@
 <template>
   <div class="case">
     <!-- Load here - v-if-->
-    <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
+    <component :is="$route.params.case" v-if="showComponent" transition="fade" transition-mode="out-in" inline-template></component>
   </div>
 </template>
 
@@ -159,6 +159,16 @@ export default {
     }
   },
 
+  data: () => {
+    return {
+      showComponent: false
+    };
+  },
+
+  ready () {
+    this.showComponent = true;
+  },
+
   components: {
     Radio24syv,
     Skagen,
@@ -166,15 +176,6 @@ export default {
     Terkeliknibe,
     Thebear,
     Yeezify
-  },
-
-  route: {
-    activate: function () {
-      console.log('You loaded me!');
-    },
-    canDeactivate: function (transition) {
-      transition.next();
-    }
   }
 };
 </script>

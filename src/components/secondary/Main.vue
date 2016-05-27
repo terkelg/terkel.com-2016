@@ -118,6 +118,7 @@ export default {
       }
 
       // Detect when router is about to change
+      // I can fade out here ... That's a temp fix
       this.$router.go({name: backTo});
     },
 
@@ -276,9 +277,12 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
-  // background-color: green;
   transform: translateZ(0);
   backface-visibility: hidden;
+  // transition: opacity $secondary-sec $secondary-ease;
+}
+.secondary.open .content {
+  opacity: 1;
 }
 
 .content__inner {

@@ -62,3 +62,11 @@
     </section>
   </article>
 </template>
+
+<script>
+export default {
+  ready () {
+    console.log('Radioo ready');
+  }
+};
+</script>
