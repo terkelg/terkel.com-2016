@@ -57,8 +57,8 @@ class Camera extends THREE.PerspectiveCamera {
    */
   update (delta) {
     if (this.latestTilt.gamma) {
-      this.position.x += this.latestTilt.gamma * 6 - this.position.x;
-      // this.position.y += -this.latestTilt.beta * 6 - this.position.y + this.targetPoint.y;
+      this.position.x += this.latestTilt.gamma * 5 - this.position.x;
+      this.position.y += (-this.latestTilt.beta * 1.2) - this.position.y + this.targetPoint.y;
     } else {
       this.position.x += (this.mouse.x - this.position.x) * 0.025;
       this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.01;
@@ -171,7 +171,7 @@ class Camera extends THREE.PerspectiveCamera {
     this.average.alpha.push(e.alpha);
     this.latestTilt.alpha = this.average.alpha.reduce((a, b) => a + b) / this.average.alpha.length;
 
-    this.average.beta.push(e.alpha);
+    this.average.beta.push(e.beta);
     this.latestTilt.beta = this.average.beta.reduce((a, b) => a + b) / this.average.beta.length;
   }
 };
