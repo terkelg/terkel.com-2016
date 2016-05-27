@@ -1,6 +1,6 @@
 <template>
   <div>
-    <article class="article" v-if="show" transition="fade" transition-mode="out-in">
+    <article class="article" v-show="show" transition="fade" transition-mode="out-in">
       <header class="head">
         <img src="https://placekitten.com/500/250" class="cover">
         <div class="head__content">
