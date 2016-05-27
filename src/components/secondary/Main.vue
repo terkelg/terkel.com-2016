@@ -50,7 +50,7 @@
         <div slot="section">0{{$route.index + 1}}</div>
       </component>
 
-      <div class="content">
+      <div class="content" v-show="show" transition="fade" transition-mode="out-in">
         <div class="content__inner">
           <router-view></router-view>
         </div>
@@ -91,21 +91,43 @@ export default {
   data: () => {
     return {
       next: 'disabled',
-      prev: 'disabled'
+      prev: 'disabled',
+      show: false
     };
   },
 
   events: {
     'route-change': function (e) {
       this.routeChange();
+      return true;
+    },
+    'secondary-opened': function (e) {
+      console.log('Opened secondary');
+      return true;
     }
   },
 
   ready () {
-    console.log('Main: All loaded');
+    this.addEventListeners();
   },
 
   methods: {
+    addEventListeners () {
+      this.$el.addEventListener('transitionend', this.secondaryToggle.bind(this), false);
+    },
+
+    secondaryToggle (event) {
+      if (event.propertyName === 'transform') {
+        if (this.secondary.status === 'open') {
+          this.$broadcast('secondary-opened');
+          this.show = true;
+        } else {
+          this.$broadcast('secondary-closed');
+          this.show = false;
+        }
+      }
+    },
+
     close () {
       let backTo;
       if (this.$route.name === 'case') {

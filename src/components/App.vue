@@ -56,6 +56,12 @@ export default {
     'route.path': 'routeChange'
   },
 
+  events: {
+    'secondary-opened': () => {
+      console.log('Secondary Opnened!!');
+    }
+  },
+
   created () {
     this.bind();
   },

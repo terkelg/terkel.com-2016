@@ -160,17 +160,46 @@ export default {
     }
   },
 
-/*
-  methods: {
-    routeChange () {}
+  data: () => {
+    return {
+      case: 'radio24syv'
+    };
   },
 
   events: {
-    'route-change': function (e) {},
-    'case-loaded': function (e) {},
-    'case-destroy': function (e) {}
+    'route-change': function (route) {
+      console.log('Route change!!', route);
+      console.log(route);
+      /*
+      console.log(route.params.case);
+      if (route.params.case !== '') {
+        this.case = route.params.case;
+      } else {
+        console.log('Not found');
+      }
+      */
+      return true;
+    },
+    'secondary-opened': function () {
+      console.log('Secondary Opnened!!');
+      return true;
+    }
   },
-*/
+
+  ready () {
+    console.log('Case Ready', this.case);
+  },
+
+  route: {
+    canDeactivate: function (transition) {
+      TweenLite.to(this.$el, 0.3, {
+        opacity: 0,
+        onComplete: () => {
+          transition.next();
+        }
+      });
+    }
+  },
 
   components: {
     Radio24syv,

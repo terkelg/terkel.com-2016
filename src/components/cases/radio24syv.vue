@@ -20,6 +20,7 @@ export default {
     });
   },
   beforeDestroy () {
+    console.log('Stop video!');
     this.$dispatch('case-destroy');
   }
 };
