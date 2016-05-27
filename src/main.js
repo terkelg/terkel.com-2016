@@ -31,12 +31,16 @@ router.map({
   '/': {
     name: 'home',
     index: 0,
-    component: {}
+    component: {
+      template: '<div></div>'
+    }
   },
   '/cases': {
     name: 'cases',
     index: 1,
-    component: {}
+    component: {
+      template: '<div></div>'
+    }
   },
   '/cases/:case': {
     name: 'case',
@@ -47,18 +51,24 @@ router.map({
   '/about': {
     name: 'about',
     index: 2,
-    component: {}
+    component: {
+      template: '<div></div>'
+    }
   },
   '/about/cv': {
     name: 'cv',
     index: 2,
     secondary: true,
-    component: {}
+    component: {
+      template: '<div></div>'
+    }
   },
   'contact': {
     name: 'contact',
     index: 3,
-    component: {}
+    component: {
+      template: '<div></div>'
+    }
   }
 });
 

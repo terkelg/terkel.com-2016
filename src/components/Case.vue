@@ -1,6 +1,6 @@
 <template>
   <div class="case">
-    <component :is="$route.params.case" v-show="show" transition="fade" transition-mode="out-in"></component>
+    <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
 

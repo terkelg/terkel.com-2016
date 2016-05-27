@@ -50,9 +50,9 @@
         <div slot="section">0{{$route.index + 1}}</div>
       </component>
 
-      <div class="content" v-el:content>
+      <div class="content">
         <div class="content__inner">
-          <router-view></router-view>
+          <router-view transition="fade" transition-mode="out-in"></router-view>
         </div>
       </div>
 
@@ -98,6 +98,14 @@ export default {
   events: {
     'route-change': function (e) {
       this.routeChange();
+    },
+    'case-loaded': function (e) {
+      console.log('Case loaded');
+      // this.showRouter = true;
+    },
+    'case-destroy': function (e) {
+      console.log('Case destory');
+      // this.showRouter = false;
     }
   },
 
@@ -107,7 +115,6 @@ export default {
 
   methods: {
     close () {
-      // TODO: Fade out content
       let backTo;
       if (this.$route.name === 'case') {
         backTo = 'cases';
@@ -117,8 +124,6 @@ export default {
         backTo = 'home';
       }
 
-      // Detect when router is about to change
-      // I can fade out here ... That's a temp fix
       this.$router.go({name: backTo});
     },
 
@@ -277,10 +282,6 @@ export default {
   height: 100%;
   transform: translateZ(0);
   backface-visibility: hidden;
-  // transition: opacity $secondary-sec $secondary-ease;
-}
-.secondary.open .content {
-  opacity: 1;
 }
 
 .content__inner {
