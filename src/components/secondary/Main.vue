@@ -52,7 +52,7 @@
 
       <div class="content">
         <div class="content__inner">
-          <router-view transition="fade" transition-mode="out-in"></router-view>
+          <router-view></router-view>
         </div>
       </div>
 
@@ -98,14 +98,6 @@ export default {
   events: {
     'route-change': function (e) {
       this.routeChange();
-    },
-    'case-loaded': function (e) {
-      console.log('Case loaded');
-      // this.showRouter = true;
-    },
-    'case-destroy': function (e) {
-      console.log('Case destory');
-      // this.showRouter = false;
     }
   },
 

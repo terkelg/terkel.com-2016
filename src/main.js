@@ -13,6 +13,7 @@ import VueRouter from 'vue-router';
 
 import App from 'components/App';
 import Case from 'components/Case';
+import CV from 'components/CV';
 
 // eslint-disable-next-line
 import gsap from 'gsap';
@@ -31,16 +32,12 @@ router.map({
   '/': {
     name: 'home',
     index: 0,
-    component: {
-      template: '<div></div>'
-    }
+    component: {}
   },
   '/cases': {
     name: 'cases',
     index: 1,
-    component: {
-      template: '<div></div>'
-    }
+    component: {}
   },
   '/cases/:case': {
     name: 'case',
@@ -51,24 +48,18 @@ router.map({
   '/about': {
     name: 'about',
     index: 2,
-    component: {
-      template: '<div></div>'
-    }
+    component: {}
   },
   '/about/cv': {
     name: 'cv',
     index: 2,
     secondary: true,
-    component: {
-      template: '<div></div>'
-    }
+    component: CV
   },
   'contact': {
     name: 'contact',
     index: 3,
-    component: {
-      template: '<div></div>'
-    }
+    component: {}
   }
 });
 
