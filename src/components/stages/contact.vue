@@ -3,7 +3,7 @@
   <div class="stage__inner">
 
     <div class="container">
-      +45 29 24 11 94<br>
+      <a href="tel:+4529241193">+45 29 24 11 94</a><br>
       hello@terkel.com
       <ul class="social">
         <li>
@@ -122,6 +122,7 @@
       list-style: none;
       margin: 0 auto;
       padding: 0;
+      svg { fill: $blue; }
       &::before {
         content: '';
         display: block;
