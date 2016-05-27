@@ -174,7 +174,7 @@ export default {
     routeChange () {
       // Now the route is changing, check if I should hide the component
       console.log('Cases change route', this.secondary.status);
-      if (this.secondary.status !== 'open') {
+      if (this.secondary.status === 'closed') {
         this.show = false;
       }
     }
