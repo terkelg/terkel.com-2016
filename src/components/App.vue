@@ -77,7 +77,8 @@ export default {
 
   methods: {
     bind () {
-      this.onResize = debounce(this.dispatchWindowSize, 100);
+      this.resizeEnd = debounce(this.resizeEnd, 250);
+      this.dispatchWindowSize = debounce(this.dispatchWindowSize, 50);
     },
 
     init () {
@@ -127,6 +128,18 @@ export default {
       } else {
         this.secondaryClose();
       }
+    },
+
+    onResize (event) {
+      console.log('Resizing ... ');
+      this.$el.classList.add('notransition');
+      this.dispatchWindowSize();
+      this.resizeEnd(event);
+    },
+
+    resizeEnd () {
+      this.$el.classList.remove('notransition');
+      console.log('Resize ended');
     }
   },
 
