@@ -41,7 +41,7 @@ class Camera extends THREE.PerspectiveCamera {
                                     window.webkitRequestAnimationFrame ||
                                     window.msRequestAnimationFrame;
 
-    if (window.DeviceOrientationEven) {
+    if (window.DeviceOrientationEvent) {
       console.log('use device');
       window.addEventListener('deviceorientation', this.deviceOrientation.bind(this), false);
     }
@@ -56,11 +56,12 @@ class Camera extends THREE.PerspectiveCamera {
    * @return {void}
    */
   update (delta) {
-    if (false) {
+    if (this.latestTilt.gamma) {
       this.position.x += this.latestTilt.gamma * 6 - this.position.x;
+      // this.position.y += -this.latestTilt.beta * 6 - this.position.y + this.targetPoint.y;
     } else {
-      this.position.x += (this.mouse.x - this.position.x) * 0.05;
-      this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.02;
+      this.position.x += (this.mouse.x - this.position.x) * 0.025;
+      this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.01;
     }
 
     this.lookAt(this.targetPoint);
@@ -156,12 +157,22 @@ class Camera extends THREE.PerspectiveCamera {
       this.average.gamma.shift();
     }
 
+    if (this.average.alpha.length > 8) {
+      this.average.alpha.shift();
+    }
+
+    if (this.average.beta.length > 8) {
+      this.average.beta.shift();
+    }
+
     this.average.gamma.push(e.gamma);
     this.latestTilt.gamma = this.average.gamma.reduce((a, b) => a + b) / this.average.gamma.length;
-    /*
+
     this.average.alpha.push(e.alpha);
     this.latestTilt.alpha = this.average.alpha.reduce((a, b) => a + b) / this.average.alpha.length;
-    */
+
+    this.average.beta.push(e.alpha);
+    this.latestTilt.beta = this.average.beta.reduce((a, b) => a + b) / this.average.beta.length;
   }
 };
 
