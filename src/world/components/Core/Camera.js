@@ -41,7 +41,7 @@ class Camera extends THREE.PerspectiveCamera {
                                     window.webkitRequestAnimationFrame ||
                                     window.msRequestAnimationFrame;
 
-    if (window.DeviceOrientationEvent) {
+    if (window.DeviceOrientationEven) {
       console.log('use device');
       window.addEventListener('deviceorientation', this.deviceOrientation.bind(this), false);
     }
@@ -56,7 +56,7 @@ class Camera extends THREE.PerspectiveCamera {
    * @return {void}
    */
   update (delta) {
-    if (window.DeviceOrientationEvent) {
+    if (false) {
       this.position.x += this.latestTilt.gamma * 6 - this.position.x;
     } else {
       this.position.x += (this.mouse.x - this.position.x) * 0.05;

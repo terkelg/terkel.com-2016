@@ -1,7 +1,6 @@
 <template>
   <div class="case">
-    <!-- Load here - v-if-->
-    <component :is="$route.params.case" v-if="showComponent" transition="fade" transition-mode="out-in" inline-template></component>
+    <component :is="$route.params.case" :show.sync="imagesLoaded" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
 
@@ -139,9 +138,12 @@
 </style>
 
 <script>
+import imagesLoaded from 'imagesloaded';
+
 import {
   getSecondary,
-  getCases
+  getCases,
+  getRoute
 } from 'vuex/getters';
 
 import Radio24syv from './cases/radio24syv';
@@ -155,18 +157,38 @@ export default {
   vuex: {
     getters: {
       secondary: getSecondary,
-      cases: getCases
+      cases: getCases,
+      route: getRoute
     }
+  },
+
+  watch: {
+    'route.path': 'routeChange'
   },
 
   data: () => {
     return {
-      showComponent: false
+      imagesLoaded: false
     };
   },
 
   ready () {
-    this.showComponent = true;
+    this.loadImages();
+  },
+
+  methods: {
+    routeChange () {
+      this.imagesLoaded = false;
+      console.log('Load new images');
+      this.loadImages();
+    },
+
+    loadImages () {
+      imagesLoaded(this.$el, () => {
+        console.log('Images ready');
+        this.imagesLoaded = true;
+      });
+    }
   },
 
   components: {
