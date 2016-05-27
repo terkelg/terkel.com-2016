@@ -1,6 +1,6 @@
 <template>
   <div>
-    <article class="article" v-if="show" transition="fade" transition-mode="out-in">
+    <article class="article">
       <header class="head">
         <img src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Windows-XP-wallpaper.jpg" class="cover">
         <div class="head__content">
@@ -66,17 +66,18 @@
 </template>
 
 <script>
-export default {
-  props: ['show'],
+import imagesLoaded from 'imagesloaded';
 
-  ready () {
-    /*
-    console.log(imagesLoaded);
-    console.log('Radioo ready');
-    imagesLoaded('.article', function () {
-      console.log('Images ready');
+export default {
+  activate: function (insert) {
+    imagesLoaded(this.$el, () => {
+      insert();
+      this.$dispatch('case-loaded');
     });
-    */
+  },
+  beforeDestroy () {
+    console.log('Destroy!');
+    this.$dispatch('case-destroy');
   }
 };
 </script>

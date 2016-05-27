@@ -160,35 +160,17 @@ export default {
     }
   },
 
-  data: () => {
-    return {
-      show: true
-    };
-  },
-
-  ready () {
-    console.log('Cases loaded');
-  },
-
+/*
   methods: {
-    routeChange () {
-      // Now the route is changing, check if I should hide the component
-      console.log('Cases change route', this.secondary.status);
-      if (this.secondary.status === 'closed') {
-        this.show = false;
-      }
-    }
+    routeChange () {}
   },
 
   events: {
-    'route-change': function (e) {
-      console.log('Route change', e);
-    },
-
-    'window-resize': function (e) {
-      console.log('Wiiindo', e);
-    }
+    'route-change': function (e) {},
+    'case-loaded': function (e) {},
+    'case-destroy': function (e) {}
   },
+*/
 
   components: {
     Radio24syv,

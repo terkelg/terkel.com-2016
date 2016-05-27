@@ -60,10 +60,18 @@
 </template>
 
 <script>
+import imagesLoaded from 'imagesloaded';
+
 export default {
-  activate: function (done) {
-    console.log('Test');
-    done();
+  activate: function (insert) {
+    imagesLoaded(this.$el, () => {
+      insert();
+      this.$dispatch('case-loaded');
+    });
+  },
+  beforeDestroy () {
+    console.log('Destroy!');
+    this.$dispatch('case-destroy');
   }
 };
 </script>

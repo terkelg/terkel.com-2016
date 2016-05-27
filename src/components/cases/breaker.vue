@@ -60,9 +60,18 @@
 </template>
 
 <script>
+import imagesLoaded from 'imagesloaded';
+
 export default {
-  ready () {
-    console.log('Breaker ready');
+  activate: function (insert) {
+    imagesLoaded(this.$el, () => {
+      insert();
+      this.$dispatch('case-loaded');
+    });
+  },
+  beforeDestroy () {
+    console.log('Destroy!');
+    this.$dispatch('case-destroy');
   }
 };
 </script>
