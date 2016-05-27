@@ -42,8 +42,8 @@
           <ul>
             <li><a v-link="{ path: '/', exact: true }">Home</a></li>
             <li><a v-link="{ name: 'cases' }">Cases</a></li>
-            <li><a v-link="'/about'">About</a></li>
-            <li><a v-link="'/contact'">Contact</a></li>
+            <li><a v-link="{ name: 'about' }">About</a></li>
+            <li><a v-link="{ name: 'contact' }">Contact</a></li>
           </li>
         </div>
 
@@ -52,7 +52,7 @@
 
       <div class="content" v-el:content>
         <div class="content__inner">
-            <router-view></router-view>
+          <router-view></router-view>
         </div>
       </div>
 
@@ -69,8 +69,7 @@ import {
 import {
   getSize,
   getSecondary,
-  getCases,
-  getRoute
+  getCases
 } from 'vuex/getters';
 
 import desktop from './Desktop';
@@ -85,13 +84,8 @@ export default {
     getters: {
       size: getSize,
       secondary: getSecondary,
-      cases: getCases,
-      route: getRoute
+      cases: getCases
     }
-  },
-
-  watch: {
-    'route.path': 'routeChange'
   },
 
   data: () => {
@@ -99,6 +93,12 @@ export default {
       next: 'disabled',
       prev: 'disabled'
     };
+  },
+
+  events: {
+    'route-change': function (e) {
+      this.routeChange();
+    }
   },
 
   ready () {
@@ -131,14 +131,12 @@ export default {
     goNext () {
       if (this.next !== 'disabled') {
         this.$router.go(this.cases[this.getIndex() + 1].id);
-        this.setButtonState();
       }
     },
 
     goPrevious () {
       if (this.prev !== 'disabled') {
         this.$router.go(this.cases[this.getIndex() - 1].id);
-        this.setButtonState();
       }
     },
 

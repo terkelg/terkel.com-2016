@@ -38,9 +38,9 @@ export default {
 
   vuex: {
     actions: {
-      resize: windowResize,
-      visible: windowVisible,
-      device: deviceDetect,
+      resizeState: windowResize,
+      visibleState: windowVisible,
+      deviceState: deviceDetect,
       secondaryClose: secondaryClose,
       secondaryOpen: secondaryOpen
     },
@@ -62,6 +62,7 @@ export default {
 
   ready () {
     this.init();
+    console.log(this.$route);
   },
 
   beforeDestroy () {
@@ -70,13 +71,16 @@ export default {
 
   methods: {
     bind () {
-      this.onResize = debounce(this.dispatchWindowSize, 200);
+      this.onResize = debounce(this.dispatchWindowSize, 100);
     },
 
     init () {
-      this.resize();
-      this.visible();
-      this.device();
+      // Set initial state
+      this.resizeState();
+      this.visibleState();
+      this.deviceState();
+
+      // Set Event listeners
       this.addEventListeners();
       this.addDeviceClass();
       this.addBrowserClass();
@@ -100,20 +104,21 @@ export default {
       this.$el.classList.add(this.getDevice.type + '-device');
     },
 
-    dispatchWindowSize () {
-      this.resize();
+    dispatchWindowSize (event) {
+      this.$broadcast('window-resize', event);
+      this.resizeState();
     },
 
-    dispatchVisibilityChange () {
-      this.visible();
+    dispatchVisibilityChange (event) {
+      this.$broadcast('window-visibility', event);
+      this.visibleState();
     },
 
-    routeChange (e) {
+    routeChange () {
+      this.$broadcast('route-change', this.$route);
       if (this.$route.secondary) {
-        console.log('Skal til at åbne.');
         this.secondaryOpen();
       } else {
-        console.log('Skal til at lukke.');
         this.secondaryClose();
       }
     }

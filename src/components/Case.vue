@@ -1,6 +1,6 @@
 <template>
   <div class="case">
-    <component :is="$route.params.case" :show.sync="imagesLoaded" transition="fade" transition-mode="out-in"></component>
+    <component :is="$route.params.case" v-show="show" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
 
@@ -138,12 +138,11 @@
 </style>
 
 <script>
-import imagesLoaded from 'imagesloaded';
+// import imagesLoaded from 'imagesloaded';
 
 import {
   getSecondary,
-  getCases,
-  getRoute
+  getCases
 } from 'vuex/getters';
 
 import Radio24syv from './cases/radio24syv';
@@ -157,37 +156,37 @@ export default {
   vuex: {
     getters: {
       secondary: getSecondary,
-      cases: getCases,
-      route: getRoute
+      cases: getCases
     }
-  },
-
-  watch: {
-    'route.path': 'routeChange'
   },
 
   data: () => {
     return {
-      imagesLoaded: false
+      show: true
     };
   },
 
   ready () {
-    this.loadImages();
+    console.log('Cases loaded');
   },
 
   methods: {
     routeChange () {
-      this.imagesLoaded = false;
-      console.log('Load new images');
-      this.loadImages();
+      // Now the route is changing, check if I should hide the component
+      console.log('Cases change route', this.secondary.status);
+      if (this.secondary.status !== 'open') {
+        this.show = false;
+      }
+    }
+  },
+
+  events: {
+    'route-change': function (e) {
+      console.log('Route change', e);
     },
 
-    loadImages () {
-      imagesLoaded(this.$el, () => {
-        console.log('Images ready');
-        this.imagesLoaded = true;
-      });
+    'window-resize': function (e) {
+      console.log('Wiiindo', e);
     }
   },
 
