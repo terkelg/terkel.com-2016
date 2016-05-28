@@ -88,8 +88,6 @@ class World {
     this.camera.start(new THREE.Vector3(x, y, z), this.stages[index].position);
   }
 
-  /* ----------------- */
-
   /**
    * Resize
    * @param {integer} width  - Width

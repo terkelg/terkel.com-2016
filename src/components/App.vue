@@ -37,7 +37,6 @@ import Primary from './Primary';
 import 'stylesheets/main.scss';
 
 export default {
-
   vuex: {
     actions: {
       resizeState: windowResize,
