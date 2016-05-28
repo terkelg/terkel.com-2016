@@ -1,4 +1,5 @@
 import Emitter from '../helpers/emitter';
+
 /*
  * Camera class
  */
@@ -25,26 +26,12 @@ class Camera extends THREE.PerspectiveCamera {
     this.windowHalfY = height / 2;
     this.mouse = {x: 0, y: 0};
 
-    this.average = {
-      alpha: [],
-      gamma: [],
-      beta: []
-    };
-    this.latestTilt = {
-      alpha: null,
-      gamma: null,
-      beta: null
-    };
+    this.deviceOrientation = {};
+    this.screenOrientation = 0;
 
-    window.requestAnimationFrame = window.requestAnimationFrame ||
-                                    window.mozRequestAnimationFrame ||
-                                    window.webkitRequestAnimationFrame ||
-                                    window.msRequestAnimationFrame;
-
-    if (window.DeviceOrientationEvent) {
-      console.log('use device');
-      window.addEventListener('deviceorientation', this.deviceOrientation.bind(this), false);
-    }
+    this.onScreenOrientationChangeEvent();
+    window.addEventListener('orientationchange', this.onScreenOrientationChangeEvent.bind(this), false);
+    window.addEventListener('deviceorientation', this.onDeviceOrientationChangeEvent.bind(this), false);
 
     Emitter.on('mousemove', this.mouseMove.bind(this));
     Emitter.on('resize', this.resize.bind(this));
@@ -56,9 +43,9 @@ class Camera extends THREE.PerspectiveCamera {
    * @return {void}
    */
   update (delta) {
-    if (this.latestTilt.gamma) {
-      this.position.x += this.latestTilt.gamma * 5 - this.position.x;
-      this.position.y += (-this.latestTilt.beta * 1.2) - this.position.y + this.targetPoint.y;
+    if (this.deviceOrientation.alpha > 0 || this.deviceOrientation.beta > 0 || this.deviceOrientation.gamma > 0) {
+      console.log('Device use');
+      this.deviceOrientationUpdate();
     } else {
       this.position.x += (this.mouse.x - this.position.x) * 0.025;
       this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.01;
@@ -66,10 +53,8 @@ class Camera extends THREE.PerspectiveCamera {
 
     this.lookAt(this.targetPoint);
 
-    /*
     this.position.y += Math.cos(this.cameraShakeY) / 10;
     this.cameraShakeY += 0.02;
-    */
   }
 
   /**
@@ -148,31 +133,67 @@ class Camera extends THREE.PerspectiveCamera {
   }
 
   /**
-   * Mobile Acceleorameter
+   * DeviceOrientationUpdate
+   * @return {void}
    */
-  deviceOrientation (e) {
-    console.log(this.average.gamma);
+  deviceOrientationUpdate () {
+    // var alpha = this.deviceOrientation.alpha ? THREE.Math.degToRad(this.deviceOrientation.alpha) : 0; // Z
+    var beta = this.deviceOrientation.beta ? THREE.Math.degToRad(this.deviceOrientation.beta) : 0; // X'
+    var gamma = this.deviceOrientation.gamma ? THREE.Math.degToRad(this.deviceOrientation.gamma) : 0; // Y''
+    // var orient = this.screenOrientation ? THREE.Math.degToRad(this.screenOrientation) : 0; // O
 
-    if (this.average.gamma.length > 8) {
-      this.average.gamma.shift();
+    if (this.readDeviceOrientation() === 'portrait') {
+      this.position.x += (gamma * 220) - this.position.x;
+      this.position.y += (-beta * 220) - this.position.y + this.targetPoint.y;
+    } else if (this.readDeviceOrientation() === 'upside-down') {
+      this.position.x += (-gamma * 220) - this.position.x;
+      this.position.y += (beta * 220) - this.position.y + this.targetPoint.y;
+    } else if (this.readDeviceOrientation() === 'clockwise') {
+      this.position.x += (beta * 220) - this.position.x;
+      this.position.y += (-gamma * 220) - this.position.y + this.targetPoint.y;
+    } else if (this.readDeviceOrientation() === 'counterclockwise') {
+      this.position.x += (-beta * 220) - this.position.x;
+      this.position.y += (gamma * 220) - this.position.y + this.targetPoint.y;
     }
+  }
 
-    if (this.average.alpha.length > 8) {
-      this.average.alpha.shift();
+  /**
+   * onDeviceOrientationChangeEvent
+   * @return {void}
+   */
+  onDeviceOrientationChangeEvent (event) {
+    this.deviceOrientation = event;
+  }
+
+  /**
+   * onScreenOrientationChangeEvent
+   * @return {void}
+   */
+  onScreenOrientationChangeEvent () {
+    this.screenOrientation = window.orientation || 0;
+  }
+
+  /**
+   * Detect device rotation
+   * @return {string} orientation - Device orientation string
+   */
+  readDeviceOrientation () {
+    let orientation;
+    switch (window.orientation) {
+      case 0:
+        orientation = 'portrait';
+        break;
+      case 180:
+        orientation = 'upside-down';
+        break;
+      case -90:
+        orientation = 'clockwise';
+        break;
+      case 90:
+        orientation = 'counterclockwise';
+        break;
     }
-
-    if (this.average.beta.length > 8) {
-      this.average.beta.shift();
-    }
-
-    this.average.gamma.push(e.gamma);
-    this.latestTilt.gamma = this.average.gamma.reduce((a, b) => a + b) / this.average.gamma.length;
-
-    this.average.alpha.push(e.alpha);
-    this.latestTilt.alpha = this.average.alpha.reduce((a, b) => a + b) / this.average.alpha.length;
-
-    this.average.beta.push(e.beta);
-    this.latestTilt.beta = this.average.beta.reduce((a, b) => a + b) / this.average.beta.length;
+    return orientation;
   }
 };
 
