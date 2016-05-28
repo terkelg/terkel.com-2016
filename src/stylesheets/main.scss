@@ -139,6 +139,7 @@ h2 { font-size: 2.8em; }
   opacity: 0;
 }
 
+// Used to disable transitions on resize
 .notransition * {
   transition: none !important;
 }

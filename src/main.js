@@ -1,12 +1,3 @@
-/*
-  TODO:
-  - 3D World
-
-  # Nice to have
-  - Lyde / Toner
-  - Easter Eggs og Detaljer
-  - Acceleorameter on mobile
-*/
 import { sync } from 'vuex-router-sync';
 import store from 'vuex/store';
 import VueRouter from 'vue-router';
@@ -64,10 +55,8 @@ router.map({
 });
 
 // TODO: Implement 404 here
-/*
 router.redirect({
   '*': '/'
 });
-*/
 
 router.start(App, '#app');
