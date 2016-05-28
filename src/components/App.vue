@@ -23,8 +23,7 @@ import {
   getDevice,
   getRoute,
   getTheme,
-  getSecondary,
-  getVisibility
+  getSecondary
 } from 'vuex/getters';
 
 import debounce from 'lodash.debounce';
@@ -51,26 +50,18 @@ export default {
       getDevice: getDevice,
       route: getRoute,
       theme: getTheme,
-      secondary: getSecondary,
-      visibility: getVisibility
+      secondary: getSecondary
     }
   },
 
   data: () => {
     return {
-      loading: true,
-      start: false
+      loading: true
     };
   },
 
   watch: {
     'route.path': 'routeChange'
-  },
-
-  events: {
-    'secondary-opened': () => {
-      console.log('Secondary Opnened!!');
-    }
   },
 
   created () {
