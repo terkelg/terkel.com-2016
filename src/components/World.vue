@@ -41,32 +41,49 @@
 <script>
 import {
   getSize,
-  getVisibility
+  getVisibility,
+  getSecondary
 } from 'vuex/getters';
 
 import Stats from 'world/libs/stats.min';
 import World from 'world';
-import debounce from 'lodash.debounce';
+
+// import debounce from 'lodash.debounce';
+import throttle from 'lodash.throttle';
 
 export default {
   vuex: {
     getters: {
       visible: getVisibility,
-      size: getSize
+      size: getSize,
+      secondary: getSecondary
     }
   },
 
-  // TODO: Use global resize event
-  // Maybe use route object for cleaner code?
   events: {
     'route-change': function () {
       this.toStage();
       return true;
+    },
+    'window-resize': function () {
+      this.onResize();
+      return true;
     }
   },
 
+  data: () => {
+    return {
+      routes: [
+        'home',
+        'cases',
+        'about',
+        'contact'
+      ]
+    };
+  },
+
   created () {
-    this.onResize = debounce(this.onResize, 10);
+    this.keyboardEvent = throttle(this.keyboardEvent, 850, { 'trailing': false });
     this.addEventListeners();
   },
 
@@ -101,13 +118,11 @@ export default {
 
   methods: {
     addEventListeners () {
-      window.addEventListener('resize', this.onResize, false);
       window.addEventListener('keyup', this.keyboardEvent);
       document.addEventListener('mousemove', this.onMouseMove, false);
     },
 
     removeEventListeners () {
-      window.removeEventListener('resize', this.onResize, false);
       window.removeEventListener('keyup', this.keyboardEvent);
       document.removeEventListener('mousemove', this.onMouseMove, false);
     },
@@ -124,12 +139,16 @@ export default {
       this.world.moveToStage(this.$route.index);
     },
 
-    keyboardEvent () {
-      // Hvilken case index er jeg på nu. Plus en til det
-      // this.toStage(this.$route.index + 1);
-      // Brug router!!
-      this.$router.go('/about');
-      console.log('Keeeey');
+    keyboardEvent (event) {
+      if (this.secondary.status !== 'open') {
+        const index = this.$route.index;
+        if (event.which === 38) {
+          this.$router.go({ name: this.routes[index - 1] });
+        }
+        if (event.which === 40) {
+          this.$router.go({ name: this.routes[index + 1] });
+        }
+      }
     }
   }
 };
