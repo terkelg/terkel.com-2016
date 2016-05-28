@@ -160,30 +160,12 @@ export default {
     }
   },
 
-  data: () => {
-    return {
-      case: ''
-    };
-  },
-
-  events: {
-    'route-change': function (route) {
-      console.log('Route change!!', route);
-      console.log(route);
-      return true;
-    },
-    'secondary-opened': function () {
-      console.log('Secondary Opnened!!');
-      return true;
-    }
-  },
-
   route: {
-    canDeactivate: function (transition) {
+    canDeactivate: function ({ next }) {
       TweenLite.to(this.$el, 0.3, {
         opacity: 0,
         onComplete: () => {
-          transition.next();
+          next();
         }
       });
     }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-show="open" transition="fade" transition-mode="out-in">
     This is the about page!
     <img src="https://placekitten.com/800/250" class="cover">
     <img src="https://placekitten.com/550/250" class="cover">
@@ -19,12 +19,19 @@
 import imagesLoaded from 'imagesloaded';
 
 export default {
+  data: () => {
+    return {
+      open: false
+    };
+  },
+
   events: {
     'route-change': function (route) {
       return true;
     },
     'secondary-opened': function () {
       console.log('CASE: Secondary Opnened - Im case!!');
+      this.open = true;
       return true;
     }
   },
@@ -40,11 +47,11 @@ export default {
         console.log('About with images loaded');
       });
     },
-    canDeactivate: function (transition) {
+    canDeactivate: function ({ next }) {
       TweenLite.to(this.$el, 0.3, {
         opacity: 0,
         onComplete: () => {
-          transition.next();
+          next();
         }
       });
     }
