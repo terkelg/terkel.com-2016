@@ -56,16 +56,22 @@ export default {
     }
   },
 
-  data: () => {
-    return {};
-  },
-
-  watch: {
-    '$route': 'toStage'
+  // TODO: Use global resize event
+  // Maybe use route object for cleaner code?
+  events: {
+    'route-change': function () {
+      this.toStage();
+      return true;
+    }
   },
 
   created () {
     this.onResize = debounce(this.onResize, 10);
+    this.addEventListeners();
+  },
+
+  beforeDestroy: function () {
+    this.removeEventListeners();
   },
 
   ready () {
@@ -90,24 +96,19 @@ export default {
       this.stats.end();
     });
 
-    this.world.startAnimate(this.$route.index || 0);
-
-    this.addEventListeners();
-  },
-
-  beforeDestroy: function () {
-    this.removeEventListeners();
+    // this.world.startAnimate(this.$route.index || 0);
   },
 
   methods: {
     addEventListeners () {
       window.addEventListener('resize', this.onResize, false);
-
+      window.addEventListener('keyup', this.keyboardEvent);
       document.addEventListener('mousemove', this.onMouseMove, false);
     },
 
     removeEventListeners () {
       window.removeEventListener('resize', this.onResize, false);
+      window.removeEventListener('keyup', this.keyboardEvent);
       document.removeEventListener('mousemove', this.onMouseMove, false);
     },
 
@@ -115,12 +116,20 @@ export default {
       this.world.resize(this.$el.offsetWidth, this.$el.offsetHeight);
     },
 
-    onMouseMove (e) {
-      this.world.mouseMove(e.clientX, e.clientY);
+    onMouseMove (event) {
+      this.world.mouseMove(event.clientX, event.clientY);
     },
 
     toStage () {
       this.world.moveToStage(this.$route.index);
+    },
+
+    keyboardEvent () {
+      // Hvilken case index er jeg på nu. Plus en til det
+      // this.toStage(this.$route.index + 1);
+      // Brug router!!
+      this.$router.go('/about');
+      console.log('Keeeey');
     }
   }
 };
