@@ -134,6 +134,7 @@ class Camera extends THREE.PerspectiveCamera {
 
   /**
    * DeviceOrientationUpdate
+   * TODO: This works like shit.
    * @return {void}
    */
   deviceOrientationUpdate () {
