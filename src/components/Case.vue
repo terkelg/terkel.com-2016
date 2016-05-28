@@ -162,7 +162,7 @@ export default {
 
   data: () => {
     return {
-      case: 'radio24syv'
+      case: ''
     };
   },
 
@@ -170,24 +170,12 @@ export default {
     'route-change': function (route) {
       console.log('Route change!!', route);
       console.log(route);
-      /*
-      console.log(route.params.case);
-      if (route.params.case !== '') {
-        this.case = route.params.case;
-      } else {
-        console.log('Not found');
-      }
-      */
       return true;
     },
     'secondary-opened': function () {
       console.log('Secondary Opnened!!');
       return true;
     }
-  },
-
-  ready () {
-    console.log('Case Ready', this.case);
   },
 
   route: {
