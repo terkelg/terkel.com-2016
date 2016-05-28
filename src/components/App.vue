@@ -1,5 +1,6 @@
 <template>
   <main v:el="wrapper" v-bind:class="theme">
+    <div id="preloader" v-if="loading" transition="fade" transition-mode="out"></div>
     <border></border>
     <world></world>
     <secondary></secondary>
@@ -22,10 +23,12 @@ import {
   getDevice,
   getRoute,
   getTheme,
-  getSecondary
+  getSecondary,
+  getVisibility
 } from 'vuex/getters';
 
 import debounce from 'lodash.debounce';
+import delay from 'lodash.delay';
 
 import Border from './Border';
 import World from './World';
@@ -48,8 +51,16 @@ export default {
       getDevice: getDevice,
       route: getRoute,
       theme: getTheme,
-      secondary: getSecondary
+      secondary: getSecondary,
+      visibility: getVisibility
     }
+  },
+
+  data: () => {
+    return {
+      loading: true,
+      start: false
+    };
   },
 
   watch: {
@@ -68,7 +79,6 @@ export default {
 
   ready () {
     this.init();
-    console.log(this.$route);
   },
 
   beforeDestroy () {
@@ -91,6 +101,9 @@ export default {
       this.addEventListeners();
       this.addDeviceClass();
       this.addBrowserClass();
+
+      // Set Preloader
+      delay(this.loadComplete, 750);
     },
 
     addEventListeners () {
@@ -119,6 +132,8 @@ export default {
     dispatchVisibilityChange (event) {
       this.$broadcast('window-visibility', event);
       this.visibleState();
+
+      if (this.loading === false) {}
     },
 
     routeChange () {
@@ -138,6 +153,10 @@ export default {
 
     resizeEnd () {
       this.$el.classList.remove('notransition');
+    },
+
+    loadComplete () {
+      this.loading = false;
     }
   },
 
