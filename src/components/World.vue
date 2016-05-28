@@ -102,6 +102,7 @@ export default {
   methods: {
     addEventListeners () {
       window.addEventListener('resize', this.onResize, false);
+
       document.addEventListener('mousemove', this.onMouseMove, false);
     },
 
