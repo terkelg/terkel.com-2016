@@ -47,7 +47,7 @@ class Camera extends THREE.PerspectiveCamera {
       console.log('Device use');
       this.deviceOrientationUpdate();
     } else {
-      this.position.x += (this.mouse.x - this.position.x) * 0.025;
+      this.position.x += (this.mouse.x - this.position.x) * 0.02;
       this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.01;
     }
 
