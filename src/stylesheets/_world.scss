@@ -1,0 +1,29 @@
+/*
+ * Mobile
+ */
+.world {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  // padding: $border-size $border-size ($nav-mobile-height + $border-size) $border-size;
+  transform: translateZ(0);
+  .world__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*
+ * Desktop
+ */
+@media #{$break-medium} {
+  .world {
+    .world__inner {
+      padding-left: ($nav-width + $border-size) / 2;
+    }
+  }
+}

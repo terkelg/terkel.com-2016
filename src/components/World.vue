@@ -4,50 +4,13 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-  @import '../stylesheets/variables';
-
-  /*
-   * Mobile
-   */
-  .world {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    // padding: $border-size $border-size ($nav-mobile-height + $border-size) $border-size;
-    transform: translateZ(0);
-    .world__inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  /*
-   * Desktop
-   */
-  @media #{$break-medium} {
-    .world {
-      .world__inner {
-        padding-left: ($nav-width + $border-size) / 2;
-      }
-    }
-  }
-</style>
-
 <script>
 import {
   getSize,
   getVisibility,
   getSecondary
 } from 'vuex/getters';
-
-import Stats from 'world/libs/stats.min';
 import World from 'world';
-
 import throttle from 'lodash.throttle';
 
 export default {
@@ -91,10 +54,6 @@ export default {
   },
 
   ready () {
-    this.stats = new Stats();
-    this.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-    document.body.appendChild(this.stats.dom);
-
     /* Make Stage a class?
      * - TODO: Better way to get elements on - Direct vue?
      */
@@ -107,9 +66,7 @@ export default {
     this.world = new World(this.$els.container, pages);
 
     TweenLite.ticker.addEventListener('tick', () => {
-      this.stats.begin();
       this.world.render();
-      this.stats.end();
     });
 
     // this.world.startAnimate(this.$route.index || 0);

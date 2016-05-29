@@ -1,0 +1,90 @@
+/*
+ * Shared
+ */
+.secondary {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform $secondary-sec $secondary-ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  .secondary__inner {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    transition: background $secondary-sec $secondary-ease;
+  }
+}
+
+/*
+ * DESKTOP
+ */
+.secondary--desktop {
+  padding-right: $border-size;
+  transform: translateX(calc(-100% + #{$nav-width + $border-size * 2})); // plus page border and 1px border
+  .secondary__inner {
+    background-color: $white;
+    padding-top: $border-size;
+    padding-bottom: $border-size;
+    padding-left: $border-size;
+  }
+}
+.secondary--desktop.open {
+  transform: translateX(0);
+  .secondary__inner {
+    background-color: $dark;
+  }
+}
+
+/*
+ * MOBILE
+ */
+.secondary--mobile {
+  bottom: 0;
+  transform: translateY(calc(100% - #{$nav-mobile-height + $border-size * 2})); // border size x 2
+  .secondary__inner {
+    background-color: $white;
+    padding-left: $border-size;
+    padding-right: $border-size;
+    margin-top: $border-size;
+  }
+}
+.secondary--mobile.open {
+  transform: translateY(0);
+  .secondary__inner {
+    background-color: $dark;
+  }
+}
+
+/*
+ * Secondary Wrapper Content - Allow scroll Y
+ */
+.content-wrapper {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.content-wrapper__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5%;
+  margin-bottom: 80px;
+}
+
+@media #{$break-small} {
+  .content-wrapper__inner {
+    padding: 60px;
+  }
+}
+
+@media #{$break-medium} {
+  .content-wrapper__inner {
+    padding: 120px;
+  }
+}

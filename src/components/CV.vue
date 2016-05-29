@@ -1,5 +1,5 @@
 <template>
-  <div v-show="open" transition="fade" transition-mode="out-in">
+  <div class="secondary-content secondary-content--cv" v-show="open" transition="fade" transition-mode="out-in">
     This is the about page!
     <img src="https://placekitten.com/800/250" class="cover">
     <img src="https://placekitten.com/550/250" class="cover">

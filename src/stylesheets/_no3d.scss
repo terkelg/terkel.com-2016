@@ -1,0 +1,51 @@
+/*
+ * No 3D styles - Fallback
+ */
+.no3d {
+
+  .primary {
+    display: block!important; // TODO: delete important
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: $nav-mobile-height + $border-size;
+    left: 0;
+    overflow: hidden;
+    padding: $border-size $border-size 0 $border-size;
+    transform: translateZ(0);
+
+    .primary__inner {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .stage {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .stage__inner {
+    max-width: 900px;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: green;
+    overflow: hidden;
+  }
+
+  /*
+   * Default Desktop
+   */
+  @media #{$break-medium} {
+    .primary {
+      bottom: 0;
+      left: $nav-width + $border-size;
+      padding: $border-size $border-size $border-size 0;
+    }
+  }
+
+}

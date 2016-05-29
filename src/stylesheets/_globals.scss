@@ -1,0 +1,157 @@
+*,
+*:before,
+*:after { box-sizing: border-box;}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  // overflow: hidden;
+  font-family: 'canada-type-gibson','Helvetica Neue', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main#app {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+
+/*
+ * Preloader
+ */
+div#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  // background: $white url('http://files.mimoymima.com/images/loading.gif') no-repeat center center;
+  background-color: $white;
+}
+
+
+/*
+ * Default link
+ */
+a {
+  position: relative;
+  color: $blue;
+  text-decoration: none;
+  transition: color $secondary-sec $secondary-ease;
+  backface-visibility: hidden;
+  .dark .secondary & { color: $white; }
+}
+a::after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  height: 0.0em;
+  bottom: -0.08em;
+  left: -0.15em;
+  right: -0.15em;
+  z-index: -1;
+  pointer-events: none;
+  background-color: $yellow;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
+              background $secondary-sec $secondary-ease;
+  .dark .secondary & { background-color: $blue; }
+}
+a:hover::after,
+a.active::after {
+  height: 0.5em;
+}
+
+/*
+ * Link with line
+ */
+.line {
+  position: relative;
+  padding-left: 2em;
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: $blue;
+    width: 1.5em;
+    height: 0.2em;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  .dark .secondary &::before { background-color: $white; }
+}
+
+/*
+ * Back box
+ */
+.boxed,
+.v-link-active {
+  position: relative;
+  &::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    height: 0.5em;
+    bottom: -0.08em;
+    left: -0.15em;
+    right: -0.15em;
+    z-index: -1;
+    pointer-events: none;
+    background-color: $yellow;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
+                background $secondary-sec $secondary-ease;
+  }
+  .dark .secondary &::after { background-color: $blue; }
+}
+
+/*
+ * Headings
+ */
+ h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+ }
+h2 { font-size: 2.8em; }
+
+::selection {
+  background: $yellow;
+}
+
+/*
+ * Transitions
+ */
+.fade-transition {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave {
+  opacity: 0;
+}
+
+// Used to disable transitions on resize
+.notransition * {
+  transition: none !important;
+}
+
+/*
+ * Scrollbar
+ */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $blue;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba($white, 0.1);
+}
