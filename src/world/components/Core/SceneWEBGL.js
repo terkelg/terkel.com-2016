@@ -38,21 +38,34 @@ class Scene extends THREE.Scene {
     // Fog
     this.fog = new THREE.Fog(0xffffff, 1300, 3500);
 
+    // Add lights
+    const ambient = new THREE.AmbientLight(0xffffff);
+    this.add(ambient);
+
     // Add dots
     this.dots = new Dots();
     this.position.z = -600;
     this.position.y = 0;
     this.add(this.dots);
 
+    // Add boxes to World
+    this.objectCloud = new ObjectCloud();
+    this.objectCloud.z = -1000;
+    this.stages[0].add(this.objectCloud);
+
+    // Add logo to home stage
+    var loader = new THREE.ObjectLoader(this.manager);
+    loader.load('/static/logo-object.json', (logo) => {
+      logo.position.z = -1500;
+      logo.scale.multiplyScalar(500);
+      this.stages[0].add(logo);
+    });
+
     /*
     var bbox = new THREE.BoundingBoxHelper(this.dots, 0xff0000);
     bbox.update();
     this.add(bbox);
     */
-
-    // Add lights
-    const ambient = new THREE.AmbientLight(0xffffff);
-    this.add(ambient);
 
     // Spot light
     /*
@@ -73,19 +86,6 @@ class Scene extends THREE.Scene {
     shadowlight.shadowDarkness = 0.04;
     this.add(shadowlight);
     */
-
-    // Add logo to home stage
-    var loader = new THREE.ObjectLoader(this.manager);
-    loader.load('/static/logo-object.json', (logo) => {
-      logo.position.z = -1500;
-      logo.scale.multiplyScalar(500);
-      this.stages[0].add(logo);
-    });
-
-    // Add boxes to World
-    this.objectCloud = new ObjectCloud();
-    this.objectCloud.z = -1000;
-    this.stages[0].add(this.objectCloud);
   }
 
   /**
