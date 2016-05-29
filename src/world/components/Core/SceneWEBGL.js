@@ -1,4 +1,5 @@
-import ObjectCloud from '../objects/objectCloud';
+import ObjectCloud from '../objects/objectCloud2';
+import Dots from '../objects/dots';
 import PostProcessing from '../../postProcessing/postProcessing';
 
 /**
@@ -37,9 +38,41 @@ class Scene extends THREE.Scene {
     // Fog
     this.fog = new THREE.Fog(0xffffff, 1300, 3500);
 
+    // Add dots
+    this.dots = new Dots();
+    this.position.z = -600;
+    this.position.y = 0;
+    this.add(this.dots);
+
+    /*
+    var bbox = new THREE.BoundingBoxHelper(this.dots, 0xff0000);
+    bbox.update();
+    this.add(bbox);
+    */
+
     // Add lights
-    const light = new THREE.AmbientLight(0xffffff);
-    this.add(light);
+    const ambient = new THREE.AmbientLight(0xffffff);
+    this.add(ambient);
+
+    // Spot light
+    /*
+    const spot = new THREE.DirectionalLight(0xdfebff, 1.75); // 0xdfebff
+    spot.position.set(0, 0, -3000);
+    spot.position.multiplyScalar(1.3);
+    spot.intensity = 1;
+    spot.castShadow = true;
+    spot.shadowMapWidth = 1000;
+    spot.shadowMapHeight = 1000;
+    this.add(spot); */
+
+    // Shadow light
+    /*
+    const shadowlight = new THREE.DirectionalLight(0xffffff, 0.3);
+    shadowlight.position.set(1000, 300, 2000);
+    shadowlight.castShadow = true;
+    shadowlight.shadowDarkness = 0.04;
+    this.add(shadowlight);
+    */
 
     // Add logo to home stage
     var loader = new THREE.ObjectLoader(this.manager);
@@ -61,6 +94,7 @@ class Scene extends THREE.Scene {
    */
   render () {
     // this.objectCloud.update(this.clock.time);
+    // this.dots.update(this.clock.time);
 
     this.postProcessing.update();
   };
