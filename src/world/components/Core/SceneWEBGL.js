@@ -51,18 +51,18 @@ class Scene extends THREE.Scene {
     // Add boxes to World
     this.objectCloud = new ObjectCloud();
     this.objectCloud.z = -1000;
-    this.stages[0].add(this.objectCloud);
+    this.add(this.objectCloud);
 
     // Add logo to home stage
     var loader = new THREE.ObjectLoader(this.manager);
     loader.load('/static/logo-object.json', (logo) => {
-      logo.position.z = -1500;
+      logo.position.z = -1400;
       logo.scale.multiplyScalar(500);
       this.stages[0].add(logo);
     });
 
     /*
-    var bbox = new THREE.BoundingBoxHelper(this.dots, 0xff0000);
+    var bbox = new THREE.BoundingBoxHelper(this.objectCloud, 0xff0000);
     bbox.update();
     this.add(bbox);
     */
