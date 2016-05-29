@@ -5,12 +5,11 @@ import CubeMaterial from './cubeMaterial';
  * Cube class
  */
 class Cube extends THREE.Mesh {
-
   /**
    * Constructor function
    */
   constructor () {
-    super(new CubeGeometry(), new CubeMaterial({ wireframe: true }));
+    super(new CubeGeometry(), new CubeMaterial());
   }
 
   /**

@@ -1,4 +1,4 @@
-import ObjectCloud from '../objects/objectCloud2';
+import ObjectCloud from '../objects/objectCloud';
 import Dots from '../objects/dots';
 import PostProcessing from '../../postProcessing/postProcessing';
 
@@ -85,7 +85,7 @@ class Scene extends THREE.Scene {
     // Add boxes to World
     this.objectCloud = new ObjectCloud();
     this.objectCloud.z = -1000;
-    this.add(this.objectCloud);
+    this.stages[0].add(this.objectCloud);
   }
 
   /**
