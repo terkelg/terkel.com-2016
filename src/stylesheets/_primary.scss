@@ -36,7 +36,7 @@
      font-weight: 300;
      text-transform: uppercase;
      margin: 0;
-     letter-spacing: 1px;
+     letter-spacing: 1.5px;
    }
  }
  @media #{$break-medium} {
@@ -64,10 +64,10 @@
      padding: 0;
    }
    .block {
-   	display: block;
+     display: block;
      text-align: center;
      box-sizing: border-box;
-     font-size: 16px;
+     font-size: 17px;
      cursor: pointer;
    }
    .inner-block {
@@ -77,7 +77,7 @@
    }
    .responsive-element {}
    .content {
-     margin-bottom: 60px;
+     margin-bottom: 50px;
      h2 {
        font-size: 1.75em;
        line-height: 1;
@@ -86,7 +86,7 @@
      .link {
        position: relative;
        text-transform: uppercase;
-       font-size: 0.65em;
+       font-size: 0.70em;
        font-weight: 600;
      }
    }
@@ -104,7 +104,7 @@
      .container {}
      .block {
      	width: 33.3333%;
-       padding: 3% 4%;
+       padding: 3% 3.5%;
        text-align: left;
        float: left;
      }
@@ -125,7 +125,6 @@
        font-size: 1em;
        margin: 0;
        h2 {
-         // font-size: 1.4em;
          line-height: 1;
          position: relative;
          &::after {
@@ -163,8 +162,13 @@
    .stage--cases {}
  }
 
- @media #{$break-landscape} {
+ @media #{$break-medium-landscape} {
    .stage--cases {
+     background-color: red;
+     .block {
+        padding: 2.5% 2.5%;
+        font-size: 15px;
+     }
      .content {}
    }
  }
@@ -174,7 +178,8 @@
  * ABOUT STAGE
  */
 .stage--about {
-  width: 100%;
+  width: 150%;
+  .stage__inner { padding: 0 20px; }
   .container {
     margin: 0 auto;
     display: flex;
@@ -186,30 +191,36 @@
     display: none;
     img {}
   }
-  .content {
-    flex: 4;
-    padding-left: 5%;
-  }
+  .content { flex: 4; }
   h2 {
     font-size: 2em;
     display: inline-block;
+    white-space: nowrap;
   }
   p {
-    margin-top: 20px;
+    margin-top: 15px;
     font-size: 1.2em;
     line-height: 1.6;
   }
   a { font-weight: 600; }
 }
 
+@media #{$break-small} {
+  .stage--about {
+    width: 100%;
+    .stage__inner { padding: 0 8%; }
+  }
+}
+
 @media #{$break-medium} {
  .stage--about {
-    width: 80%;
+    width: 100%;
     .container {
       max-width: 900px;
       text-align: left;
     }
-    h2 { font-size: 1.65em; }
+    .content { padding-left: 5%; }
+    h2 { font-size: 2.4em; }
     .profile {
       display: flex;
       flex: 1.25;
@@ -230,10 +241,13 @@
  * CONTACT STAGE
  */
 .stage--contact {
+  .stage__inner { padding: 0; }
   .container {
     text-align: center;
     text-transform: uppercase;
     font-weight: 600;
+    line-height: 1.5;
+    font-size: 1.2em;
 
     .social {
       list-style: none;
@@ -250,13 +264,14 @@
       }
     }
     li {
-      margin: 0 8px;
+      margin: 0 10px;
+      margin-bottom: 14px;
       display: inline-block;
     }
     a {
       svg {
-        width: 22px;
-        height: 22px;
+        width: 28px;
+        height: 28px;
       }
     }
   }

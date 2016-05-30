@@ -73,12 +73,12 @@ a.active::after {
  */
 .line {
   position: relative;
-  padding-left: 2em;
+  padding-left: 2.5em;
   &::before {
     content: '';
     position: absolute;
     background-color: $blue;
-    width: 1.5em;
+    width: 2em;
     height: 0.2em;
     top: 50%;
     left: 0;
@@ -97,10 +97,10 @@ a.active::after {
     position: absolute;
     display: inline-block;
     content: '';
-    height: 0.5em;
-    bottom: -0.08em;
-    left: -0.15em;
-    right: -0.15em;
+    height: 55%;
+    bottom: -0.035em;
+    left: -0.13em;
+    right: -0.13em;
     z-index: -1;
     pointer-events: none;
     background-color: $yellow;
