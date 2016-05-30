@@ -47,38 +47,47 @@
   .body__details {
     width: $case-content-width;
     margin: 40px auto;
-    ul {
+    font-size: 0.90em;
+    .body__details__columns {
       overflow: hidden;
       margin: 0;
       padding: 0;
-    }
-    li {
-      h5 {
-        font-weight: 200;
-        text-transform: uppercase;
-        font-size: 0.65em;
-        letter-spacing: 1px;
-        color: $babyBlue;
-        margin: 0;
-        &::after {
-          content: '';
-          height: 1px;
-          display: block;
-          background-color: $white;
-          width: 12px;
-          margin: 4px 0;
-        }
+      & > li {
+        width: 33.333333333%;
+        list-style: none;
+        display: block;
+        float: left;
+        padding-right: 10px;
+        box-sizing: border-box;
+        margin-bottom: 12%;
       }
-      font-size: 0.95em;
-      width: 33.333333333%;
+    }
+    h5 {
+      font-weight: 200;
+      text-transform: uppercase;
+      font-size: 0.70em;
+      letter-spacing: 1px;
+      color: $babyBlue;
+      margin: 0 0 10px 0;
+      &::after {
+        content: '';
+        height: 1px;
+        display: block;
+        background-color: $white;
+        width: 12px;
+        margin: 4px 0;
+      }
+    }
+    .details-list {
+      margin: 0;
+      padding: 0;
       list-style: none;
-      display: block;
-      float: left;
-      padding-right: 10px;
-      box-sizing: border-box;
+      line-height: 1.65;
+      & > li { margin-bottom: 0}
     }
   }
 }
+
 @media #{$break-small} {
   .secondary-content {
     $case-content-width: 100%;
@@ -94,6 +103,9 @@
     }
     .body {
       font-size: 1.2em;
+    }
+    .body__details {
+      .body__details__columns { }
     }
   }
 }
@@ -124,5 +136,14 @@
     .body__details {
       width: $case-content-width;
     }
+  }
+}
+
+/*
+ * About / CV
+ */
+.secondary-content--cv {
+  .head {
+    margin-bottom: 40px;
   }
 }
