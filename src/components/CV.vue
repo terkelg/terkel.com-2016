@@ -30,7 +30,6 @@
           <li>
             <h5 class="type">Clients</h5>
             <ul class="details-list">
-              <li></li>
               <li>After Effects</li>
               <li>JavaScript</li>
               <li>Swfit</li>
@@ -74,21 +73,17 @@ export default {
       return true;
     },
     'secondary-opened': function () {
-      console.log('CASE: Secondary Opnened - Im case!!');
       this.open = true;
       return true;
     }
-  },
-
-  ready () {
-    console.log('Ready CASE');
   },
 
   route: {
     activate: function ({ next }) {
       imagesLoaded(this.$el, () => {
         next();
-        console.log('About with images loaded');
+        this.$dispatch('content-loaded');
+        // console.log('About with images loaded');
       });
     },
     canDeactivate: function ({ next }) {
@@ -96,6 +91,7 @@ export default {
         opacity: 0,
         onComplete: () => {
           next();
+          this.$dispatch('content-destroy');
         }
       });
     }

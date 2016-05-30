@@ -50,7 +50,8 @@
         <div slot="section">0{{$route.index + 1}}</div>
       </component>
 
-      <div class="content-wrapper" v-show="show" transition="fade" transition-mode="out-in">
+      <div class="content-wrapper" v-show="showContent" transition="fade" transition-mode="out-in">
+        <loader v-show="showLoader" transition="fade" transition-mode="out"></loader>
         <div class="content-wrapper__inner">
           <router-view></router-view>
         </div>
@@ -74,6 +75,7 @@ import {
 
 import desktop from './Desktop';
 import mobile from './Mobile';
+import loader from '../common/loader';
 
 export default {
   vuex: {
@@ -92,7 +94,8 @@ export default {
     return {
       next: 'disabled',
       prev: 'disabled',
-      show: false
+      showContent: false,
+      showLoader: true
     };
   },
 
@@ -102,12 +105,20 @@ export default {
       return true;
     },
     'secondary-opened': function (e) {
-      console.log('Opened secondary');
       return true;
+    },
+    'content-loaded': function (e) {
+      this.showLoader = false;
+    },
+    'content-destroy': function (e) {
+      if (this.showContent) {
+        this.showLoader = true;
+      }
     }
   },
 
   ready () {
+    this.showLoader = true;
     this.addEventListeners();
   },
 
@@ -120,10 +131,9 @@ export default {
       if (event.propertyName === 'transform') {
         if (this.secondary.status === 'open') {
           this.$broadcast('secondary-opened');
-          this.show = true;
+          this.showContent = true;  // Fade in content when transition end
         } else {
           this.$broadcast('secondary-closed');
-          this.show = false;
         }
       }
     },
@@ -138,6 +148,7 @@ export default {
         backTo = 'home';
       }
 
+      this.showContent = false; // Hide content, and make ready to fade in again
       this.$router.go({name: backTo});
     },
 
@@ -182,7 +193,8 @@ export default {
 
   components: {
     desktop,
-    mobile
+    mobile,
+    loader
   }
 };
 </script>

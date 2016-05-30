@@ -12,7 +12,7 @@
       <section class="body">
 
         <footer class="body__details">
-          <ul>
+          <ul class="body__details__columns">
             <li>
               <h5 class="type">Type</h5>
               Web Design
@@ -72,12 +72,12 @@ export default {
   activate: function (insert) {
     imagesLoaded(this.$el, () => {
       insert();
-      this.$dispatch('case-loaded');
+      this.$dispatch('content-loaded');
     });
   },
   beforeDestroy () {
     console.log('Destroy!');
-    this.$dispatch('case-destroy');
+    this.$dispatch('content-destroy');
   }
 };
 </script>

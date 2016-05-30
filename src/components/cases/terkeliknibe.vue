@@ -66,12 +66,12 @@ export default {
   activate: function (insert) {
     imagesLoaded(this.$el, () => {
       insert();
-      this.$dispatch('case-loaded');
+      this.$dispatch('content-loaded');
     });
   },
   beforeDestroy () {
     console.log('Destroy!');
-    this.$dispatch('case-destroy');
+    this.$dispatch('content-destroy');
   }
 };
 </script>

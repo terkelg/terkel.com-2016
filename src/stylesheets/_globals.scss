@@ -155,3 +155,50 @@ h2 { font-size: 2.8em; }
 ::-webkit-scrollbar-track {
   background: rgba($white, 0.1);
 }
+
+/*
+ * Loader
+ */
+.loader {
+  $loader-height: 15px;
+  font-size: $loader-height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 4em;
+  height: $loader-height;
+  // margin: 100px auto;
+
+  .dot {
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background: $white;
+    position: absolute;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .dot1,
+  .dot2 {
+    left: 0;
+  }
+  .dot3 { left: 1.5em; }
+  .dot4 { left: 3em; }
+
+  @keyframes reveal {
+    from { transform: scale(0.001); }
+    to { transform: scale(1); }
+  }
+  @keyframes slide {
+    to { transform: translateX(1.5em) }
+  }
+
+  .dot1 { animation-name: reveal; }
+  .dot2, .dot3 { animation-name: slide; }
+  .dot4 {
+    animation-name: reveal;
+    animation-direction: reverse;
+  }
+}
