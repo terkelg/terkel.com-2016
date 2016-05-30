@@ -51,7 +51,7 @@
       </component>
 
       <div class="content-wrapper" v-show="showContent" transition="fade" transition-mode="out-in">
-        <loader v-show="showLoader" transition="fade" transition-mode="out"></loader>
+        <loader v-show="showLoader" transition="fade" transition-mode="out-in"></loader>
         <div class="content-wrapper__inner">
           <router-view></router-view>
         </div>

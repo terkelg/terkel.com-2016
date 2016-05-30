@@ -83,7 +83,6 @@ export default {
       imagesLoaded(this.$el, () => {
         next();
         this.$dispatch('content-loaded');
-        // console.log('About with images loaded');
       });
     },
     canDeactivate: function ({ next }) {
