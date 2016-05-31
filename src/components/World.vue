@@ -51,6 +51,10 @@ export default {
     this.keyboardEvent = throttle(this.keyboardEvent, 850, { 'trailing': false });
     this.scrollEvent = throttle(this.scrollEvent, 1000, { 'trailing': false });
     this.touchMove = throttle(this.touchMove, 1000, { 'trailing': false });
+
+    this.touchMove = this.touchMove.bind(this);
+    this.touchStart = this.touchStart.bind(this);
+
     this.addEventListeners();
   },
 
@@ -81,16 +85,16 @@ export default {
     addEventListeners () {
       window.addEventListener('keyup', this.keyboardEvent, false);
       window.addEventListener('wheel', this.scrollEvent, false);
-
-      document.addEventListener('touchmove', this.touchMove.bind(this), false);
-      document.addEventListener('touchstart', this.touchStart.bind(this), false);
-
+      document.addEventListener('touchmove', this.touchMove, false);
+      document.addEventListener('touchstart', this.touchStart, false);
       document.addEventListener('mousemove', this.onMouseMove, false);
     },
 
     removeEventListeners () {
       window.removeEventListener('keyup', this.keyboardEvent, false);
       window.removeEventListener('wheel', this.scrollEvent, false);
+      document.removeEventListener('touchmove', this.touchMove, false);
+      document.removeEventListener('touchstart', this.touchStart, false);
       document.removeEventListener('mousemove', this.onMouseMove, false);
     },
 
@@ -173,10 +177,8 @@ export default {
 
     touchMove (event) {
       if (this.secondary.status !== 'open') {
-        var xMovement = event.touches[0].screenX - this.lastTouchX;
+        // var xMovement = event.touches[0].screenX - this.lastTouchX;
         var yMovement = event.touches[0].screenY - this.lastTouchY;
-        console.log('xMovement: ', xMovement);
-        console.log('yMovement: ', yMovement);
         event.preventDefault();
         if (yMovement > 0) {
           this.previusStage();
