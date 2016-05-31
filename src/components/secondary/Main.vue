@@ -125,7 +125,7 @@ export default {
      * completionHandler
      * Delegate transition event to methods,
      * based on secondary state
-     * @return {void}
+     * @return {Void}
      */
     completionHandler (event) {
       if (event.propertyName === 'transform') {
@@ -142,7 +142,7 @@ export default {
     /**
      * Close button actions
      * Fires imediatly – contrary secondaryDidClose
-     * @return {void}
+     * @return {Void}
      */
     closeButton () {
       let backTo;
@@ -159,7 +159,7 @@ export default {
     /**
      * Route Event Handler
      * Fire when route changes
-     * @return {boolean} true - Return true to let the event propagate
+     * @return {Boolean} true - Return true to let the event propagate
      */
     routeChange () {
       if (this.$route.name === 'case') {
@@ -171,7 +171,7 @@ export default {
     /**
      * Content Loaded Event Handler
      * Fire when content loads
-     * @return {boolean} undefined - Return true to let the event propagate
+     * @return {Boolean} undefined - Return true to let the event propagate
      */
     contentDidLoad () {
       this.loaded = true;
@@ -185,11 +185,11 @@ export default {
     /**
      * Content Destroy Event Handler
      * Fire when content unloads
-     * @return {boolean} true - Return true to let the event propagate
+     * @return {Boolean} true - Return true to let the event propagate
      */
     contentDidDestroy () {
       this.loaded = false;
-      // Stop video here
+      this.stopVideo(this.$el);
       return true;
     },
 
@@ -224,7 +224,7 @@ export default {
      * setButtonState
      * Determines the state of the next / prev buttons
      * disable if at the end or start of case list-style
-     * @return {void}
+     * @return {Void}
      */
     setButtonState () {
       if (this.$route.name === 'case') {
@@ -245,7 +245,7 @@ export default {
     /**
      * getIndex()
      * Get the current case index and update state
-     * @reutrn {integer} index - Case index
+     * @reutrn {Integer} index - Case index
      */
     getIndex () {
       const index = this.cases.findIndex(x => x.id === this.$route.params.case);
@@ -256,15 +256,30 @@ export default {
     /**
      * delayedLoader
      * Show delayed loader after a few miliseconds
-     * @return {void}
+     * @return {Void}
      */
     delayedLoader () {
       delay(() => {
         if (this.loaded) { return; }
         this.secondaryShowContent(false);
         this.secondaryShowLoader(true);
-        console.log('Okay, show loader');
       }, 300);
+    },
+
+    /**
+     * Stop an iframe, YouTube, Vimeo or HTML5 <video> from playing
+     * @param {Element} element The element that contains the video
+     */
+    stopVideo (element) {
+      var iframe = element.querySelector('iframe');
+      var video = element.querySelector('video');
+      if (iframe) {
+        const iframeSrc = iframe.src;
+        iframe.src = iframeSrc;
+      }
+      if (video) {
+        video.pause();
+      }
     }
   },
 
