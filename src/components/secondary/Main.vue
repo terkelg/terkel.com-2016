@@ -143,13 +143,23 @@ export default {
       this.$router.go({name: backTo});
     },
 
+    /**
+     * Route Event Handler
+     * Fire when route changes
+     * @return {boolean} true - Return true to let the event propagate
+     */
     routeChange () {
       if (this.$route.name === 'case') {
         this.setButtonState();
       }
-      return true; // Let the event propegate
+      return true; // Let the event propagate
     },
 
+    /**
+     * Content Loaded Event Handler
+     * Fire when content loads
+     * @return {boolean} undefined - Return true to let the event propagate
+     */
     contentDidLoad () {
       this.secondaryShowLoader(false);
       if (this.isOpen) {
@@ -157,6 +167,11 @@ export default {
       }
     },
 
+    /**
+     * Content Destroy Event Handler
+     * Fire when content unloads
+     * @return {boolean} true - Return true to let the event propagate
+     */
     contentDidDestroy () {
       // Stop video here
       console.log('BAM!');
