@@ -20,6 +20,7 @@ class Camera extends THREE.PerspectiveCamera {
 
     this.distance = 1000;
     this.targetPoint = new THREE.Vector3(0, 0, 0);
+    this.limitX = 2; // mouse divided by 2
 
     this.cameraShakeY = 0;
     this.windowHalfX = width / 2;
@@ -44,10 +45,9 @@ class Camera extends THREE.PerspectiveCamera {
    */
   update (delta) {
     if (this.deviceOrientation.alpha > 0 || this.deviceOrientation.beta > 0 || this.deviceOrientation.gamma > 0) {
-      console.log('Device use');
       this.deviceOrientationUpdate();
     } else {
-      this.position.x += (this.mouse.x - this.position.x) * 0.05;
+      this.position.x += ((this.mouse.x / this.limitX) - this.position.x) * 0.05;
       this.position.y += (-this.mouse.y - this.position.y + this.targetPoint.y) * 0.01;
     }
 
@@ -90,19 +90,19 @@ class Camera extends THREE.PerspectiveCamera {
    */
   moveTo (vec3) {
     // Target - always center in Stage
-    TweenLite.to(this.targetPoint, 2, {
+    TweenLite.to(this.targetPoint, 1, {
       x: vec3.x,
       y: vec3.y,
       z: vec3.z
     });
 
-    TweenLite.to(this.position, 4.5, {
+    TweenLite.to(this.position, 3, {
       x: vec3.x,
       y: vec3.y,
       z: vec3.z + this.distance,
       onUpdate: () => {
         TweenLite.to(this.position, 0.8, {
-          x: this.mouse.x - this.position.x * 0.05
+          x: (this.mouse.x / this.limitX) - this.position.x * 0.05
         });
       }
     });
