@@ -15,8 +15,16 @@
 }
 
 @media #{$break-landscape} {
-  .stage { width: 80%; }
+  .stage { width: 120%; }
   .stage__inner { padding: 0 2%; }
+}
+
+@media #{$break-small-landscape} {
+  .stage { width: 100%; }
+}
+
+@media #{$break-medium-landscape} {
+  .stage { width: 85%; }
 }
 
 
@@ -27,7 +35,7 @@
    width: 150%;
    text-align: center;
    h1 {
-     font-size: 6em;
+     font-size: 6.5em;
      font-weight: 600;
      white-space: nowrap
    }
@@ -47,7 +55,11 @@
      }
    }
  }
- @media #{$break-landscape} {}
+ @media #{$break-landscape} {
+   .stage--home {
+     h1 { font-size: 4.5em; }
+   }
+ }
 
 
 /*
@@ -103,7 +115,8 @@
    .stage--cases {
      .container {}
      .block {
-     	width: 33.3333%;
+     	 width: 33.3333%;
+       font-size: 16px;
        padding: 3% 3.5%;
        text-align: left;
        float: left;
@@ -158,18 +171,12 @@
    }
  }
 
- @media #{$break-large} {
-   .stage--cases {}
- }
-
  @media #{$break-medium-landscape} {
    .stage--cases {
-     background-color: red;
      .block {
-        padding: 2.5% 2.5%;
-        font-size: 15px;
+        padding: 3% 3%;
+        font-size: 14px;
      }
-     .content {}
    }
  }
 
@@ -214,7 +221,6 @@
 
 @media #{$break-medium} {
  .stage--about {
-    width: 100%;
     .container {
       max-width: 900px;
       text-align: left;
@@ -236,6 +242,13 @@
   }
 }
 
+@media #{$break-medium-landscape} {
+  .stage--about {
+    background-color: yellow;
+    width: 80%;
+  }
+}
+
 
 /*
  * CONTACT STAGE
@@ -253,7 +266,6 @@
       list-style: none;
       margin: 0 auto;
       padding: 0;
-      svg { fill: $blue; }
       &::before {
          content: '';
          display: block;
@@ -270,8 +282,21 @@
     }
     a {
       svg {
+        fill: $blue;
         width: 28px;
         height: 28px;
+      }
+    }
+  }
+}
+
+@media #{$break-medium-landscape} {
+  .stage--contact {
+    .container {
+      font-size: 15px;
+      a svg {
+        width: 20px;
+        height: 20px;
       }
     }
   }
