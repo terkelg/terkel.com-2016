@@ -1,6 +1,6 @@
 <template>
   <div class="secondary-content secondary-content--case">
-    {{ cases[1].id }} of {{ cases.length }}
+    <div class="pagination">{{ currentIndex + 1 }} / {{ cases.length }}</div>
     <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
@@ -26,10 +26,6 @@ export default {
       cases: getCases,
       currentIndex: getCurrentCase
     }
-  },
-
-  ready () {
-    console.log(this.currentIndex);
   },
 
   route: {

@@ -77,7 +77,7 @@ const mutations = {
     state.theme = theme;
   },
   CURRENT_CASE (state, index) {
-    state.currentCase = index;
+    state.secondary.currentCase = index;
   },
   SHOW_LOADER (state, show) {
     state.secondary.loader = show;
