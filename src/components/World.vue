@@ -11,6 +11,7 @@ import {
   getSecondary
 } from 'vuex/getters';
 import World from 'world';
+
 import throttle from 'lodash.throttle';
 
 export default {
@@ -40,12 +41,16 @@ export default {
         'cases',
         'about',
         'contact'
-      ]
+      ],
+      lastTouchX: 0,
+      lastTouchY: 0
     };
   },
 
   created () {
     this.keyboardEvent = throttle(this.keyboardEvent, 850, { 'trailing': false });
+    this.scrollEvent = throttle(this.scrollEvent, 1000, { 'trailing': false });
+    this.touchMove = throttle(this.touchMove, 1000, { 'trailing': false });
     this.addEventListeners();
   },
 
@@ -74,12 +79,18 @@ export default {
 
   methods: {
     addEventListeners () {
-      window.addEventListener('keyup', this.keyboardEvent);
+      window.addEventListener('keyup', this.keyboardEvent, false);
+      window.addEventListener('wheel', this.scrollEvent, false);
+
+      document.addEventListener('touchmove', this.touchMove.bind(this), false);
+      document.addEventListener('touchstart', this.touchStart.bind(this), false);
+
       document.addEventListener('mousemove', this.onMouseMove, false);
     },
 
     removeEventListeners () {
-      window.removeEventListener('keyup', this.keyboardEvent);
+      window.removeEventListener('keyup', this.keyboardEvent, false);
+      window.removeEventListener('wheel', this.scrollEvent, false);
       document.removeEventListener('mousemove', this.onMouseMove, false);
     },
 
@@ -91,21 +102,90 @@ export default {
       this.world.mouseMove(event.clientX, event.clientY);
     },
 
+    /**
+     * toStage
+     * Move to specific stage in 3D World
+     * @return {Void}
+     */
     toStage () {
       this.world.moveToStage(this.$route.index);
     },
 
+    /**
+     * nextStage
+     * Move to the next stage
+     * @return {Void}
+     */
+    nextStage () {
+      const index = this.$route.index;
+      this.$router.go({ name: this.routes[index + 1] });
+    },
+
+    /**
+     * previusStage
+     * Move to previus stage
+     * @return {Void}
+     */
+    previusStage () {
+      const index = this.$route.index;
+      this.$router.go({ name: this.routes[index - 1] });
+    },
+
+    /**
+     * keyboardEvent
+     * Use keyboard to navigate stages
+     * @return {Void}
+     */
     keyboardEvent (event) {
       if (this.secondary.status !== 'open') {
-        const index = this.$route.index;
         if (event.which === 38) {
-          this.$router.go({ name: this.routes[index - 1] });
+          this.previusStage();
         }
         if (event.which === 40) {
-          this.$router.go({ name: this.routes[index + 1] });
+          this.nextStage();
+        }
+      }
+    },
+
+    /**
+     * scrollEvent
+     * Allow scroll to navigate stages
+     * @return {Void}
+     */
+    scrollEvent (event) {
+      if (this.secondary.status !== 'open') {
+        if (event.deltaY < 0) {
+          this.previusStage();
+        } else if (event.deltaY > 0) {
+          this.nextStage();
+        }
+      }
+    },
+
+    /**
+     * Allow Touch / Swipe to scroll
+     * https://gregsramblings.com/2012/05/23/preventing-vertical-scrolling-bounce-using-javascript-on-ios-devices/
+     */
+    touchStart (event) {
+      this.lastTouchX = event.touches[0].screenX;
+      this.lastTouchY = event.touches[0].screenY;
+    },
+
+    touchMove (event) {
+      if (this.secondary.status !== 'open') {
+        var xMovement = event.touches[0].screenX - this.lastTouchX;
+        var yMovement = event.touches[0].screenY - this.lastTouchY;
+        console.log('xMovement: ', xMovement);
+        console.log('yMovement: ', yMovement);
+        event.preventDefault();
+        if (yMovement > 0) {
+          this.previusStage();
+        } else if (yMovement < 0) {
+          this.nextStage();
         }
       }
     }
+
   }
 };
 </script>
