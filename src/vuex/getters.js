@@ -7,5 +7,5 @@ export const getTheme = state => state.theme;
 export const getRoute = state => state.route;
 
 export const getCases = state => state.cases;
-export const getCurrentCase = state => state.currentCase;
+export const getCurrentCase = state => state.secondary.currentCase;
 export const getCaseCount = state => state.cases.length;

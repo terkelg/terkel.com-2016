@@ -1,6 +1,6 @@
 <template>
   <div class="secondary-content secondary-content--case">
-    case {{index}} of {{of}}
+    {{ cases[1].id }} of {{ cases.length }}
     <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
@@ -8,7 +8,8 @@
 <script>
 import {
   getSecondary,
-  getCases
+  getCases,
+  getCurrentCase
 } from 'vuex/getters';
 
 import Radio24syv from './cases/radio24syv';
@@ -22,11 +23,20 @@ export default {
   vuex: {
     getters: {
       secondary: getSecondary,
-      cases: getCases
+      cases: getCases,
+      currentIndex: getCurrentCase
     }
   },
 
-  props: ['index', 'of'],
+  watch: {
+    'currentIndex': function (e) {
+      console.log(e);
+    }
+  },
+
+  ready () {
+    console.log(this.currentIndex);
+  },
 
   route: {
     canDeactivate: function ({ next }) {

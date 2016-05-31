@@ -64,8 +64,9 @@
 import {
   secondaryOpen,
   secondaryClose,
-  secondaryLoader,
-  secondaryContent
+  secondaryShowLoader,
+  secondaryShowContent,
+  currentCase
 } from 'vuex/actions';
 
 import {
@@ -83,8 +84,9 @@ export default {
     actions: {
       secondaryClose,
       secondaryOpen,
-      secondaryLoader,
-      secondaryContent
+      secondaryShowLoader,
+      secondaryShowContent,
+      currentCase
     },
     getters: {
       size: getSize,
@@ -137,7 +139,7 @@ export default {
       } else {
         backTo = 'home';
       }
-      this.secondaryLoader(false);  // Hide loader on close
+      this.secondaryShowLoader(false);  // Hide loader on close
       this.$router.go({name: backTo});
     },
 
@@ -149,9 +151,9 @@ export default {
     },
 
     contentDidLoad () {
-      this.secondaryLoader(false);
+      this.secondaryShowLoader(false);
       if (this.isOpen) {
-        this.secondaryContent(true);
+        this.secondaryShowContent(true);
       }
     },
 
@@ -162,19 +164,19 @@ export default {
 
     secondaryDidOpen () {
       this.isOpen = true;
-      this.secondaryContent(true);
+      this.secondaryShowContent(true);
     },
 
     secondaryDidClose () {
       this.isOpen = false;
-      this.secondaryContent(false);
-      this.secondaryLoader(true);
+      this.secondaryShowContent(false);
+      this.secondaryShowLoader(true);
     },
 
     goNext () {
       if (this.next !== 'disabled') {
-        this.secondaryContent(false);
-        this.secondaryLoader(true);
+        this.secondaryShowContent(false);
+        this.secondaryShowLoader(true);
         const nextIndex = this.getIndex() + 1;
         this.$router.go(this.cases[nextIndex].id);
       }
@@ -182,8 +184,8 @@ export default {
 
     goPrevious () {
       if (this.prev !== 'disabled') {
-        this.secondaryContent(false);
-        this.secondaryLoader(true);
+        this.secondaryShowContent(false);
+        this.secondaryShowLoader(true);
         const prevIndex = this.getIndex() - 1;
         this.$router.go(this.cases[prevIndex].id);
       }
@@ -206,7 +208,9 @@ export default {
     },
 
     getIndex () {
-      return this.cases.findIndex(x => x.id === this.$route.params.case);
+      const index = this.cases.findIndex(x => x.id === this.$route.params.case);
+      this.currentCase(index);
+      return index;
     }
   },
 

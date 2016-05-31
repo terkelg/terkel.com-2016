@@ -60,7 +60,7 @@
     right: $nav-width - 1px;
     height: 100%;
     background: $white; // Start white, fade to dark
-    // transition: background $secondary-sec $secondary-ease;
+    transition: background $secondary-sec $secondary-ease;
   }
   .menu__vertical {
     margin: 0 auto;

@@ -53,10 +53,10 @@ export const currentCase = function ({ dispatch, state }, index) {
   dispatch('CURRENT_CASE', index);
 };
 
-export const secondaryLoader = function ({ dispatch, state }, show) {
+export const secondaryShowLoader = function ({ dispatch, state }, show) {
   dispatch('SHOW_LOADER', show);
 };
 
-export const secondaryContent = function ({ dispatch, state }, show) {
+export const secondaryShowContent = function ({ dispatch, state }, show) {
   dispatch('SHOW_CONTENT', show);
 };
