@@ -28,12 +28,6 @@ export default {
     }
   },
 
-  watch: {
-    'currentIndex': function (e) {
-      console.log(e);
-    }
-  },
-
   ready () {
     console.log(this.currentIndex);
   },

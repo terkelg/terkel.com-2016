@@ -1,5 +1,4 @@
 <template>
-  <div>
     <article class="article">
       <header class="head">
         <img src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Windows-XP-wallpaper.jpg" class="cover">
@@ -62,7 +61,6 @@
 
       </section>
     </article>
-  </div>
 </template>
 
 <script>
@@ -73,10 +71,11 @@ export default {
     imagesLoaded(this.$el, () => {
       insert();
       this.$dispatch('content-loaded');
+      console.log('Skagen Content Loaded');
     });
   },
   beforeDestroy () {
-    console.log('Destroy!');
+    console.log('Skagen Destroy!');
     this.$dispatch('content-destroy');
   }
 };

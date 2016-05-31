@@ -160,6 +160,8 @@ export default {
     contentDidDestroy () {
       // Stop video here
       console.log('BAM!');
+
+      return true;
     },
 
     secondaryDidOpen () {
