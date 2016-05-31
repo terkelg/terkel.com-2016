@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="secondary-content secondary-content--cv" v-if="open" transition="fade" transition-mode="out-in">
+    <div class="secondary-content secondary-content--cv">
 
       <article class="article">
         <header class="head">
@@ -64,19 +64,6 @@
 import imagesLoaded from 'imagesloaded';
 
 export default {
-  data: () => {
-    return {
-      open: false
-    };
-  },
-
-  events: {
-    'secondary-opened': function () {
-      this.open = true;
-      return true;
-    }
-  },
-
   route: {
     activate: function ({ next }) {
       imagesLoaded(this.$el, () => {
