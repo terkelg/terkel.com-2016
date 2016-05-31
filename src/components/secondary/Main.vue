@@ -79,6 +79,8 @@ import desktop from './Desktop';
 import mobile from './Mobile';
 import loader from '../common/loader';
 
+import delay from 'lodash.delay';
+
 export default {
   vuex: {
     actions: {
@@ -99,7 +101,8 @@ export default {
     return {
       next: 'disabled',
       prev: 'disabled',
-      isOpen: false
+      isOpen: false,
+      loaded: false
     };
   },
 
@@ -118,6 +121,12 @@ export default {
       this.$el.addEventListener('transitionend', this.completionHandler.bind(this), false);
     },
 
+    /**
+     * completionHandler
+     * Delegate transition event to methods,
+     * based on secondary state
+     * @return {void}
+     */
     completionHandler (event) {
       if (event.propertyName === 'transform') {
         if (this.secondary.status === 'open') {
@@ -130,6 +139,11 @@ export default {
       }
     },
 
+    /**
+     * Close button actions
+     * Fires imediatly – contrary secondaryDidClose
+     * @return {void}
+     */
     closeButton () {
       let backTo;
       if (this.$route.name === 'case') {
@@ -139,7 +153,6 @@ export default {
       } else {
         backTo = 'home';
       }
-      this.secondaryShowLoader(false);  // Hide loader on close
       this.$router.go({name: backTo});
     },
 
@@ -161,10 +174,12 @@ export default {
      * @return {boolean} undefined - Return true to let the event propagate
      */
     contentDidLoad () {
+      this.loaded = true;
       this.secondaryShowLoader(false);
       if (this.isOpen) {
         this.secondaryShowContent(true);
       }
+      return true;
     },
 
     /**
@@ -173,9 +188,8 @@ export default {
      * @return {boolean} true - Return true to let the event propagate
      */
     contentDidDestroy () {
+      this.loaded = false;
       // Stop video here
-      console.log('BAM!');
-
       return true;
     },
 
@@ -192,8 +206,7 @@ export default {
 
     goNext () {
       if (this.next !== 'disabled') {
-        this.secondaryShowContent(false);
-        this.secondaryShowLoader(true);
+        this.delayedLoader();
         const nextIndex = this.getIndex() + 1;
         this.$router.go(this.cases[nextIndex].id);
       }
@@ -201,13 +214,18 @@ export default {
 
     goPrevious () {
       if (this.prev !== 'disabled') {
-        this.secondaryShowContent(false);
-        this.secondaryShowLoader(true);
+        this.delayedLoader();
         const prevIndex = this.getIndex() - 1;
         this.$router.go(this.cases[prevIndex].id);
       }
     },
 
+    /**
+     * setButtonState
+     * Determines the state of the next / prev buttons
+     * disable if at the end or start of case list-style
+     * @return {void}
+     */
     setButtonState () {
       if (this.$route.name === 'case') {
         if (this.getIndex() - 1 < 0) {
@@ -224,10 +242,29 @@ export default {
       }
     },
 
+    /**
+     * getIndex()
+     * Get the current case index and update state
+     * @reutrn {integer} index - Case index
+     */
     getIndex () {
       const index = this.cases.findIndex(x => x.id === this.$route.params.case);
       this.currentCase(index);
       return index;
+    },
+
+    /**
+     * delayedLoader
+     * Show delayed loader after a few miliseconds
+     * @return {void}
+     */
+    delayedLoader () {
+      delay(() => {
+        if (this.loaded) { return; }
+        this.secondaryShowContent(false);
+        this.secondaryShowLoader(true);
+        console.log('Okay, show loader');
+      }, 300);
     }
   },
 
