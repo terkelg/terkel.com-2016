@@ -3,7 +3,7 @@
       <header class="head">
         <img src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Windows-XP-wallpaper.jpg" class="cover">
         <div class="head__content">
-          <h1>Skagen</h1>
+          <h1 class="boxed">Skagen</h1>
           <span class="line">Hej verden her er tekst</span>
         </div>
       </header>
