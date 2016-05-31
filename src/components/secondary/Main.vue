@@ -4,7 +4,7 @@
 
       <component :is="size.layout">
         <div slot="navigation">
-          <a class="btn btn--close" @click=close>
+          <a class="btn btn--close" @click=closeButton>
             <svg version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 26.3 26.3;"
@@ -50,13 +50,12 @@
         <div slot="section">0{{$route.index + 1}}</div>
       </component>
 
-      <div class="content-wrapper" v-show="showContent" transition="fade" transition-mode="out-in">
-        <loader v-show="showLoader" transition="fade" transition-mode="out-in"></loader>
+      <div class="content-wrapper" v-show="secondary.content" transition="fade" transition-mode="out-in">
         <div class="content-wrapper__inner">
           <router-view></router-view>
         </div>
+        <loader v-if="secondary.loader" transition="fade" transition-mode="out-in"></loader>
       </div>
-
     </div>
   </aside>
 </template>
@@ -64,7 +63,9 @@
 <script>
 import {
   secondaryOpen,
-  secondaryClose
+  secondaryClose,
+  secondaryLoader,
+  secondaryContent
 } from 'vuex/actions';
 
 import {
@@ -80,8 +81,10 @@ import loader from '../common/loader';
 export default {
   vuex: {
     actions: {
-      secondaryClose: secondaryClose,
-      secondaryOpen: secondaryOpen
+      secondaryClose,
+      secondaryOpen,
+      secondaryLoader,
+      secondaryContent
     },
     getters: {
       size: getSize,
@@ -94,51 +97,38 @@ export default {
     return {
       next: 'disabled',
       prev: 'disabled',
-      showContent: false,
-      showLoader: true
+      isOpen: false
     };
   },
 
   events: {
-    'route-change': function (e) {
-      this.routeChange();
-      return true;
-    },
-    'secondary-opened': function (e) {
-      return true;
-    },
-    'content-loaded': function (e) {
-      this.showLoader = false;
-    },
-    'content-destroy': function (e) {
-      if (this.showContent) {
-        this.showLoader = true;
-      }
-    }
+    'route-change': 'routeChange',
+    'content-loaded': 'contentDidLoad',
+    'content-destroy': 'contentDidDestroy'
   },
 
   ready () {
-    this.showLoader = true;
     this.addEventListeners();
   },
 
   methods: {
     addEventListeners () {
-      this.$el.addEventListener('transitionend', this.secondaryToggle.bind(this), false);
+      this.$el.addEventListener('transitionend', this.completionHandler.bind(this), false);
     },
 
-    secondaryToggle (event) {
+    completionHandler (event) {
       if (event.propertyName === 'transform') {
         if (this.secondary.status === 'open') {
           this.$broadcast('secondary-opened');
-          this.showContent = true;  // Fade in content when transition end
+          this.secondaryDidOpen();
         } else {
           this.$broadcast('secondary-closed');
+          this.secondaryDidClose();
         }
       }
     },
 
-    close () {
+    closeButton () {
       let backTo;
       if (this.$route.name === 'case') {
         backTo = 'cases';
@@ -147,8 +137,7 @@ export default {
       } else {
         backTo = 'home';
       }
-
-      this.showContent = false; // Hide content, and make ready to fade in again
+      this.secondaryLoader(false);  // Hide loader on close
       this.$router.go({name: backTo});
     },
 
@@ -156,17 +145,47 @@ export default {
       if (this.$route.name === 'case') {
         this.setButtonState();
       }
+      return true; // Let the event propegate
+    },
+
+    contentDidLoad () {
+      this.secondaryLoader(false);
+      if (this.isOpen) {
+        this.secondaryContent(true);
+      }
+    },
+
+    contentDidDestroy () {
+      // Stop video here
+      console.log('BAM!');
+    },
+
+    secondaryDidOpen () {
+      this.isOpen = true;
+      this.secondaryContent(true);
+    },
+
+    secondaryDidClose () {
+      this.isOpen = false;
+      this.secondaryContent(false);
+      this.secondaryLoader(true);
     },
 
     goNext () {
       if (this.next !== 'disabled') {
-        this.$router.go(this.cases[this.getIndex() + 1].id);
+        this.secondaryContent(false);
+        this.secondaryLoader(true);
+        const nextIndex = this.getIndex() + 1;
+        this.$router.go(this.cases[nextIndex].id);
       }
     },
 
     goPrevious () {
       if (this.prev !== 'disabled') {
-        this.$router.go(this.cases[this.getIndex() - 1].id);
+        this.secondaryContent(false);
+        this.secondaryLoader(true);
+        const prevIndex = this.getIndex() - 1;
+        this.$router.go(this.cases[prevIndex].id);
       }
     },
 

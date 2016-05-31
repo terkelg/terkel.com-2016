@@ -1,5 +1,6 @@
 <template>
   <div class="secondary-content secondary-content--case">
+    case {{index}} of {{of}}
     <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
   </div>
 </template>
@@ -24,6 +25,8 @@ export default {
       cases: getCases
     }
   },
+
+  props: ['index', 'of'],
 
   route: {
     canDeactivate: function ({ next }) {

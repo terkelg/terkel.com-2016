@@ -53,14 +53,14 @@
   &::before {
     // This is a genius hack to always show the border,
     // also when there isn't any content (Safari fix)
-    display: none;
+    // display: none;
     content: '';
     position: absolute;
     width: 1px;
     right: $nav-width - 1px;
     height: 100%;
-    background-color: $white; // Start white, fade to dark
-    transition: background $secondary-sec $secondary-ease;
+    background: $white; // Start white, fade to dark
+    // transition: background $secondary-sec $secondary-ease;
   }
   .menu__vertical {
     margin: 0 auto;
@@ -136,7 +136,7 @@
 }
 // dark mode
 .dark .menu--desktop {
-  &::before { background-color: $dark-light; }
+  &::before { background: $dark-light; }
   .menu__bottom { color: $white; }
   .mini-logo .logo { fill: $white; }
   .menu__middle-bg { color: rgba($white, 0.1); }

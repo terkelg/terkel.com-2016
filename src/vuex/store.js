@@ -18,7 +18,10 @@ const state = {
     layout: 'mobile'
   },
   secondary: {
-    status: 'closed'
+    status: 'closed',
+    currentCase: 0,
+    loader: true,
+    content: true
   },
   cases: [
     {
@@ -72,6 +75,15 @@ const mutations = {
   },
   THEME (state, theme) {
     state.theme = theme;
+  },
+  CURRENT_CASE (state, index) {
+    state.currentCase = index;
+  },
+  SHOW_LOADER (state, show) {
+    state.secondary.loader = show;
+  },
+  SHOW_CONTENT (state, show) {
+    state.secondary.content = show;
   }
 };
 

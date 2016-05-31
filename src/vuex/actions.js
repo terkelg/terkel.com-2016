@@ -48,3 +48,15 @@ export const secondaryClose = function ({ dispatch, state }) {
   dispatch('SECONDARY_CLOSE');
   dispatch('THEME', 'light');
 };
+
+export const currentCase = function ({ dispatch, state }, index) {
+  dispatch('CURRENT_CASE', index);
+};
+
+export const secondaryLoader = function ({ dispatch, state }, show) {
+  dispatch('SHOW_LOADER', show);
+};
+
+export const secondaryContent = function ({ dispatch, state }, show) {
+  dispatch('SHOW_CONTENT', show);
+};
