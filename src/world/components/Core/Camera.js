@@ -28,6 +28,7 @@ class Camera extends THREE.PerspectiveCamera {
     this.mouse = {x: 0, y: 0};
 
     this.deviceOrientation = {};
+    this.initialDeviceOrientation = null;
     this.screenOrientation = 0;
 
     this.onScreenOrientationChangeEvent();
@@ -104,6 +105,10 @@ class Camera extends THREE.PerspectiveCamera {
         TweenLite.to(this.position, 0.8, {
           x: (this.mouse.x / this.limitX) - this.position.x * 0.05
         });
+      },
+      onComplete: () => {
+        // Update initial orientation
+        this.updateInitialOrientation();
       }
     });
   }
@@ -138,23 +143,15 @@ class Camera extends THREE.PerspectiveCamera {
    * @return {void}
    */
   deviceOrientationUpdate () {
-    // var alpha = this.deviceOrientation.alpha ? THREE.Math.degToRad(this.deviceOrientation.alpha) : 0; // Z
-    var beta = this.deviceOrientation.beta ? THREE.Math.degToRad(this.deviceOrientation.beta) : 0; // X'
-    var gamma = this.deviceOrientation.gamma ? THREE.Math.degToRad(this.deviceOrientation.gamma) : 0; // Y''
-    // var orient = this.screenOrientation ? THREE.Math.degToRad(this.screenOrientation) : 0; // O
+    var betaTilt = this.initialDeviceOrientation.beta - this.deviceOrientation.beta;
+    var gammaTilt = this.initialDeviceOrientation.gamma - this.deviceOrientation.gamma;
 
-    if (this.readDeviceOrientation() === 'portrait') {
-      this.position.x += (gamma * 220) - this.position.x;
-      this.position.y += (-beta * 220) - this.position.y + this.targetPoint.y;
-    } else if (this.readDeviceOrientation() === 'upside-down') {
-      this.position.x += (-gamma * 220) - this.position.x;
-      this.position.y += (beta * 220) - this.position.y + this.targetPoint.y;
-    } else if (this.readDeviceOrientation() === 'clockwise') {
-      this.position.x += (beta * 220) - this.position.x;
-      this.position.y += (-gamma * 220) - this.position.y + this.targetPoint.y;
-    } else if (this.readDeviceOrientation() === 'counterclockwise') {
-      this.position.x += (-beta * 220) - this.position.x;
-      this.position.y += (gamma * 220) - this.position.y + this.targetPoint.y;
+    if (gammaTilt < 45 && gammaTilt > -45) {
+      this.position.x += ((gammaTilt * 4) - this.position.x) * 0.1;
+    }
+
+    if (betaTilt < 45 && betaTilt > -45) {
+      this.position.y += ((betaTilt * 4) - this.position.y + this.targetPoint.y) * 0.1;
     }
   }
 
@@ -163,6 +160,9 @@ class Camera extends THREE.PerspectiveCamera {
    * @return {void}
    */
   onDeviceOrientationChangeEvent (event) {
+    if (!this.initialDeviceOrientation) {
+      this.initialDeviceOrientation = event;
+    }
     this.deviceOrientation = event;
   }
 
@@ -172,6 +172,15 @@ class Camera extends THREE.PerspectiveCamera {
    */
   onScreenOrientationChangeEvent () {
     this.screenOrientation = window.orientation || 0;
+  }
+
+  /**
+   * updateInitialOrientation
+   * Set the initial orientation - throttle
+   * @return {Void}
+   */
+  updateInitialOrientation () {
+    this.initialDeviceOrientation = this.deviceOrientation;
   }
 
   /**
