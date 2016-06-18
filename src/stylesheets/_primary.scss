@@ -32,34 +32,34 @@
  * HOME STAGE
  */
  .stage--home {
-   width: 150%;
-   text-align: center;
-   h1 {
-     font-size: 6.5em;
-     font-weight: 600;
-     white-space: nowrap
-   }
-   p {
-     font-size: 1.2em;
-     font-weight: 300;
-     text-transform: uppercase;
-     margin: 0;
-     letter-spacing: 1.5px;
-   }
+  width: 150%;
+  text-align: center;
+  h1 {
+    font-size: 6.5em;
+    font-weight: 600;
+    white-space: nowrap
+  }
+  p {
+    font-size: 1.2em;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 1.5px;
+  }
  }
- @media #{$break-medium} {
-   .stage--home {
-     width: 100%;
-     h1 {
-       font-size: 7em;
-     }
-   }
- }
- @media #{$break-landscape} {
-   .stage--home {
-     h1 { font-size: 4.5em; }
-   }
- }
+@media #{$break-medium} {
+  .stage--home {
+    width: 100%;
+    h1 {
+      font-size: 7em;
+    }
+  }
+}
+@media #{$break-landscape} {
+.stage--home {
+    h1 { font-size: 4.5em; }
+  }
+}
 
 
 /*
@@ -69,111 +69,126 @@
    /**
     * Responsive ratio anything (block or inline-block element)
     */
-   .container {
-     width: 100%;
-     list-style: none;
-     margin: 0 auto;
-     padding: 0;
-   }
-   .block {
-     display: block;
-     text-align: center;
-     box-sizing: border-box;
-     font-size: 17px;
-     cursor: pointer;
-   }
-   .inner-block {
-     &::after {
-       display: none;
-     }
-   }
-   .responsive-element {}
-   .content {
-     margin-bottom: 50px;
-     h2 {
-       font-size: 1.75em;
-       line-height: 1;
-       position: relative;
-     }
-     .link {
-       position: relative;
-       text-transform: uppercase;
-       font-size: 0.70em;
-       font-weight: 600;
-     }
-   }
-   .block:hover {
-     &::after { display: none; }
-     .responsive-element { background-color: transparent; }
-     .content {
-       h2::after { height: 60%; }
-     }
-   }
+  .container {
+    width: 100%;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .block {
+    display: block;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  .inner-block {
+    &::after {
+      display: none;
+    }
+  }
+  .responsive-element {}
+  .content {
+    margin-bottom: 50px;
+    h2 {
+      font-size: 1.75em;
+      line-height: 1;
+      position: relative;
+    }
+    .link {
+      position: relative;
+      text-transform: uppercase;
+      font-size: 0.75em;
+      font-weight: 600;
+    }
+  }
+  .block:hover {
+    &::after { display: none; }
+    .responsive-element { background-color: transparent; }
+    .content {
+      h2::after { height: 60%; }
+    }
+  }
  }
 
  @media #{$break-medium} {
    .stage--cases {
-     .container {}
-     .block {
-     	 width: 33.3333%;
-       font-size: 16px;
-       padding: 3% 3.5%;
-       text-align: left;
-       float: left;
+     width: 80%;
+    .container {}
+    .block {
+      font-size: 18px;
+      text-align: left;
+      float: left;
      }
-     .inner-block {
-       position: relative;
-       display: block;
-       width: 100%;
-       background-size: cover;
-       &::after { display: none; }
-       /* padding bottom of desired height / desired width */
-       padding-bottom: 65%;
-     }
+    .block--six {
+      width: 33.3333%;
+      padding: 3% 3.5%;
+      .inner-block {
+        /* padding bottom of desired height / desired width */
+        padding-bottom: 65%;
+      }
+    }
+    .block--four {
+      width: 50%;
+      padding: 4% 6.5%;
+      .inner-block {
+        /* padding bottom of desired height / desired width */
+        padding-bottom: 55%;
+      }
+    }
+    .inner-block {
+      position: relative;
+      display: block;
+      width: 100%;
+      background-size: cover;
+      border-radius: 3px;
+      &::after { display: none; }
+    }
      .content {
-       position: absolute;
-       top: 50%;
-       transform: translateY(-50%);
-       left: -8%;
-       font-size: 1em;
-       margin: 0;
-       h2 {
-         line-height: 1;
-         position: relative;
-         &::after {
-           position: absolute;
-           display: inline-block;
-           content: '';
-           height: 0%;
-           bottom: -0.10em;
-           left: -0.15em;
-           right: -0.15em;
-           z-index: -1;
-           pointer-events: none;
-           background-color: $yellow;
-           backface-visibility: hidden;
-           transform: translateZ(0);
-           transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
-                       background $secondary-sec $secondary-ease;
-         }
-       }
-     }
-   }
-   .responsive-element {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background-color: rgba($babyBlue, 0.50);
-     transition: background 0.4s ease;
-     transform: translateZ(10px); // Avoid text going beghind image
-   }
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -8%;
+      font-size: 1em;
+      margin: 0;
+      h2 {
+        line-height: 1;
+        position: relative;
+        &::after {
+          position: absolute;
+          display: inline-block;
+          content: '';
+          height: 0%;
+          bottom: -0.10em;
+          left: -0.15em;
+          right: -0.15em;
+          z-index: -1;
+          pointer-events: none;
+          background-color: $yellow;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          transition: height 0.2s cubic-bezier(0.54, 0.08, 0, 1.18),
+                     background $secondary-sec $secondary-ease;
+        }
+      }
+    }
+  }
+  .responsive-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($babyBlue, 0.50);
+    border-radius: 3px;
+    transition: background 0.4s ease;
+    transform: translateZ(10px); // Avoid text going beghind image
+  }
  }
 
  @media #{$break-medium-landscape} {
    .stage--cases {
-     .block {
+     .block--six {
         padding: 3% 3%;
         font-size: 14px;
      }

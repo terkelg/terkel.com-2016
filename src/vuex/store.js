@@ -43,16 +43,6 @@ const state = {
       id: 'thebear',
       title: 'The Bear',
       thumbnail: 'http://placekitten.com/200/400'
-    },
-    {
-      id: 'breaker',
-      title: 'Halloween Breaker',
-      thumbnail: 'http://placekitten.com/200/400'
-    },
-    {
-      id: 'terkeliknibe',
-      title: 'Terkel I Knibe',
-      thumbnail: 'http://placekitten.com/200/400'
     }
   ]
 };

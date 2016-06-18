@@ -4,7 +4,7 @@
 
       <ul class="container">
 
-        <li class="block" v-for="case in cases">
+        <li class="block block--four" v-for="case in cases">
           <a v-link="{name: 'case', params: {case: case.id}}" class="inner-block" v-bind:style="{ backgroundImage: 'url(' + case.thumbnail + ')' }">
             <div class="responsive-element">
               <div class="content">
