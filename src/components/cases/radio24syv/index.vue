@@ -1,7 +1,7 @@
 <template>
     <article class="article">
       <header class="head">
-        <img src="hero@2x.png" class="cover">
+        <img src="hero.jpg" class="cover">
         <div class="head__content">
           <h1 class="boxed">Radio24syv Watch App</h1>
           <span class="line">Hej verden her er tekst</span>
@@ -14,15 +14,17 @@
           <ul class="body__details__columns">
             <li>
               <h5 class="type">Type</h5>
-              Web Design
+              Watch App
             </li>
             <li>
-              <h5 class="type">Date</h5>
-              11/06/12
+              <h5 class="type">Year</h5>
+              2016
             </li>
             <li>
               <h5 class="type">Role</h5>
-              Front-end
+              <ul class="details-list">
+                <li>Design</li>
+                <li>Development</li>
             </li>
           </ul>
         </footer>
@@ -35,20 +37,15 @@
         lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
         </p>
 
-        <img src="something3@2x.png">
+        <img src="homescreen@2x.jpg" alt="Radio24syv Watch App on homescreen">
 
-        <img src="something-red@2x.png">
+        <img src="app@2x.jpg" alt="Radio24syv Watch App">
 
-        <img src="something2-red@2x.png">
+        <img src="player@2x.jpg" alt="Radio24syv Watch App Player">
 
+        <img src="screens@2x.jpg" alt="Radio24syv Watch App Screens">
 
-        <h3>Hello, this is the radio24syv case</h3>
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Cras sed tincidunt enim. Aenean ante quam, euismod in felis at, porta mol
-        estie augue. Nunc ligula quam, varius in mi quis, finibus malesuada sem. Nunc sce
-        lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi. Sidste ord.
-        </p>
+        <img src="extra@2x.jpg" alt="Radio24syv Watch App Notification and Glance">
 
         <!--
         <iframe class="player" src="//player.vimeo.com/video/66006284" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
