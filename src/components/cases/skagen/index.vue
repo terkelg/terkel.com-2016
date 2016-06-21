@@ -1,10 +1,10 @@
 <template>
     <article class="article">
       <header class="head">
-        <img src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Windows-XP-wallpaper.jpg" class="cover">
+        <img src="case-hero@2x.png" class="cover">
         <div class="head__content">
-          <h1 class="boxed">Skagen</h1>
-          <span class="line">Hej verden her er tekst</span>
+          <h1 class="boxed">Skagen Museum</h1>
+          <span class="line">Immersive website</span>
         </div>
       </header>
 
@@ -35,18 +35,6 @@
         lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
         </p>
 
-        <img src="https://placekitten.com/500/300">
-
-        <p>
-        Hello, this is the radio24syv case
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Cras sed tincidunt enim. Aenean ante quam, euismod in felis at, porta mol
-        estie augue. Nunc ligula quam, varius in mi quis, finibus malesuada sem. Nunc sce
-        lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
-        </p>
-
-        <img src="https://placekitten.com/500/300">
-
         <h3>Hello, this is the radio24syv case</h3>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -71,11 +59,9 @@ export default {
     imagesLoaded(this.$el, () => {
       insert();
       this.$dispatch('content-loaded');
-      console.log('Skagen Content Loaded');
     });
   },
   beforeDestroy () {
-    console.log('Skagen Destroy!');
     this.$dispatch('content-destroy');
   }
 };

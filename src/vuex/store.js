@@ -26,23 +26,19 @@ const state = {
   cases: [
     {
       id: 'radio24syv',
-      title: 'Radio24syv',
-      thumbnail: 'http://placekitten.com/200/400'
+      title: 'Radio24syv'
     },
     {
       id: 'skagen',
-      title: 'Sakgen Museeum',
-      thumbnail: 'http://placekitten.com/200/400'
+      title: 'Sakgen Museeum'
     },
     {
       id: 'yeezify',
-      title: 'Yeezify',
-      thumbnail: 'http://placekitten.com/200/400'
+      title: 'Yeezify'
     },
     {
       id: 'thebear',
-      title: 'The Bear',
-      thumbnail: 'http://placekitten.com/200/400'
+      title: 'The Bear'
     }
   ]
 };
