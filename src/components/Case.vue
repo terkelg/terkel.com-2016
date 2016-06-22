@@ -14,7 +14,7 @@ import {
 
 import Radio24syv from './cases/radio24syv';
 import Skagen from './cases/skagen';
-import Breaker from './cases/breaker';
+import Arabien from './cases/arabien';
 import Terkeliknibe from './cases/terkeliknibe';
 import Thebear from './cases/thebear';
 import Yeezify from './cases/yeezify';
@@ -42,7 +42,7 @@ export default {
   components: {
     Radio24syv,
     Skagen,
-    Breaker,
+    Arabien,
     Terkeliknibe,
     Thebear,
     Yeezify

@@ -4,17 +4,28 @@
   color: $white;
   line-height: 1.85;
   width: 100%;
+
+  .pagination {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.65em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
   img {
     width: 100%;
     height: auto;
-    margin: 15% 0;
+    margin: 10% 0;
   }
   img.cover {
     margin: 0;
     max-height: 500px;
   }
+
   .head__content {
     margin: 35px 0;
+    text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
     h1 {
       font-size: 2.5em;
       color: $white;
@@ -32,10 +43,12 @@
       color: $white;
       text-transform: uppercase;
       font-size: 0.85em;
+      font-weight: 600;
       letter-spacing: 1.2px;
     }
     &:hover h1::after { height: 55%; }
   }
+
   .body {
     margin: 0 auto;
     font-size: 1.0em;
@@ -57,14 +70,27 @@
       overflow: hidden;
       margin: 0;
       padding: 0;
-      & > li {
-        width: 33.333333333%;
-        list-style: none;
-        display: block;
+    }
+    .column {
+      width: 50%;
+      list-style: none;
+      display: block;
+      float: left;
+      box-sizing: border-box;
+    }
+    .column--two {
+      width: 100%;
+      .column__list li {
+        width: 50%;
         float: left;
-        padding-right: 10px;
-        box-sizing: border-box;
       }
+    }
+    .column__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      line-height: 1.65;
+      li { margin-bottom: 0 }
     }
     h5 {
       font-weight: 200;
@@ -77,25 +103,28 @@
         content: '';
         height: 1px;
         display: block;
-        background-color: $white;
-        width: 12px;
+        background-color: rgba($white, 0.1);
+        width: 100%;
         margin: 4px 0;
       }
     }
-    .details-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      line-height: 1.65;
-      & > li { margin-bottom: 0}
-    }
   }
-  .pagination {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 0.65em;
-    margin-bottom: 20px;
+  .embed-container {
+    margin: 10% 0;
     position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -115,8 +144,8 @@
     .body {
       font-size: 1.2em;
     }
-    .body__details {
-      .body__details__columns { }
+    .embed-container {
+      margin: 6% 0;
     }
   }
 }
@@ -124,6 +153,10 @@
 @media #{$break-medium} {
   .secondary-content {
     $case-content-width: 85%;
+    .pagination {
+      margin-bottom: 0;
+      top: -25px;
+    }
     .head__content {
       left: -8%;
       h1 { font-size: 3.5em; }
@@ -134,10 +167,15 @@
     .body__details {
       margin: 50px auto;
       width: $case-content-width;
-    }
-    .pagination {
-      margin-bottom: 0;
-      top: -25px;
+
+      .column {
+        width: 25%;
+        &:not(:last-child) { padding-right: 20px; }
+      }
+      .column--two {
+        width: 50%;
+      }
+      .column__list {}
     }
   }
 }

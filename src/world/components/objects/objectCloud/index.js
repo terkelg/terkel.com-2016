@@ -14,11 +14,8 @@ class ObjectCloud extends THREE.Object3D {
 
     const colors = [
       new THREE.Color(0xFFE88E),
-      new THREE.Color(0xFFE88E),
       new THREE.Color(0xCFDDF9),
-      new THREE.Color(0xCFDDF9),
-      new THREE.Color(0xCFDDF9),
-      new THREE.Color(0x00FFBE)
+      new THREE.Color(0xCFDDF9)
     ];
 
     this.geometry = [

@@ -30,11 +30,11 @@ const state = {
     },
     {
       id: 'skagen',
-      title: 'Sakgen Museeum'
+      title: 'Skagen Museeum'
     },
     {
-      id: 'yeezify',
-      title: 'Yeezify'
+      id: 'arabien',
+      title: 'Lykkelige Arabien'
     },
     {
       id: 'thebear',
