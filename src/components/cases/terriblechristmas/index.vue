@@ -3,8 +3,8 @@
       <header class="head">
         <img src="hero@2x.jpg" class="cover">
         <div class="head__content">
-          <h1 class="boxed">Radio24syv</h1>
-          <span class="line">Apple Watch App</span>
+          <h1 class="boxed">A Terrible Christmas</h1>
+          <span class="line">Hej verden her er tekst</span>
         </div>
       </header>
 
@@ -36,16 +36,6 @@
         estie augue. Nunc ligula quam, varius in mi quis, finibus malesuada sem. Nunc sce
         lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
         </p>
-
-        <img src="homescreen@2x.jpg" alt="Radio24syv Watch App on homescreen">
-
-        <img src="app@2x.jpg" alt="Radio24syv Watch App">
-
-        <img src="player@2x.jpg" alt="Radio24syv Watch App Player">
-
-        <img src="screens@2x.jpg" alt="Radio24syv Watch App Screens">
-
-        <img src="extra@2x.jpg" alt="Radio24syv Watch App Notification and Glance">
 
         <!--
         <iframe class="player" src="//player.vimeo.com/video/66006284" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

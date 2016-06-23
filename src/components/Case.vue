@@ -15,9 +15,7 @@ import {
 import Radio24syv from './cases/radio24syv';
 import Skagen from './cases/skagen';
 import Arabien from './cases/arabien';
-import Terkeliknibe from './cases/terkeliknibe';
-import Thebear from './cases/thebear';
-import Yeezify from './cases/yeezify';
+import TerribleChristmas from './cases/terriblechristmas';
 
 export default {
   vuex: {
@@ -43,9 +41,7 @@ export default {
     Radio24syv,
     Skagen,
     Arabien,
-    Terkeliknibe,
-    Thebear,
-    Yeezify
+    TerribleChristmas
   }
 };
 </script>

@@ -63,9 +63,9 @@
           <iframe src='https://player.vimeo.com/video/171708909' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
 
-        <!--
-        <iframe class="player" src="//player.vimeo.com/video/66006284" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        -->
+        <img src="tool@2x.jpg" alt="Processing tool to generate patterns">
+
+        <img src="prototype@2x.jpg" alt="Prototype and iBeacons, developed in Swift">
 
       </section>
     </article>

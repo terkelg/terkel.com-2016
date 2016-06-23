@@ -37,8 +37,8 @@ const state = {
       title: 'Lykkelige Arabien'
     },
     {
-      id: 'thebear',
-      title: 'The Bear'
+      id: 'terriblechristmas',
+      title: 'A Terrible Christmas'
     }
   ]
 };
