@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>I'm Terkel - Interactive Designer</title>
+    <meta name="description" content="Interactive Designer & Developer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons -->
+    <link rel="icon" href="favicon/favicon-16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="favicon/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="favicon/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="favicon/favicon-62.png" sizes="62x62" type="image/png">
+
+    <!-- TypeKit -->
+    <script src="https://use.typekit.net/sko3qhg.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <style>
+      html, body {
+        overflow: hidden;
+        height: 100%;
+      }
+      body {
+        font-family: 'canada-type-gibson','Helvetica Neue', Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: relative;
+        margin: 0;
+      }
+
+      /*
+       * Borders
+       */
+      #borders {position: fixed; }
+      .border {
+        position: fixed;
+        pointer-events: none;
+        z-index: 20;
+        background-color: #CFDDF9;
+      }
+      .border.hor {
+        width: 100%;
+        height: 5px;
+      }
+      .border.vert {
+        width: 5px;
+        height: 100%;
+      }
+      .border.top { top: 0; }
+      .border.bot { bottom: 0; }
+      .border.left { left: 0; }
+      .border.right { right: 0; }
+
+      .wrapper {
+        height: 100%;
+        padding: 20px;
+      }
+      .content {
+        max-width: 400px;
+        margin: 0 auto;
+        color: #3545E5;
+        text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(-60%);
+      }
+      .content__title {
+        font-size: 4.5em;
+        margin: 0;
+        font-weight: 600;
+      }
+      .content__subtitle {
+        font-weight: 400;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      .content__browser-warning {
+        margin: 30px 0;
+      }
+      .content__contact,
+      .content__social {
+        font-size: 0.8em;
+        font-weight: 600;
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        overflow: hidden;
+      }
+      .content__contact::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 1px;
+        background-color: #3545E5;
+        margin: 15px auto;
+      }
+
+      a {
+        cursor: pointer;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #3545E5;
+      }
+      a:hover { text-decoration: underline; }
+
+      .content__social li {
+        display: inline-block;
+        text-align: center;
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="borders">
+      <div class="border hor top"></div>
+      <div class="border hor bot"></div>
+      <div class="border vert left"></div>
+      <div class="border vert right"></div>
+    </div>
+
+    <div class="wrapper">
+
+      <article class="content">
+        <h1 class="content__title">I'm Terkel</h1>
+        <h2 class="content__subtitle">Interactive Designer & Developer</h2>
+        <p class="content__browser-warning">To see the full content of my website I recommend you upgrade or switch to a newer browser.</p>
+
+        <!-- Social media and contact -->
+        <ul class="content__contact">
+          <li>+45 29 24 11 93</li>
+          <li><a mailto:="hello@terkel.com">hello@terkel.com</a></li>
+        </ul>
+
+        <ul class="content__social">
+          <li><a href="https://twitter.com/terkelg">Twitter</a></li>
+          <li><a href="https://github.com/terkelg">Github</a></li>
+          <li><a href="https://dribbble.com/terkelg">Dribbble</a></li>
+          <li><a href="https://www.instagram.com/terkelg/">Instagram</a></li>
+        </li>
+
+      </article>
+    </div>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-78510013-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  <body>
+</html>

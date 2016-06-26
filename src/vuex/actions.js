@@ -34,8 +34,10 @@ export const deviceDetect = function ({ dispatch, state }) {
 
   let device = {
     browser: Browser.name,
+    version: Browser.version,
     type: getDeviceType()
   };
+
   dispatch('DEVICE', device);
 };
 

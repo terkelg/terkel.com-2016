@@ -4,7 +4,7 @@
 
       <div class="container">
         <div class="profile">
-          <img src="http://placehold.it/150x150">
+          <img src="terkel2.png">
         </div>
         <div class="content">
           <h2 class="boxed">Digital swiss army knife</h2>

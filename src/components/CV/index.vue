@@ -3,7 +3,7 @@
 
     <article class="article">
       <header class="head">
-        <img src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Windows-XP-wallpaper.jpg" class="cover">
+        <img src="terkel.png" class="cover">
         <div class="head__content">
           <h1>About me</h1>
         </div>
@@ -57,10 +57,6 @@
 
   </div>
 </template>
-
-<style lang="scss">
-@import '../stylesheets/variables';
-</style>
 
 <script>
 import imagesLoaded from 'imagesloaded';

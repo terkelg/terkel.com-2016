@@ -10,6 +10,7 @@ const state = {
   playSound: true,
   device: {
     browser: '',
+    version: '',
     type: ''
   },
   size: {

@@ -6,8 +6,8 @@
       <a href="tel:+4529241193">+45 29 24 11 94</a><br>
       hello@terkel.com
       <ul class="social">
-        <li>
-          <a href="#">
+        <li class="social__twitter">
+          <a href="https://twitter.com/terkelg" target="_blank">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="253.9px" height="206.3px" viewBox="0 0 253.9 206.3" style="enable-background:new 0 0 253.9 206.3;" xml:space="preserve">
             <style type="text/css">
               .st0{fill:#3545E5;}
@@ -22,8 +22,8 @@
             </svg>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li class="social__dribbble">
+          <a href="https://dribbble.com/terkelg" target="_blank">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="256px" height="255.7px" viewBox="0 0 256 255.7" style="enable-background:new 0 0 256 255.7;" xml:space="preserve">
             <style type="text/css">
               .st0{fill:#3545E5;}
@@ -45,8 +45,8 @@
             </svg>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li class="social__github">
+          <a href="https://github.com/terkelg" target="_blank">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="256px" height="249.7px" viewBox="0 0 256 249.7" style="enable-background:new 0 0 256 249.7;" xml:space="preserve">
             <style type="text/css">
               .st0{fill:#3545E5;}
@@ -65,8 +65,8 @@
             </svg>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li class="social__instagram">
+          <a href="https://www.instagram.com/terkelg/" target="_blank">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="241.7px" height="241.7px" viewBox="0 0 241.7 241.7" style="enable-background:new 0 0 241.7 241.7;" xml:space="preserve">
             <style type="text/css">
               .st0{fill:#3545E5;}
@@ -84,8 +84,8 @@
             </svg>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li class="social__pinterest">
+          <a href="https://pinterest.com/terkelg/" target="_blank">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="256px" height="256px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
             <style type="text/css">
               .st0{fill:#3545E5;}

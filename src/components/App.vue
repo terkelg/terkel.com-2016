@@ -1,5 +1,5 @@
 <template>
-  <main v:el="wrapper" v-bind:class="theme">
+  <main v:el="wrapper" v-bind:class="theme" class="notransition">
 
     <div id="preloader" v-if="loading" transition="fade" transition-mode="out">
       <div class="loader loader--blue">
@@ -20,6 +20,7 @@
 <script>
 import store from 'vuex/store';
 
+// Actions
 import {
   windowResize,
   windowVisible,
@@ -28,6 +29,7 @@ import {
   secondaryClose
 } from 'vuex/actions';
 
+// Getters
 import {
   getDevice,
   getRoute,
@@ -35,14 +37,17 @@ import {
   getSecondary
 } from 'vuex/getters';
 
+// Utils
 import debounce from 'lodash.debounce';
 import delay from 'lodash.delay';
 
+// Components
 import Border from './Border';
 import World from './World';
 import Secondary from './secondary/Main';
 import Primary from './Primary';
 
+// Styles
 import 'stylesheets/main.scss';
 
 export default {
@@ -86,7 +91,7 @@ export default {
   },
 
   methods: {
-    /*
+    /**
      * bind
      * Bind functions bore init
      * @return {void}
@@ -96,7 +101,7 @@ export default {
       this.dispatchWindowSize = debounce(this.dispatchWindowSize, 50);
     },
 
-    /*
+    /**
      * init
      * bind, add event listeners and
      * set preloader
@@ -110,6 +115,8 @@ export default {
 
       // Set Event listeners
       this.addEventListeners();
+
+      // Add classes
       this.addDeviceClass();
       this.addBrowserClass();
 
@@ -145,7 +152,7 @@ export default {
       this.visibleState();
     },
 
-    /*
+    /**
      * routeChange
      * Called whenever the route changes
      * end emit an event
@@ -160,20 +167,42 @@ export default {
       }
     },
 
+    /**
+     * onResize
+     * Called on window resize. Dispatch event
+     * @return {void}
+     */
     onResize (event) {
       this.$el.classList.add('notransition');
       this.dispatchWindowSize();
-      this.resizeEnd(event);
+      this.resizeEnd(event); // debounced function - 250
     },
 
+    /**
+     * resizeEnd
+     * Called on resize end. Add transitions back.
+     * Get debounced on create.
+     * @return {void}
+     */
     resizeEnd () {
       this.$el.classList.remove('notransition');
     },
 
+    /**
+     * laodComplete
+     * Hide loader
+     * Remove notranstion class
+     * @return {void}
+     */
     loadComplete () {
       this.loading = false;
+      this.$el.classList.remove('notransition');
     },
 
+    /**
+     * Just for lolz
+     * @return {void}
+     */
     consoleFun () {
       const styleHeader = [
         'color: #3545E5;',
@@ -191,7 +220,7 @@ export default {
 
       console.log('%cHey there!', styleHeader);
       console.log('%c(づ｡◕‿‿◕｡)づ', styleText);
-      console.log('%cI\'m looking for internship. Can you help me?', styleText);
+      console.log('%cI\'m looking for internship. Feel free to contact me: hello@terkel.com', styleText);
     }
   },
 

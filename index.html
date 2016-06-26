@@ -6,7 +6,7 @@
     \/_/   \/_____/   \/_/ /_/   \/_/\/_/   \/_____/   \/_____/
 
     – Crafting for fun and profit
-    - Looking for internship
+    - Looking for internship this fall
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +42,13 @@
     <!-- TypeKit -->
     <script src="https://use.typekit.net/sko3qhg.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <!-- Browser support -->
+    <script>
+      if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+        window.location = 'static/old.html';
+      }
+    </script>
   </head>
 
   <body>
