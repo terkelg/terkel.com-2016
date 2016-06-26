@@ -4,7 +4,7 @@
         <img src="hero@2x.jpg" class="cover">
         <div class="head__content">
           <h1 class="boxed">A Terrible Christmas</h1>
-          <span class="line">Hej verden her er tekst</span>
+          <span class="line">The gift wrap collection</span>
         </div>
       </header>
 
@@ -12,19 +12,24 @@
 
         <footer class="body__details">
           <ul class="body__details__columns">
-            <li>
+            <li class="column">
               <h5 class="type">Type</h5>
-              Watch App
+              <ul class="column__list">
+                <li>Website</li>
+              </ul>
             </li>
-            <li>
-              <h5 class="type">Year</h5>
-              2016
-            </li>
-            <li>
+            <li class="column">
               <h5 class="type">Role</h5>
-              <ul class="details-list">
-                <li>Design</li>
-                <li>Development</li>
+              <ul class="column__list">
+                <li>Developer</li>
+              </ul>
+            </li>
+            <li class="column column--two">
+              <h5 class="type">Tools</h5>
+              <ul class="column__list">
+                <li>Parse</li>
+                <li>Marko</li>
+              </ul>
             </li>
           </ul>
         </footer>
@@ -37,9 +42,17 @@
         lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
         </p>
 
-        <!--
-        <iframe class="player" src="//player.vimeo.com/video/66006284" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        -->
+        <img src="snapshot-1@2x.jpg" alt="Screenshot of website">
+
+        <img src="snapshot-2@2x.jpg" alt="Screenshot of website">
+
+        <img src="snapshot-mobile@2x.jpg" alt="Screenshot of website on mobile">
+
+        <img src="patterns-red@2x.jpg" alt="Red gift-wrap patterns">
+
+        <img src="patterns-green@2x.jpg" alt="Green gift-wrap patterns">
+
+        <img src="patterns-blue@2x.jpg" alt="Blue gift-wrap patterns">
 
       </section>
     </article>

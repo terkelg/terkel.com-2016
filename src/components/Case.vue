@@ -15,7 +15,7 @@ import {
 import Radio24syv from './cases/radio24syv';
 import Skagen from './cases/skagen';
 import Arabien from './cases/arabien';
-import TerribleChristmas from './cases/terriblechristmas';
+import Terriblechristmas from './cases/terriblechristmas';
 
 export default {
   vuex: {
@@ -40,8 +40,8 @@ export default {
   components: {
     Radio24syv,
     Skagen,
-    Arabien,
-    TerribleChristmas
+    Terriblechristmas,
+    Arabien
   }
 };
 </script>

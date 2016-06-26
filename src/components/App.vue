@@ -1,6 +1,15 @@
 <template>
   <main v:el="wrapper" v-bind:class="theme">
-    <div id="preloader" v-if="loading" transition="fade" transition-mode="out"></div>
+
+    <div id="preloader" v-if="loading" transition="fade" transition-mode="out">
+      <div class="loader loader--blue">
+        <div class="dot dot1"></div>
+        <div class="dot dot2"></div>
+        <div class="dot dot3"></div>
+        <div class="dot dot4"></div>
+      </div>
+    </div>
+
     <border></border>
     <world></world>
     <secondary></secondary>
@@ -69,6 +78,7 @@ export default {
 
   ready () {
     this.init();
+    this.consoleFun();
   },
 
   beforeDestroy () {
@@ -76,11 +86,22 @@ export default {
   },
 
   methods: {
+    /*
+     * bind
+     * Bind functions bore init
+     * @return {void}
+     */
     bind () {
       this.resizeEnd = debounce(this.resizeEnd, 250);
       this.dispatchWindowSize = debounce(this.dispatchWindowSize, 50);
     },
 
+    /*
+     * init
+     * bind, add event listeners and
+     * set preloader
+     * @return {void}
+     */
     init () {
       // Set initial state
       this.resizeState();
@@ -93,7 +114,7 @@ export default {
       this.addBrowserClass();
 
       // Set Preloader
-      delay(this.loadComplete, 750);
+      delay(this.loadComplete, 950);
     },
 
     addEventListeners () {
@@ -122,10 +143,14 @@ export default {
     dispatchVisibilityChange (event) {
       this.$broadcast('window-visibility', event);
       this.visibleState();
-
-      if (this.loading === false) {}
     },
 
+    /*
+     * routeChange
+     * Called whenever the route changes
+     * end emit an event
+     * return {void}
+     */
     routeChange () {
       this.$broadcast('route-change', this.$route);
       if (this.$route.secondary) {
@@ -147,6 +172,26 @@ export default {
 
     loadComplete () {
       this.loading = false;
+    },
+
+    consoleFun () {
+      const styleHeader = [
+        'color: #3545E5;',
+        'font-family: sans-serif;',
+        'font-weight: bold;',
+        'font-size: 1.8em;'
+      ].join(' ');
+
+      const styleText = [
+        'color: #3545E5;',
+        'font-family: sans-serif;',
+        'font-weight: bold;',
+        'font-size: 1.1em;'
+      ].join(' ');
+
+      console.log('%cHey there!', styleHeader);
+      console.log('%c(づ｡◕‿‿◕｡)づ', styleText);
+      console.log('%cI\'m looking for internship. Can you help me?', styleText);
     }
   },
 

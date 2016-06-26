@@ -12,19 +12,27 @@
 
         <footer class="body__details">
           <ul class="body__details__columns">
-            <li>
+            <li class="column">
               <h5 class="type">Type</h5>
-              Watch App
+              <ul class="column__list">
+                <li>iOS</li>
+                <li>Watch App</li>
+              </ul>
             </li>
-            <li>
-              <h5 class="type">Year</h5>
-              2016
-            </li>
-            <li>
+            <li class="column">
               <h5 class="type">Role</h5>
-              <ul class="details-list">
+              <ul class="column__list">
                 <li>Design</li>
                 <li>Development</li>
+              </ul>
+            </li>
+            <li class="column column--two">
+              <h5 class="type">Tools</h5>
+              <ul class="column__list">
+                <li>Swift</li>
+                <li>CocoaPods</li>
+                <li>Xcode</li>
+              </ul>
             </li>
           </ul>
         </footer>
@@ -47,9 +55,7 @@
 
         <img src="extra@2x.jpg" alt="Radio24syv Watch App Notification and Glance">
 
-        <!--
-        <iframe class="player" src="//player.vimeo.com/video/66006284" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        -->
+        <img src="photo@2x.jpg" alt="Photo of the watch app in use">
 
       </section>
     </article>

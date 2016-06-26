@@ -202,3 +202,7 @@ h2 { font-size: 2.8em; }
     animation-direction: reverse;
   }
 }
+
+.loader--blue {
+  .dot { background: $blue; }
+}

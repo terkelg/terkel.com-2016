@@ -50,7 +50,7 @@
         <div slot="section">0{{$route.index + 1}}</div>
       </component>
 
-      <div class="content-wrapper" v-show="secondary.content" transition="fade" transition-mode="out-in">
+      <div class="content-wrapper" v-show="secondary.content" transition="fade" transition-mode="out-in" v-el:content>
         <div class="content-wrapper__inner">
           <router-view></router-view>
         </div>
@@ -80,6 +80,7 @@ import mobile from './Mobile';
 import loader from '../common/loader';
 
 import delay from 'lodash.delay';
+import scroll from 'scroll';
 
 export default {
   vuex: {
@@ -174,6 +175,7 @@ export default {
      * @return {Boolean} undefined - Return true to let the event propagate
      */
     contentDidLoad () {
+      this.ScrollToTop();
       this.loaded = true;
       this.secondaryShowLoader(false);
       if (this.isOpen) {
@@ -264,6 +266,16 @@ export default {
         this.secondaryShowContent(false);
         this.secondaryShowLoader(true);
       }, 300);
+    },
+
+    /**
+     * ScrollToTop
+     * Smooth scroll to top
+     * https://www.npmjs.com/package/scroll
+     * @return {Void}
+     */
+    ScrollToTop () {
+      scroll.top(this.$els.content, 0);
     },
 
     /**
