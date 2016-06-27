@@ -86,6 +86,22 @@ a.active::after {
   .dark .secondary &::before { background-color: $white; }
 }
 
+/* Small line */
+.line--small {
+  padding-left: .8em;
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: $blue;
+    width: 4px;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  .dark .secondary &::before { background-color: $babyBlue; }
+}
+
 /*
  * Back box
  */

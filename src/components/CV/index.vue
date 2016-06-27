@@ -3,7 +3,7 @@
 
     <article class="article">
       <header class="head">
-        <img src="terkel.png" class="cover">
+        <img src="terkel@2x.jpg" class="cover">
         <div class="head__content">
           <h1>About me</h1>
         </div>
@@ -23,9 +23,9 @@
           <li class="column column--full">
             <h5 class="type">CV</h5>
             <ul class="column__list">
-              <li>Freelance: Designer & Front-End Developer</li>
-              <li><a href="http://www.dmjx.dk/">Interactive Design: Danish School of Media and Journalism</a></li>
-              <li><a href="http://molamil.com/">Molamil</a></li>
+              <li><span class="highlight line line--small">Freelance:</span> Designer & Front-End Developer</li>
+              <li><a href="http://www.dmjx.dk/"><span class="highlight line line--small">Interactive Design:</span> Danish School of Media and Journalism</a></li>
+              <li><a href="http://molamil.com/"><span class="highlight line line--small">Molamil:</span> Creative Developer Assistant</a></li>
             </ul>
           </li>
           <li class="column">
