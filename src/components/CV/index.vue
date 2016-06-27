@@ -44,6 +44,7 @@
             <ul class="column__list">
               <li>Front-End</li>
               <li>iOS Development</li>
+              <li>Git</li>
               <li>Cinema 3D</li>
               <li>Motion Graphic</li>
               <li>3D Graphic</li>
