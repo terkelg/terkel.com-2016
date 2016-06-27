@@ -19,12 +19,12 @@ class ObjectCloud extends THREE.Object3D {
     ];
 
     this.geometry = [
-      new THREE.BoxBufferGeometry(35, 35, 35),
-      new THREE.ConeBufferGeometry(35, 35, 3, 0)
+      new THREE.BoxBufferGeometry(50, 50, 50),
+      new THREE.ConeBufferGeometry(50, 50, 3, 0)
       // new THREE.TetrahedronGeometry(35)
     ];
 
-    for (var i = 0; i < 195; i++) {
+    for (var i = 0; i < 120; i++) {
       var object = new THREE.Mesh(this.geometry[randomInt(0, this.geometry.length - 1)], new THREE.MeshLambertMaterial({
         color: colors[randomInt(0, colors.length - 1)],
         wireframe: true
