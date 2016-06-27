@@ -54,8 +54,8 @@ class Camera extends THREE.PerspectiveCamera {
 
     this.lookAt(this.targetPoint);
 
-    this.position.y += Math.cos(this.cameraShakeY) / 10;
-    this.cameraShakeY += 0.02;
+    this.position.y += Math.cos(this.cameraShakeY) / 4;
+    this.cameraShakeY += 0.022;
   }
 
   /**
@@ -139,7 +139,7 @@ class Camera extends THREE.PerspectiveCamera {
 
   /**
    * DeviceOrientationUpdate
-   * TODO: This works like shit.
+   * TODO: Fix this orientation change, and improve overall mobile 3d world
    * @return {void}
    */
   deviceOrientationUpdate () {
