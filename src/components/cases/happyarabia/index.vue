@@ -3,7 +3,7 @@
       <header class="head">
         <img src="hero@2x.jpg" class="cover">
         <div class="head__content">
-          <h1 class="boxed">Det Lykkelige Arabien</h1>
+          <h1 class="boxed">The Happy Arabia</h1>
           <span class="line">Visual identity</span>
         </div>
       </header>

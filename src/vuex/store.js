@@ -34,12 +34,12 @@ const state = {
       title: 'Skagen Museeum'
     },
     {
-      id: 'arabien',
-      title: 'Lykkelige Arabien'
+      id: 'happyarabia',
+      title: 'The Happy Arabia'
     },
     {
       id: 'terriblechristmas',
-      title: 'A Terrible Christmas'
+      title: 'Terrible Christmas'
     }
   ]
 };

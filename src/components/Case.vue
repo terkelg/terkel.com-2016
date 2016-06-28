@@ -14,7 +14,7 @@ import {
 
 import Radio24syv from './cases/radio24syv';
 import Skagen from './cases/skagen';
-import Arabien from './cases/arabien';
+import Happyarabia from './cases/happyarabia';
 import Terriblechristmas from './cases/terriblechristmas';
 
 export default {
@@ -41,7 +41,7 @@ export default {
     Radio24syv,
     Skagen,
     Terriblechristmas,
-    Arabien
+    Happyarabia
   }
 };
 </script>
