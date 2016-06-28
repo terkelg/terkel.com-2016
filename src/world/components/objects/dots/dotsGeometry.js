@@ -10,7 +10,7 @@ class DotsGeometry extends THREE.Geometry {
   constructor () {
     super();
 
-    for (let i = 0; i < 550; i++) {
+    for (let i = 0; i < 315; i++) {
       var vertex = new THREE.Vector3();
       vertex.x = randomInt(-1300, 1300);
       vertex.y = randomInt(-3000, 3000);

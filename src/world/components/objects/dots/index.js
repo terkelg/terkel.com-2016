@@ -1,17 +1,17 @@
 import DotsGeometry from './dotsGeometry';
 import DotsMaterial from './dotsMaterial';
 
-class Dots extends THREE.Points {
+class Dots extends THREE.Object3D {
   /**
    * Constructor function
    * @constructor
    */
   constructor () {
-    super(new DotsGeometry(), new DotsMaterial());
+    super();
 
-    // Manipulate vertices here!
-    // https://youtu.be/dD9NgzLhbBM
-    // this.geometry.vertices.forEach((e) => {});
+    for (var i = 0; i < 3; i++) {
+      this.add(new THREE.Points(new DotsGeometry(), new DotsMaterial(i)));
+    }
   }
 
   /**

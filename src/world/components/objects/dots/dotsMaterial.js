@@ -1,13 +1,16 @@
+import randomInt from 'world/utils/random-int';
+
 /**
  * DotsMaterial class
+ * Return random material each time
  */
 class DotsMaterial extends THREE.PointsMaterial {
 
   /**
    * Constructor function
-   * @param {Object} options Options
+   * @param {Int} particle The particle type to use
    */
-  constructor () {
+  constructor (particle) {
     // Load textures
     const textureLoader = new THREE.TextureLoader();
     const sprite1 = textureLoader.load('/static/particles/particles.png');
@@ -15,15 +18,16 @@ class DotsMaterial extends THREE.PointsMaterial {
     const sprite3 = textureLoader.load('/static/particles/particles3.png');
 
     const parameters = [
-      [[1.0, 0.2, 0.5], sprite1, 20],
+      [[1.0, 0.2, 0.5], sprite1, 15],
       [[0.95, 0.1, 0.5], sprite2, 15],
       [[0.90, 0.05, 0.5], sprite3, 10]
     ];
 
+    particle = particle || randomInt(0, 2);
+
     super({
-      // color: parameters[1][0],
-      map: parameters[1][1],
-      size: parameters[1][2],
+      map: parameters[particle][1],
+      size: parameters[particle][2],
       fog: true,
       transparent: true
     });
