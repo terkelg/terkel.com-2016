@@ -14,40 +14,46 @@ class ObjectCloud extends THREE.Object3D {
 
     const colors = [
       new THREE.Color(0xFFE88E),
+      new THREE.Color(0xFFE88E),
       new THREE.Color(0xCFDDF9),
-      new THREE.Color(0xCFDDF9)
+      new THREE.Color(0xCFDDF9),
+      new THREE.Color(0xCFDDF9),
+      new THREE.Color(0x3545E5)
     ];
 
+    this.size = 70;
     this.geometry = [
-      new THREE.BoxBufferGeometry(50, 50, 50),
-      new THREE.ConeBufferGeometry(50, 50, 3, 0)
-      // new THREE.TetrahedronGeometry(35)
+      new THREE.BoxBufferGeometry(this.size, this.size, this.size),
+      new THREE.ConeBufferGeometry(this.size - 20, this.size, 4, 0)
     ];
 
-    for (var i = 0; i < 120; i++) {
-      var object = new THREE.Mesh(this.geometry[randomInt(0, this.geometry.length - 1)], new THREE.MeshLambertMaterial({
-        color: colors[randomInt(0, colors.length - 1)],
-        wireframe: true
-      }));
-      object.position.x = randomInt(-2200, 2200);
-      object.position.y = randomInt(-3500, 3500);
-      object.position.z = randomInt(-1500, 300);
-      object.rotation.x = Math.random() * 2 * Math.PI;
-      object.rotation.y = Math.random() * 2 * Math.PI;
-      object.rotation.z = Math.random() * 2 * Math.PI;
-      object.scale.x = randomFloat(0.5, 1);
-      object.scale.y = randomFloat(0.5, 1);
-      object.scale.z = randomFloat(0.5, 1);
-      this.add(object);
+    for (var i = 0; i < 80; i++) {
+      // Create Main Object
+      let color = colors[randomInt(0, colors.length - 1)];
+      let geometry = this.geometry[randomInt(0, this.geometry.length - 1)];
+      let material = new THREE.LineBasicMaterial({color: color});
+      let mesh = new THREE.LineSegments(new THREE.EdgesGeometry(geometry), material);
+
+      // Generate random position, rotation and scale
+      let position = new THREE.Vector3(randomInt(-2200, 2200), randomInt(-3500, 3500), randomInt(-1500, 300));
+      let rotation = new THREE.Vector3(Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI);
+      let randomScale = randomFloat(0.5, 1);
+
+      // Set it
+      mesh.position.set(position.x, position.y, position.z);
+      mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+      mesh.scale.set(randomScale, randomScale, randomScale);
+      this.add(mesh);
+
+      /*
+      // Create Fill Object
+      let fill = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({color: 0xFFFFFF}));
+      fill.position.set(position.x, position.y, position.z);
+      fill.rotation.set(rotation.x, rotation.y, rotation.z);
+      fill.scale.set(randomScale, randomScale, randomScale);
+      this.add(fill);
+      */
     }
-
-    // Math.random() + 0.5
-
-    // TODO: Merge objects
-    // http://www.jbernier.com/merging-geometries-in-three-js
-    // Add update "rotation" function
-
-    // TODO: Add another style of box later
   }
 
   /**
