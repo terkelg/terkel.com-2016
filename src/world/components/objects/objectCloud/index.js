@@ -21,13 +21,13 @@ class ObjectCloud extends THREE.Object3D {
       new THREE.Color(0x3545E5)
     ];
 
-    this.size = 70;
+    this.size = 75;
     this.geometry = [
       new THREE.BoxBufferGeometry(this.size, this.size, this.size),
       new THREE.ConeBufferGeometry(this.size - 20, this.size, 4, 0)
     ];
 
-    for (var i = 0; i < 80; i++) {
+    for (var i = 0; i < 70; i++) {
       // Create Main Object
       let color = colors[randomInt(0, colors.length - 1)];
       let geometry = this.geometry[randomInt(0, this.geometry.length - 1)];
