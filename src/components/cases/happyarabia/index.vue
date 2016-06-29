@@ -49,9 +49,11 @@
 
         <img src="colors@2x.jpg" alt="Colors and patterns">
 
-        <p>The pattern was inspired by mosaic tiles, which consists of six colours. Each individual museum has its own colour and a matching monochromatic pattern.</p>
+        <p>The pattern was inspired by mosaic tiles and consists of six colours. Each individual museum has its own colour and a matching monochromatic pattern.</p>
 
         <img src="tickets@2x.jpg" alt="Ticket design for Rosenborg and Davids Samling">
+
+        <p>The main pattern, where each color represent each museum, is for example used on the frontpage of the website and on the ticket which provides admission to all six museums.</p>
 
         <img src="website@2x.jpg" alt="Website design, frontpage and Rosenborg">
 
@@ -82,6 +84,8 @@
         </p>
 
         <img src="prototype@2x.jpg" alt="Prototype and iBeacons, developed in Swift">
+
+        <p>I made a quick prototype in Swift, to demonstrate how the iBeacons worked and to give people a feeling of how the app would look like on real devices.</p>
 
       </section>
     </article>
