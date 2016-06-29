@@ -33,9 +33,10 @@
         <p>
           You can recognize me wearing black jeans, and one of my many Supreme five-panels.
           When I am not sitting in front of a computer, I spaz out to Hip-Hop or chill with tech and design related podcasts.
-          A big regret of mine is I didn’t learn to skate, but on the other hand I became a pretty decent runner.
-          I watch a lot of movies and have currently rated 719 movies on IMDb – with still 261 to go on my watchlist.
-          Among my favorites you find Memento, Snatch, Pulp Fiction and City of God. I also enjoy to talk with friends and colleagues a cold beer, or two… maybe three.
+          A big regret of mine is I didn’t learn to skate, but on the other hand I became a pretty decent runner.<br>
+          I also watch a lot of movies and have currently rated 719 movies on IMDb – with still 261 to go on my watchlist.
+          Among my favorites you find Memento, Snatch, Pulp Fiction and City of God.<br>
+          I also enjoy to talk with friends and colleagues a cold beer, or two… maybe three.
         </p>
 
         <p>
@@ -62,6 +63,7 @@
                 <li>Cocio</li>
                 <li>Copenhagen Airport</li>
                 <li>Experimentarium</li>
+                <li>Radio24syv</li>
               </ul>
             </li>
             <li class="column">
