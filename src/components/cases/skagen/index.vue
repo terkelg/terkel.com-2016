@@ -52,31 +52,55 @@
 
         <img src="snapshot-1@2x.jpg" alt="Start screen in browser mockup">
 
+        <p>
+          On the landing page you choose how you want to view the experience. The website is mainly designed for Google Cardboard, but also support gyroscope navigation on mobile devices, and navigation by coursur on desktop as a fallback.
+        </p>
+
+        <p>
+          The core concept was to incorporate the famous light of Skagen as part of the online experience. This was achieved by sorting the paintings by light and time, and then allowing the user to navigate in 360° using Google Cardboard.
+        </p>
+
         <img src="snapshot-2@2x.jpg" alt="Main screen sunrise in browser mockup">
 
         <p>
-          The core concept was to incorporate the famous light of Skagen as part of the online experience. This was achieved by sorting the paintings by light and time, and then allowing the user to navigate in 360° using Google Cardboard. Once a painting is selected, the user can see its surroundings and listen to a narrator who tells the story behind the painting, its painter and the location itself.
+          A full 360° rotation correspond to 24 hours. As you look around in the main navigation, the light and time of the day changes.
         </p>
 
         <img src="snapshot-3@2x.jpg" alt="Main screen sunset in browser mockup">
 
+        <p>
+          Once a painting is selected, the user can see its surroundings and listen to a narrator who tells the story behind the painting, its painter and the location itself.
+        </p>
+
         <img src="snapshot-4@2x.jpg" alt="Painting view screen in browser mockup">
+
+        <p>
+          Below is a video simulating the 360° user experience from start to finish.
+        </p>
 
         <div class='embed-container'>
           <iframe src='https://player.vimeo.com/video/171822396' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
 
-        <img src="sketches@2x.jpg" alt="Painting view screen in browser mockup">
+        <p>
+          It was a UX challenge to design a website for Google Cardboard, which only have one button and no cursor. It called for a lot of sketching and wireframing.
+        </p>
 
-        <img src="cinema4d-1@2x.jpg" alt="Painting view screen in browser mockup">
+        <img src="sketches@2x.jpg" alt="Wireframing and sketches of the UI and UX">
 
-        <img src="cinema4d-2@2x.jpg" alt="Painting view screen in browser mockup">
+        <p>
+          Cinema 4D was also used in combination with After Effects to illustrate the experience. I’m a big fan of Xpresso, which I used to script a simple interface to control the camera and deformers.
+        </p>
+
+        <img src="cinema4d-1@2x.jpg" alt="Screenshot of how I used Cinema 4D">
+
+        <img src="cinema4d-2@2x.jpg" alt="Screenshot of how I used Cinema 4D and xpresso">
 
         <p>
           In addition, I developed a quick Google Cardboard prototype in Unity to demonstrate how the UX and feel of the navigation is supposed to work. Cinema 4D was also used in combination with After Effects to illustrate the experience. I’m a big fan of Xpresso, which I used to script a simple interface to control the camera and deformers.
         </p>
 
-        <img src="prototype@2x.jpg" alt="Painting view screen in browser mockup">
+        <img src="prototype@2x.jpg" alt="Prototype build in Unity and Google Cardboards">
 
       </section>
     </article>
