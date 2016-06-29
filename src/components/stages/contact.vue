@@ -4,7 +4,7 @@
 
     <div class="container">
       <a href="tel:+4529241193">+45 29 24 11 94</a><br>
-      hello@terkel.com
+      <a href="mailto:hello@terkel.com">hello@terkel.com</a>
       <ul class="social">
         <li class="social__twitter">
           <a href="https://twitter.com/terkelg" target="_blank">
