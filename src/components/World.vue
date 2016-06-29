@@ -49,7 +49,7 @@ export default {
 
   created () {
     this.keyboardEvent = throttle(this.keyboardEvent, 850, { 'trailing': false });
-    this.scrollEvent = throttle(this.scrollEvent, 1800, { 'trailing': false });
+    this.scrollEvent = throttle(this.scrollEvent, 1600, { 'trailing': false });
     this.touchMove = throttle(this.touchMove, 1000, { 'trailing': false });
 
     this.touchMove = this.touchMove.bind(this);
