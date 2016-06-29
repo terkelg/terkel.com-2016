@@ -13,7 +13,6 @@ import {
 import World from 'world';
 
 import throttle from 'lodash.throttle';
-import debounce from 'lodash.debounce';
 
 export default {
   vuex: {
@@ -50,7 +49,7 @@ export default {
 
   created () {
     this.keyboardEvent = throttle(this.keyboardEvent, 850, { 'trailing': false });
-    this.scrollEvent = debounce(this.scrollEvent, 300); // Test debaunce here
+    this.scrollEvent = throttle(this.scrollEvent, 1800, { 'trailing': false });
     this.touchMove = throttle(this.touchMove, 1000, { 'trailing': false });
 
     this.touchMove = this.touchMove.bind(this);
@@ -85,7 +84,7 @@ export default {
   methods: {
     addEventListeners () {
       window.addEventListener('keyup', this.keyboardEvent, false);
-      window.addEventListener('wheel', this.scrollEvent, false);
+      window.addEventListener('wheel', this.scrollEvent, true);
       document.addEventListener('touchmove', this.touchMove, false);
       document.addEventListener('touchstart', this.touchStart, false);
       document.addEventListener('mousemove', this.onMouseMove, false);
@@ -93,7 +92,7 @@ export default {
 
     removeEventListeners () {
       window.removeEventListener('keyup', this.keyboardEvent, false);
-      window.removeEventListener('wheel', this.scrollEvent, false);
+      window.removeEventListener('wheel', this.scrollEvent, true);
       document.removeEventListener('touchmove', this.touchMove, false);
       document.removeEventListener('touchstart', this.touchStart, false);
       document.removeEventListener('mousemove', this.onMouseMove, false);
@@ -154,11 +153,10 @@ export default {
 
     /**
      * scrollEvent
-     * Allow scroll to navigate stages based no direction
+     * Allow scroll to navigate stages based on direction
      * @return {Void}
      */
     scrollEvent (event) {
-      console.log('scroll');
       if (this.secondary.status !== 'open') {
         if (event.deltaY < 0) {
           this.previusStage();
