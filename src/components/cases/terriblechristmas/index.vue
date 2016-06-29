@@ -35,11 +35,11 @@
         </footer>
 
         <p>
-        Hello, this is the radio24syv case
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Cras sed tincidunt enim. Aenean ante quam, euismod in felis at, porta mol
-        estie augue. Nunc ligula quam, varius in mi quis, finibus malesuada sem. Nunc sce
-        lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
+          The collection of anti-Christmas gift wrapping dedicated as a humorous present for partners of Molamil, or anyone who just wants to inject a little bit of dark humor into their holidays and make a silent protest. Partners could login using a special link, and order two gift wraps free of charge. My primary role was to develop the website and integrate the partner login.
+        </p>
+
+        <p>
+          I had to develop the site in almost no time, which was a fun challenge. At the same time I had to learn Parse and how to do user authentication using only front-end technologies, which was an instructive experience.
         </p>
 
         <img src="snapshot-1@2x.jpg" alt="Screenshot of website">
@@ -53,6 +53,8 @@
         <img src="patterns-green@2x.jpg" alt="Green gift-wrap patterns">
 
         <img src="patterns-blue@2x.jpg" alt="Blue gift-wrap patterns">
+
+        <p>Go ahead, check it out at <a href="http://www.terriblechristmas.com/">www.terriblechristmas.com</a>.</p>
 
       </section>
     </article>

@@ -40,16 +40,24 @@
         </footer>
 
         <p>
-        Hello, this is the radio24syv case
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Cras sed tincidunt enim. Aenean ante quam, euismod in felis at, porta mol
-        estie augue. Nunc ligula quam, varius in mi quis, finibus malesuada sem. Nunc sce
-        lerisque turpis turpis, sed vehicula sem pharetra vel. Morbi
+          At the very top of Denmark is the town Skagen.The town is known for its famous painters who portrayed the amazing light and nature of Skagen.
+        </p>
+
+        <p>
+          Our assignment was to create a campaign website for Skagen Museum, that would catch visitors attention and provide an immersive experience.
+        </p>
+
+        <p>
+          In this project, my aim was to show visitors that the ‘Skagen magic’ is still alive today, by showing the paintings in their represent-day surroundings using WebVR.
         </p>
 
         <img src="snapshot-1@2x.jpg" alt="Start screen in browser mockup">
 
         <img src="snapshot-2@2x.jpg" alt="Main screen sunrise in browser mockup">
+
+        <p>
+          The core concept was to incorporate the famous light of Skagen as part of the online experience. This was achieved by sorting the paintings by light and time, and then allowing the user to navigate in 360° using Google Cardboard. Once a painting is selected, the user can see its surroundings and listen to a narrator who tells the story behind the painting, its painter and the location itself.
+        </p>
 
         <img src="snapshot-3@2x.jpg" alt="Main screen sunset in browser mockup">
 
@@ -64,6 +72,10 @@
         <img src="cinema4d-1@2x.jpg" alt="Painting view screen in browser mockup">
 
         <img src="cinema4d-2@2x.jpg" alt="Painting view screen in browser mockup">
+
+        <p>
+          In addition, I developed a quick Google Cardboard prototype in Unity to demonstrate how the UX and feel of the navigation is supposed to work. Cinema 4D was also used in combination with After Effects to illustrate the experience. I’m a big fan of Xpresso, which I used to script a simple interface to control the camera and deformers.
+        </p>
 
         <img src="prototype@2x.jpg" alt="Painting view screen in browser mockup">
 

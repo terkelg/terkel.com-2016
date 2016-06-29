@@ -3,7 +3,7 @@
     <div class="stage__inner">
 
       <h1>I'm Terkel</h1>
-      <p>Interactive Designer & Developer</p>
+      <p>Interactive Developer & Designer</p>
 
     </div>
   </section>
