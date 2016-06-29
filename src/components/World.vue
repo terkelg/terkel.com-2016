@@ -49,7 +49,7 @@ export default {
 
   created () {
     this.keyboardEvent = throttle(this.keyboardEvent, 850, { 'trailing': false });
-    this.scrollEvent = throttle(this.scrollEvent, 1600, { 'trailing': false });
+    this.scrollEvent = throttle(this.scrollEvent, 1500, { 'trailing': false });
     this.touchMove = throttle(this.touchMove, 1000, { 'trailing': false });
 
     this.touchMove = this.touchMove.bind(this);
@@ -138,6 +138,7 @@ export default {
     /**
      * keyboardEvent
      * Use keyboard to navigate stages
+     * @param {Event} event - Event Object
      * @return {Void}
      */
     keyboardEvent (event) {
@@ -154,13 +155,15 @@ export default {
     /**
      * scrollEvent
      * Allow scroll to navigate stages based on direction
+     * @param {Event} event - Event Object
      * @return {Void}
      */
     scrollEvent (event) {
+      console.log(event.deltaY);
       if (this.secondary.status !== 'open') {
         if (event.deltaY < 0) {
           this.previusStage();
-        } else if (event.deltaY > 0) {
+        } else if (event.deltaY + 1 > -0) {
           this.nextStage();
         }
       }
