@@ -35,7 +35,7 @@
         </footer>
 
         <p>
-          The collection of anti-Christmas gift wrapping dedicated as a humorous present for partners of Molamil, or anyone who just wants to inject a little bit of dark humor into their holidays and make a silent protest. Partners could login using a special link, and order two gift wraps free of charge. My primary role was to develop the website and integrate the partner login.
+          The collection of anti-Christmas gift wrapping dedicated as a humorous present for the partners of Molamil, or anyone who just wants to inject a little bit of dark humor into their holidays and make a silent protest. Partners could login using a special link, and order two gift wraps free of charge. My primary role was to develop the website and integrate the partner login.
         </p>
 
         <p>

@@ -33,7 +33,7 @@
                 <li>Processing</li>
                 <li>After Effects</li>
                 <li>Swift</li>
-                <li>iBeaoncs</li>
+                <li>iBeacon</li>
               </ul>
             </li>
           </ul>

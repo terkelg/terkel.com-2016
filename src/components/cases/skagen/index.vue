@@ -24,7 +24,6 @@
               <ul class="column__list">
                 <li>Concept</li>
                 <li>Design</li>
-                <li>Programming</li>
               </ul>
             </li>
             <li class="column column--two">
@@ -40,7 +39,7 @@
         </footer>
 
         <p>
-          At the very top of Denmark is the town Skagen.The town is known for its famous painters who portrayed the amazing light and nature of Skagen.
+          At the very top of Denmark is the town Skagen. The town is known for its famous painters who portrayed the amazing light and nature of Skagen.
         </p>
 
         <p>

@@ -13,6 +13,7 @@ import {
 import World from 'world';
 
 import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
 
 export default {
   vuex: {
@@ -49,7 +50,7 @@ export default {
 
   created () {
     this.keyboardEvent = throttle(this.keyboardEvent, 850, { 'trailing': false });
-    this.scrollEvent = throttle(this.scrollEvent, 1000, { 'trailing': false });
+    this.scrollEvent = debounce(this.scrollEvent, 300); // Test debaunce here
     this.touchMove = throttle(this.touchMove, 1000, { 'trailing': false });
 
     this.touchMove = this.touchMove.bind(this);
@@ -153,10 +154,11 @@ export default {
 
     /**
      * scrollEvent
-     * Allow scroll to navigate stages
+     * Allow scroll to navigate stages based no direction
      * @return {Void}
      */
     scrollEvent (event) {
+      console.log('scroll');
       if (this.secondary.status !== 'open') {
         if (event.deltaY < 0) {
           this.previusStage();
