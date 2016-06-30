@@ -159,7 +159,6 @@ export default {
      * @return {Void}
      */
     scrollEvent (event) {
-      console.log(event.deltaY);
       if (this.secondary.status !== 'open') {
         if (event.deltaY < 0) {
           this.previusStage();
