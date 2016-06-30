@@ -1,7 +1,7 @@
 <template>
   <div class="secondary-content secondary-content--case">
     <div class="pagination">{{ currentIndex + 1 }} / {{ cases.length }}</div>
-    <component :is="$route.params.case" transition="fade" transition-mode="out-in"></component>
+    <component :is="$route.params.case" transition="fade" transition-mode="out-in" keep-alive></component>
   </div>
 </template>
 
